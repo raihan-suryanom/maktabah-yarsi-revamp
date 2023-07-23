@@ -1,5 +1,5 @@
 /** @type { import('@storybook/nextjs').StorybookConfig } */
-const path = require('path');
+const path = require("path");
 
 const config = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs)"],
@@ -20,10 +20,10 @@ const config = {
     disableTelemetry: true,
   },
   webpackFinal: async (config, { configType }) => {
-    config.resolve.modules = [path.resolve(__dirname, '..'), 'node_modules'];
+    config.resolve.modules = [path.resolve(__dirname, ".."), "node_modules"];
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.resolve(__dirname, '../src'),
+      "@": path.resolve(__dirname, "../src"),
     };
     return config;
   },

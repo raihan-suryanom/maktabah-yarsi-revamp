@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "format:class": "npx prettier --write ."
   },
   "dependencies": {
     "next": "^13.4.12",
@@ -27,8 +28,11 @@
     "autoprefixer": "^10.4.14",
     "eslint": "^8.45.0",
     "eslint-config-next": "^13.4.11",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-storybook": "^0.6.13",
     "postcss": "^8.4.26",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "storybook": "^7.1.0",
     "tailwindcss": "^3.3.3"
   }
