@@ -8,6 +8,10 @@ const config = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
+    {
+      name: "@storybook/addon-styling",
+      options: {},
+    },
   ],
   framework: {
     name: "@storybook/nextjs",
@@ -28,5 +32,4 @@ const config = {
     return config;
   },
 };
-
 export default config;
