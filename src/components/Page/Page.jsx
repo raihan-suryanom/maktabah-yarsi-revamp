@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header } from "../Header/Header";
+import { Header } from "../header/header";
 
 export const Page = () => {
   const [user, setUser] = React.useState();

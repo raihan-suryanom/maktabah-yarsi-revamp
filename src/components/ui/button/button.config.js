@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 
-export const ButtonPropTypes = {
+export const buttonDisplayName = "Button";
+
+export const buttonPropTypes = {
   /**
    * What background color to use
    */
@@ -19,7 +21,7 @@ export const ButtonPropTypes = {
   onClick: PropTypes.func,
 };
 
-export const ButtonDefaultProps = {
+export const buttonDefaultProps = {
   backgroundColor: null,
   size: "medium",
   onClick: undefined,
