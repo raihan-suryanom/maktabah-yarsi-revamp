@@ -19,26 +19,35 @@ export default {
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary = {
   args: {
-    label: "Button",
+    label: "Primary Button",
+    variant: "primary",
   },
 };
 
 export const Secondary = {
   args: {
-    label: "Button",
+    label: "Secondary Button",
+    variant: "secondary",
   },
 };
 
 export const Large = {
   args: {
-    size: "lg",
-    label: "Button",
+    label: "Large Button",
+    size: "large",
+  },
+};
+
+export const Medium = {
+  args: {
+    label: "Medium Button",
+    size: "medium",
   },
 };
 
 export const Small = {
   args: {
-    size: "sm",
-    label: "Button",
+    label: "Small Button",
+    size: "small",
   },
 };
