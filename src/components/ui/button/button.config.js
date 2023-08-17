@@ -3,16 +3,18 @@ import PropTypes from "prop-types";
 export const buttonDisplayName = "Button";
 
 export const buttonPropTypes = {
-  className: PropTypes.string,
+  /**
+   * What background color to use
+   */
+  backgroundColor: PropTypes.string,
+  /**
+   * How large should the button be?
+   */
+  size: PropTypes.oneOf(["small", "medium", "large"]),
   /**
    * Button contents
-  */
- variant: PropTypes.oneOf(["primary", "secondary", "outline", "ghost", "link"]),
- asChild: PropTypes.bool,
- /**
-  * How large should the button be?
-  */
- size: PropTypes.oneOf(["small", "medium", "large"]),
+   */
+  label: PropTypes.string.isRequired,
   /**
    * Optional click handler
    */
@@ -20,5 +22,7 @@ export const buttonPropTypes = {
 };
 
 export const buttonDefaultProps = {
-  asChild: false
+  backgroundColor: null,
+  size: "medium",
+  onClick: undefined,
 };

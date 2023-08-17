@@ -9788,7 +9788,6 @@ __metadata:
     react-dom: 18.2.0
     storybook: ^7.2.1
     tailwind-merge: ^1.14.0
-    tailwind-variants: ^0.1.13
     tailwindcss: ^3.3.3
     tailwindcss-animate: ^1.0.6
   languageName: unknown
@@ -12882,21 +12881,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-merge@npm:^1.13.2, tailwind-merge@npm:^1.14.0":
+"tailwind-merge@npm:^1.14.0":
   version: 1.14.0
   resolution: "tailwind-merge@npm:1.14.0"
   checksum: 8cf5d37f51b3b32e4bdd5544feaed34357bfba2f64f14834cc4a21ac29b0ae22d7255386467a0f1dadb3e38499389efbbabeddcd0b16571af5a0d346a4921877
-  languageName: node
-  linkType: hard
-
-"tailwind-variants@npm:^0.1.13":
-  version: 0.1.13
-  resolution: "tailwind-variants@npm:0.1.13"
-  dependencies:
-    tailwind-merge: ^1.13.2
-  peerDependencies:
-    tailwindcss: "*"
-  checksum: d58a77768038963d18285ced665bc0a6cbaea5fc6b02f0220b11b698e6fa317782994fb103fb68eacd990a440696ea0ff4e24f6064949364d2a39161699aeaab
   languageName: node
   linkType: hard
 
