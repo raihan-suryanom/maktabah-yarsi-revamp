@@ -1,5 +1,9 @@
 /** @type { import('@storybook/react').Preview } */
 import { withThemeByClassName } from "@storybook/addon-styling";
+import { Poppins } from "next/font/google";
+import localFont from "next/font/local";
+
+import { poppins } from "~/lib/fonts";
 import "../src/app/globals.css";
 
 const preview = {
@@ -13,14 +17,17 @@ const preview = {
     },
   },
   decorators: [
-    // Adds theme switching support.
-    // NOTE: requires setting "darkMode" to "class" in your tailwind config
+    (Story) => (
+      <div className={poppins.variable}>
+        <Story />
+      </div>
+    ),
     withThemeByClassName({
       themes: {
         light: "light",
         dark: "dark",
       },
-      defaultTheme: "light",
+      defaultTheme: "dark",
     }),
   ],
 };
