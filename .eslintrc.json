@@ -1,7 +1,36 @@
 {
   "extends": [
-    "next/core-web-vitals",
+    "airbnb",
     "prettier",
-    "plugin:storybook/recommended"
-  ]
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended",
+    "plugin:@next/next/recommended"
+  ],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "extensions": [".js", ".jsx"],
+        "map": [["~", "./src"]]
+      }
+    }
+  },
+  "rules": {
+    "react/jsx-props-no-spreading": [
+      1,
+      {
+        "custom": "ignore"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": [
+      1,
+      {
+        "namedComponents": "arrow-function"
+      }
+    ]
+  }
 }
