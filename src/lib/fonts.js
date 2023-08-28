@@ -1,18 +1,18 @@
-import { Poppins } from "next/font/google";
-import localFont from "next/font/local";
+import { Poppins } from 'next/font/google';
+import localFont from 'next/font/local';
 
 export const poppins = Poppins({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-poppins',
 });
 
 export const lpmq = localFont({
-  src: "../app/lpmq.woff2",
-  style: "normal",
-  weight: "400",
-  variable: "--font-lpmq",
-  display: "swap",
-  fallback: ["Tahoma", "sans-serif"],
+  src: '../../public/lpmq.woff2',
+  style: 'normal',
+  weight: '400',
+  variable: '--font-lpmq',
+  display: 'swap',
+  fallback: ['Tahoma', 'sans-serif'],
 });

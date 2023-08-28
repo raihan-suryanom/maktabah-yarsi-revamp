@@ -1,13 +1,14 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-export const buttonDisplayName = "Button";
+export const ButtonDisplayName = 'Button';
 
-export const buttonPropTypes = {
+export const ButtonPropTypes = {
   className: PropTypes.string,
-  size: PropTypes.oneOf(["large", "medium", "outline"]),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'outline', 'link']),
+  size: PropTypes.oneOf(['large', 'medium', 'small']),
+  asChild: PropTypes.bool,
 };
 
-export const buttonDefaultProps = {
-  className: "",
+export const ButtonDefaultProps = {
   asChild: false,
 };

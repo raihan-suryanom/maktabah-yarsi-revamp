@@ -1,14 +1,14 @@
 /** @type { import('@storybook/react').Preview } */
-import { withThemeByClassName } from "@storybook/addon-styling";
-import { Poppins } from "next/font/google";
-import localFont from "next/font/local";
+import { withThemeByClassName } from '@storybook/addon-styling';
+import { Poppins } from 'next/font/google';
+import localFont from 'next/font/local';
 
-import { poppins } from "~/lib/fonts";
-import "../src/app/globals.css";
+import { poppins } from '~/lib/fonts';
+import '../src/app/globals.css';
 
 const preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -24,10 +24,10 @@ const preview = {
     ),
     withThemeByClassName({
       themes: {
-        light: "light",
-        dark: "dark",
+        light: 'light',
+        dark: 'dark',
       },
-      defaultTheme: "dark",
+      defaultTheme: 'dark',
     }),
   ],
 };
