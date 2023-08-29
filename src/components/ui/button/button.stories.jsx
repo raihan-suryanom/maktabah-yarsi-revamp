@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Button, Icon } from '~/components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -80,7 +79,7 @@ export const OnlyIcon = {
 
 export const AsChild = {
   args: {
-    children: <Link href="/some-route">asChild</Link>,
     asChild: true,
+    children: <a href="#!">asChild</a>,
   },
 };
