@@ -17,6 +17,18 @@ export default {
       control: 'select',
       options: Object.keys(dynamicIconImports),
     },
+    size: {
+      control: { type: 'range', min: 16, max: 48, step: 4 },
+    },
+    strokeWidth: {
+      control: { type: 'range', min: 0.5, max: 3, step: 0.25 },
+    },
+    absoluteStrokeWidth: {
+      control: 'boolean',
+    },
+    color: {
+      control: { type: 'color' },
+    },
   },
 };
 
@@ -24,6 +36,6 @@ export default {
 export const DefaultIcon = {
   args: {
     name: 'library',
-    size: 30,
+    size: 28,
   },
 };
