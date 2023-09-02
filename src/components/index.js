@@ -1,3 +1,3 @@
-import { Button, Icon } from './ui';
+import { Button, Icon, Input } from './ui';
 
-export { Button, Icon };
+export { Button, Icon, Input };
