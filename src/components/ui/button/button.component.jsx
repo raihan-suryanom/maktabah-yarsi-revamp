@@ -1,34 +1,34 @@
-'use client';
-
 import { forwardRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 
 import { cn } from '~/lib/utils';
 import {
-  ButtonDefaultProps,
   ButtonDisplayName,
-  ButtonPropTypes,
+  ButtonDefaultProps,
+  ButtonPropTypes as CustomButtonProps,
 } from './button.config';
 import { buttonVariants } from './button.styles';
 
 /**
- * @type React.ForwardRefRenderFunction<?, ButtonPropTypes>
+ * @typedef {import('react').ButtonHTMLAttributes<HTMLButtonElement} ButtonProps
+ * @typedef {import('class-variance-authority').VariantProps<typeof buttonVariants>} VariantProps
+ * @typedef {CustomButtonProps & ButtonProps & VariantProps} ExtendedButtonProps
+ * @type React.ForwardRefRenderFunction<HTMLButtonElement, ExtendedButtonProps>
  */
-const Button = forwardRef(
-  ({ className, variant, size, asChild, ...props }, ref) => {
-    const Component = asChild ? Slot : 'button';
-    return (
-      <Component
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    );
-  }
-);
+const Button = ({ className, variant, size, asChild, ...props }, ref) => {
+  const Component = asChild ? Slot : 'button';
 
-Button.propTypes = ButtonPropTypes;
+  return (
+    <Component
+      className={cn(buttonVariants({ variant, size, className }))}
+      ref={ref}
+      {...props}
+    />
+  );
+};
+
+Button.propTypes = CustomButtonProps;
 Button.defaultProps = ButtonDefaultProps;
 Button.displayName = ButtonDisplayName;
 
-export { Button };
+export default forwardRef(Button);
