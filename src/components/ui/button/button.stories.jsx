@@ -83,6 +83,7 @@ export const AsChild = {
   args: {
     asChild: true,
     children: <Link href="#!">asChild</Link>,
+    variant: 'link',
   },
   argTypes: {
     children: {

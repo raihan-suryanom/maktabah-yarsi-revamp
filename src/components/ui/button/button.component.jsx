@@ -5,14 +5,14 @@ import { cn } from '~/lib/utils';
 import {
   ButtonDisplayName,
   ButtonDefaultProps,
-  ButtonPropTypes as CustomButtonProps,
+  ButtonPropTypes,
 } from './button.config';
 import { buttonVariants } from './button.styles';
 
 /**
  * @typedef {import('react').ButtonHTMLAttributes<HTMLButtonElement} ButtonProps
  * @typedef {import('class-variance-authority').VariantProps<typeof buttonVariants>} VariantProps
- * @typedef {CustomButtonProps & ButtonProps & VariantProps} ExtendedButtonProps
+ * @typedef {ButtonPropTypes & ButtonProps & VariantProps} ExtendedButtonProps
  * @type React.ForwardRefRenderFunction<HTMLButtonElement, ExtendedButtonProps>
  */
 const Button = ({ className, variant, size, asChild, ...props }, ref) => {
@@ -27,7 +27,7 @@ const Button = ({ className, variant, size, asChild, ...props }, ref) => {
   );
 };
 
-Button.propTypes = CustomButtonProps;
+Button.propTypes = ButtonPropTypes;
 Button.defaultProps = ButtonDefaultProps;
 Button.displayName = ButtonDisplayName;
 

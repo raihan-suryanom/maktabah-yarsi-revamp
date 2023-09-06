@@ -1,20 +1,20 @@
 import dynamic from 'next/dynamic';
 import dynamicIconImports from 'lucide-react/dynamicIconImports';
 
-import {
-  IconDefaultProps,
-  IconDisplayName,
-  IconPropTypes,
-} from './icon.config';
-
-const Icon = ({ name, size, ...props }) => {
+/**
+ * @typedef {import('lucide-react').LucideProps} LucideProps
+ * @typedef {object} IconPropTypes
+ * @property {keyof typeof dynamicIconImports} name
+ * @typedef {IconPropTypes & LucideProps} IconProps
+ * @type React.FC<IconProps>
+ * @property
+ */
+const Icon = ({ name, ...props }) => {
   const LucideIcon = dynamic(dynamicIconImports[name]);
 
-  return <LucideIcon size={size} {...props} />;
+  return <LucideIcon {...props} />;
 };
 
-Icon.propTypes = IconPropTypes;
-Icon.defaultProps = IconDefaultProps;
-Icon.displayName = IconDisplayName;
+Icon.displayName = 'LucideIcon';
 
 export { Icon };

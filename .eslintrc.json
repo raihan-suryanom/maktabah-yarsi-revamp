@@ -6,10 +6,12 @@
     "plugin:import/errors",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
+    "plugin:jsdoc/recommended",
     "plugin:prettier/recommended",
     "plugin:storybook/recommended",
     "plugin:@next/next/recommended"
   ],
+  "plugins": ["jsdoc"],
   "settings": {
     "import/resolver": {
       "alias": {
