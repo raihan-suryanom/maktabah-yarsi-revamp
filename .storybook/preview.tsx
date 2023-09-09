@@ -1,9 +1,10 @@
+import '../src/app/globals.css';
 import React from 'react';
 import { withThemeByClassName } from '@storybook/addon-styling';
-import type { Preview } from '@storybook/react';
 
 import { poppins } from '../src/lib/fonts';
-import '../src/app/globals.css';
+
+import type { Preview } from '@storybook/react';
 
 const preview: Preview = {
   parameters: {

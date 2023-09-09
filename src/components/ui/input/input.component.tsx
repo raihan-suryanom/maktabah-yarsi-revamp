@@ -4,7 +4,8 @@ import { Fragment, forwardRef } from 'react';
 import { cn } from '~/lib/utils';
 import { Icon } from '../icon';
 import { inputVariants } from './input.styles';
-import { VariantProps } from 'class-variance-authority';
+
+import type { VariantProps } from 'class-variance-authority';
 
 const Input = forwardRef<
   HTMLInputElement,

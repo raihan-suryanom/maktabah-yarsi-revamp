@@ -1,5 +1,5 @@
-import { lpmq, poppins } from '~/lib/fonts';
 import './globals.css';
+import { lpmq, poppins } from '~/lib/fonts';
 
 export const metadata = {
   title: 'Create Next App',

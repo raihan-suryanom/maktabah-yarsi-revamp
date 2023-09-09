@@ -1,8 +1,7 @@
 'use client';
 
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { forwardRef } from 'react';
-import { VariantProps } from 'class-variance-authority';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
 
 import { cn } from '~/lib/utils';
 import { Icon } from '../icon';
@@ -11,6 +10,8 @@ import {
   accordionItemVariants,
   accordionTriggerVariants,
 } from './accordion.style';
+
+import type { VariantProps } from 'class-variance-authority';
 
 const Accordion = AccordionPrimitive.Root;
 
