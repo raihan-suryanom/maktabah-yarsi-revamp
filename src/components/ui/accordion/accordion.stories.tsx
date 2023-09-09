@@ -25,8 +25,9 @@ const meta = {
   tags: ['autodocs'],
 } satisfies Meta<typeof AccordionContent>;
 
-export default meta;
 type Story = StoryObj<typeof meta>;
+
+export default meta;
 
 export const DefaultAccordion: Story = {
   args: {

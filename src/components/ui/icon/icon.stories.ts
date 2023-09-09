@@ -1,15 +1,15 @@
 import dynamicIconImports from 'lucide-react/dynamicIconImports';
+
 import { Icon } from '~/components';
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+import type { Meta, StoryObj } from '@storybook/react';
+
+const meta =  {
   title: 'UI/Icon',
   component: Icon,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
     name: {
@@ -29,10 +29,13 @@ export default {
       control: { type: 'color' },
     },
   },
-};
+} satisfies Meta<typeof Icon>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const DefaultIcon = {
+type Story = StoryObj<typeof meta>;
+
+export default meta;
+
+export const DefaultIcon: Story = {
   args: {
     name: 'library',
     size: 28,
