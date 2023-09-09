@@ -17,7 +17,7 @@ const Input = forwardRef<
   const Component = withIcon ? 'div' : Fragment;
 
   return (
-    <Component className="relative flex items-center justify-between">
+    <Component {...(withIcon && {className:'relative flex items-center justify-between'})}>
       <input
         type={type}
         className={cn(inputVariants({ size, className }))}
