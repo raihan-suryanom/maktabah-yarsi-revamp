@@ -6,6 +6,7 @@ export const inputVariants = cva(
     variants: {
       size: {
         large: 'px-7 py-5',
+        medium: 'px-7 py-5',
       },
     },
     defaultVariants: {

@@ -5,23 +5,22 @@ import { cn } from '~/lib/utils';
 import { Icon } from '../icon';
 import { inputVariants } from './input.styles';
 
-/**
- * @typedef {import('react').InputHTMLAttributes<HTMLInputElement} InputProps
- * @typedef {import('class-variance-authority').VariantProps<typeof inputVariants>} VariantProps
- * @typedef {object} InputPropTypes
- * @property {keyof typeof dynamicIconImports} withIcon
- * @typedef {InputPropTypes & InputProps & VariantProps} ExtendedInputProps
- * @type React.ForwardRefRenderFunction<HTMLInputElement, ExtendedInputProps>
- * @property
- */
-const Input = ({ className, type, size, withIcon, ...props }, ref) => {
+import type { VariantProps } from 'class-variance-authority';
+
+const Input = forwardRef<
+  HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement> &
+    VariantProps<typeof inputVariants> & {
+      withIcon?: keyof typeof dynamicIconImports;
+    }
+>(({ className, type, size, withIcon, ...props }, ref) => {
   const Component = withIcon ? 'div' : Fragment;
 
   return (
     <Component className="relative flex items-center justify-between">
       <input
         type={type}
-        className={cn(inputVariants({ withIcon, size, className }))}
+        className={cn(inputVariants({ size, className }))}
         ref={ref}
         {...props}
       />
@@ -35,8 +34,8 @@ const Input = ({ className, type, size, withIcon, ...props }, ref) => {
       ) : null}
     </Component>
   );
-};
+});
 
 Input.displayName = 'Input';
 
-export default forwardRef(Input);
+export default Input;

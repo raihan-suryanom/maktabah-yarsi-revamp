@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import type { Meta, StoryObj } from '@storybook/react';
+
 import {
   Accordion,
   AccordionContent,
@@ -7,9 +9,9 @@ import {
   Button,
 } from '~/components';
 
-export default {
+const meta = {
   title: 'UI/Accordion',
-  component: Accordion,
+  component: AccordionContent,
   decorators: [
     (Story) => (
       <div className="w-[30rem]">
@@ -21,35 +23,30 @@ export default {
     layout: 'centered',
   },
   tags: ['autodocs'],
-};
+} satisfies Meta<typeof AccordionContent>;
 
-export const DefaultAccordion = {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const DefaultAccordion: Story = {
   args: {
-    variant: 'categories',
+    children: 't',
   },
-  render: ({ variant }) => (
+  render: ({ children }) => (
     <Accordion type="multiple">
-      <AccordionItem value="item-1" variant={variant}>
+      <AccordionItem value="item-1" variant="categories">
         <AccordionTrigger>Is it accessible?</AccordionTrigger>
         <AccordionContent asChild>
           <Button
-            variant="ghost"
             className="cursor-pointer rounded-l-none border-l-4 border-dark-200/50 py-1"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
           </Button>
         </AccordionContent>
-        <AccordionContent>Akhlak Fiqih</AccordionContent>
+        <AccordionContent>{children}</AccordionContent>
         <AccordionContent>Akhlak Iman</AccordionContent>
         <AccordionContent>Akhlak Pribadi</AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Is it styled?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It comes with default styles that matches the other
-          components&apos; aesthetic.
-        </AccordionContent>
       </AccordionItem>
     </Accordion>
   ),

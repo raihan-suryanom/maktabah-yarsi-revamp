@@ -1,13 +1,13 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from 'tailwindcss';
 
 const tailwindcssAnimate = require('tailwindcss-animate');
 
-module.exports = {
+const config: Config = {
   darkMode: ['class'],
   content: [
-    './src/pages/**/*.{js,jsx}',
-    './src/components/**/*.{js,jsx}',
-    './src/app/**/*.{js,jsx}',
+    './src/pages/**/*.{ts,tsx}',
+    './src/components/**/*.{ts,tsx}',
+    './src/app/**/*.{ts,tsx}',
   ],
   theme: {
     container: {
@@ -42,12 +42,12 @@ module.exports = {
       },
       keyframes: {
         'accordion-down': {
-          from: { height: 0 },
+          from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
         },
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: 0 },
+          to: { height: '0' },
         },
       },
       animation: {
@@ -63,3 +63,5 @@ module.exports = {
   },
   plugins: [tailwindcssAnimate],
 };
+
+export default config;

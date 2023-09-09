@@ -1,12 +1,12 @@
-/** @type { import('@storybook/react').Preview } */
-import { withThemeByClassName } from '@storybook/addon-styling';
-import { Poppins } from 'next/font/google';
-import localFont from 'next/font/local';
-
-import { poppins } from '~/lib/fonts';
 import '../src/app/globals.css';
+import React from 'react';
+import { withThemeByClassName } from '@storybook/addon-styling';
 
-const preview = {
+import { poppins } from '../src/lib/fonts';
+
+import type { Preview } from '@storybook/react';
+
+const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
