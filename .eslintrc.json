@@ -1,39 +1,31 @@
 {
   "extends": [
-    "airbnb",
+    "airbnb-typescript",
+    "next",
     "prettier",
     "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:import/errors",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "plugin:jsdoc/recommended",
     "plugin:prettier/recommended",
-    "plugin:storybook/recommended",
-    "plugin:@next/next/recommended"
+    "plugin:storybook/recommended"
   ],
-  "plugins": ["jsdoc"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "root": true,
   "settings": {
+    "react": {
+      "version": "detect"
+    },
     "import/resolver": {
       "alias": {
-        "extensions": [".js", ".jsx"],
+        "extensions": [".ts", ".tsx"],
         "map": [["~", "./src"]]
       }
     }
   },
-  "rules": {
-    "react/jsx-props-no-spreading": [
-      1,
-      {
-        "custom": "ignore",
-        "exceptions": ["input"]
-      }
-    ],
-    "import/prefer-default-export": "off",
-    "react/function-component-definition": [
-      1,
-      {
-        "namedComponents": "arrow-function"
-      }
-    ]
+  "parserOptions": {
+    "project": "./tsconfig.json"
   }
 }

@@ -1,8 +1,8 @@
-/** @type { import('@storybook/nextjs').StorybookConfig } */
+import type { StorybookConfig } from '@storybook/nextjs';
 const path = require('path');
 
-const config = {
-  stories: ['../src/**/*.stories.@(js|jsx)'],
+const config: StorybookConfig = {
+  stories: ['../src/**/*.stories.@(ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -22,10 +22,10 @@ const config = {
   core: {
     disableTelemetry: true,
   },
-  webpackFinal: async (config, { configType }) => {
-    config.resolve.modules = [path.resolve(__dirname, '..'), 'node_modules'];
-    config.resolve.alias = {
-      ...config.resolve.alias,
+  webpackFinal: async (config) => {
+    config!.resolve!.modules = [path.resolve(__dirname, '..'), 'node_modules'];
+    config!.resolve!.alias = {
+      ...config!.resolve!.alias,
       '~': path.resolve(__dirname, '../src'),
     };
     return config;
