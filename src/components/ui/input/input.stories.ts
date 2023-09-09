@@ -23,7 +23,11 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const DefaultInput: Story = {};
+export const DefaultInput: Story = {
+  args: {
+    placeholder: 'Default Input',
+  },
+};
 
 export const LargeInput: Story = {
   args: {

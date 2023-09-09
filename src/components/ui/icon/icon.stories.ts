@@ -4,7 +4,7 @@ import { Icon } from '~/components';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta =  {
+const meta = {
   title: 'UI/Icon',
   component: Icon,
   parameters: {

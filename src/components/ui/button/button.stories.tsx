@@ -51,7 +51,7 @@ export const Large: Story = {
 export const Medium: Story = {
   args: {
     children: 'Medium Button',
-    variant:'primary'
+    variant: 'primary',
   },
 };
 
@@ -59,7 +59,7 @@ export const Small: Story = {
   args: {
     children: '1',
     size: 'small',
-    variant:'primary'
+    variant: 'primary',
   },
 };
 
@@ -73,7 +73,7 @@ export const TextWithIcon: Story = {
     ),
     size: 'small',
     className: 'gap-1.5',
-    variant:'primary'
+    variant: 'primary',
   },
 };
 
@@ -82,7 +82,7 @@ export const OnlyIcon: Story = {
     children: <Icon className="cursor-pointer" name="lightbulb" size={40} />,
     asChild: true,
     size: 'small',
-    variant:'primary'
+    variant: 'primary',
   },
 };
 
