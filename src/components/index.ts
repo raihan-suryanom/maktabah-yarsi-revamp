@@ -3,10 +3,7 @@ import {
   Icon,
   Input,
   Badge,
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
+  Accordion
 } from './ui';
 
 export {
@@ -15,7 +12,4 @@ export {
   Input,
   Badge,
   Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
 };

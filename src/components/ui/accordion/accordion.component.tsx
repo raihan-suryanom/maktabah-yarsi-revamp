@@ -55,4 +55,4 @@ const AccordionContent = forwardRef<
 
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+export { Accordion as Root, AccordionItem as Item, AccordionTrigger as Trigger, AccordionContent as Content };

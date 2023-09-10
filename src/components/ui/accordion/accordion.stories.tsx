@@ -1,11 +1,9 @@
 import Link from 'next/link';
+
 import type { Meta, StoryObj } from '@storybook/react';
 
 import {
   Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
   Badge,
   Button,
   Icon,
@@ -13,7 +11,7 @@ import {
 
 const meta = {
   title: 'UI/Accordion',
-  component: AccordionContent,
+  component: Accordion.Content,
   decorators: [
     (Story) => (
       <div className="w-[30rem]">
@@ -25,7 +23,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof AccordionContent>;
+} satisfies Meta<typeof Accordion.Content>;
 
 type Story = StoryObj<typeof meta>;
 
@@ -33,9 +31,9 @@ export default meta;
 
 export const DefaultAccordion: Story = {
   render: () => (
-    <Accordion type="single" className="font-poppins" collapsible>
-      <AccordionItem value="item-1">
-        <AccordionTrigger
+    <Accordion.Root type="single" className="font-poppins" collapsible>
+      <Accordion.Item value="item-1">
+        <Accordion.Trigger
           variant="categories"
           className="[&[data-state=open]>svg[id=book-marked]]:rotate-0"
         >
@@ -54,34 +52,34 @@ export const DefaultAccordion: Story = {
             size={24}
             strokeWidth={3}
           />
-        </AccordionTrigger>
-        <AccordionContent asChild>
+        </Accordion.Trigger>
+        <Accordion.Content asChild>
           <Button
             className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
           </Button>
-        </AccordionContent>
-        <AccordionContent asChild>
+        </Accordion.Content>
+        <Accordion.Content asChild>
           <Button
             className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
           </Button>
-        </AccordionContent>
-        <AccordionContent asChild>
+        </Accordion.Content>
+        <Accordion.Content asChild>
           <Button
             className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
           </Button>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger
+        </Accordion.Content>
+      </Accordion.Item>
+      <Accordion.Item value="item-2">
+        <Accordion.Trigger
           variant="categories"
           className="[&[data-state=open]>svg[id=book-marked]]:rotate-0"
         >
@@ -100,41 +98,41 @@ export const DefaultAccordion: Story = {
             size={24}
             strokeWidth={3}
           />
-        </AccordionTrigger>
-        <AccordionContent asChild>
+        </Accordion.Trigger>
+        <Accordion.Content asChild>
           <Button
             className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
           </Button>
-        </AccordionContent>
-        <AccordionContent asChild>
+        </Accordion.Content>
+        <Accordion.Content asChild>
           <Button
             className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
           </Button>
-        </AccordionContent>
-        <AccordionContent asChild>
+        </Accordion.Content>
+        <Accordion.Content asChild>
           <Button
             className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
           </Button>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion.Root>
   ),
 };
 
 export const SimpleAccordion: Story = {
   render: () => (
-    <Accordion type="multiple" className="font-poppins">
-      <AccordionItem value="item-1">
-        <AccordionTrigger variant="tableOfContent">
+    <Accordion.Root type="multiple" className="font-poppins">
+      <Accordion.Item value="item-1">
+        <Accordion.Trigger variant="tableOfContent">
           <Icon
             name="chevron-right"
             className="mr-2.5"
@@ -142,8 +140,8 @@ export const SimpleAccordion: Story = {
             strokeWidth={3}
           />
           <span className="text-2xl">Akhlakul Karimah</span>
-        </AccordionTrigger>
-        <AccordionContent asChild>
+        </Accordion.Trigger>
+        <Accordion.Content asChild>
           <Button
             className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-2.5 text-2xl font-normal hover:text-primary-light dark:hover:text-primary-dark"
             asChild
@@ -153,14 +151,14 @@ export const SimpleAccordion: Story = {
               karimah Akhlakul karimah Akhlakul karimah Akhlakul karimah
             </Link>
           </Button>
-        </AccordionContent>
-        <AccordionContent>
-          <Accordion
+        </Accordion.Content>
+        <Accordion.Content>
+          <Accordion.Root
             type="multiple"
             className="border-l border-dashed border-[#e5e5e5] pl-8 font-poppins"
           >
-            <AccordionItem value="item-1">
-              <AccordionTrigger variant="tableOfContent">
+            <Accordion.Item value="item-1">
+              <Accordion.Trigger variant="tableOfContent">
                 <Icon
                   name="chevron-right"
                   className="mr-2.5"
@@ -168,8 +166,8 @@ export const SimpleAccordion: Story = {
                   strokeWidth={3}
                 />
                 <span className="text-2xl">Akhlakul Karimah</span>
-              </AccordionTrigger>
-              <AccordionContent asChild>
+              </Accordion.Trigger>
+              <Accordion.Content asChild>
                 <Button
                   className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-2.5 text-2xl font-normal hover:text-primary-light dark:hover:text-primary-dark"
                   asChild
@@ -179,35 +177,35 @@ export const SimpleAccordion: Story = {
                     karimah Akhlakul karimah Akhlakul karimah Akhlakul karimah
                   </Link>
                 </Button>
-              </AccordionContent>
-              <AccordionContent asChild>
+              </Accordion.Content>
+              <Accordion.Content asChild>
                 <Button
                   className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-2.5 text-2xl font-normal hover:text-primary-light dark:hover:text-primary-dark"
                   asChild
                 >
                   <Link href="/test">Akhlakul karimah</Link>
                 </Button>
-              </AccordionContent>
-              <AccordionContent asChild>
+              </Accordion.Content>
+              <Accordion.Content asChild>
                 <Button
                   className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-2.5 text-2xl font-normal hover:text-primary-light dark:hover:text-primary-dark"
                   asChild
                 >
                   <Link href="/test">Akhlakul karimah</Link>
                 </Button>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </AccordionContent>
-        <AccordionContent asChild>
+              </Accordion.Content>
+            </Accordion.Item>
+          </Accordion.Root>
+        </Accordion.Content>
+        <Accordion.Content asChild>
           <Button
             className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-2.5 text-2xl font-normal hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
           </Button>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion.Root>
   ),
 };

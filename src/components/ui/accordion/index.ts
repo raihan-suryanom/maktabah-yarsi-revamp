@@ -1,8 +1,3 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from './accordion.component';
+import * as Accordion from './accordion.component';
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+export { Accordion };
