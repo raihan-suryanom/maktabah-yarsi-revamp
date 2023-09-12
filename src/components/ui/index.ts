@@ -6,5 +6,6 @@ import { Accordion } from './accordion';
 import { Checkbox } from './checkbox';
 import { Label } from './label';
 import { Card } from './card';
+import { Table } from './table';
 
-export { Button, Icon, Input, Badge, Accordion, Checkbox, Label, Card };
+export { Button, Icon, Input, Badge, Accordion, Checkbox, Label, Card, Table };
