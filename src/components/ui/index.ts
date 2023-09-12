@@ -7,5 +7,17 @@ import { Checkbox } from './checkbox';
 import { Label } from './label';
 import { Card } from './card';
 import { Table } from './table';
+import { Separator } from './separator/separator.component';
 
-export { Button, Icon, Input, Badge, Accordion, Checkbox, Label, Card, Table };
+export {
+  Button,
+  Icon,
+  Input,
+  Badge,
+  Accordion,
+  Checkbox,
+  Label,
+  Card,
+  Table,
+  Separator,
+};
