@@ -26,7 +26,7 @@ export default meta;
 
 export const DefaultAccordion: Story = {
   render: () => (
-    <Accordion.Root type="single" className="font-poppins" collapsible>
+    <Accordion.Root type="single" collapsible>
       <Accordion.Item value="item-1">
         <Accordion.Trigger
           variant="categories"
@@ -125,7 +125,7 @@ export const DefaultAccordion: Story = {
 
 export const SimpleAccordion: Story = {
   render: () => (
-    <Accordion.Root type="multiple" className="font-poppins">
+    <Accordion.Root type="multiple">
       <Accordion.Item value="item-1">
         <Accordion.Trigger variant="tableOfContent">
           <Icon
@@ -150,7 +150,7 @@ export const SimpleAccordion: Story = {
         <Accordion.Content>
           <Accordion.Root
             type="multiple"
-            className="border-l border-dashed border-[#e5e5e5] pl-8 font-poppins"
+            className="border-l border-dashed border-[#e5e5e5] pl-8"
           >
             <Accordion.Item value="item-1">
               <Accordion.Trigger variant="tableOfContent">
