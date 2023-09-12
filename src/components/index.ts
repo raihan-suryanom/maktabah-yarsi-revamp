@@ -1,3 +1,12 @@
-import { Button, Icon, Input, Badge, Accordion, Checkbox, Label } from './ui';
+import {
+  Button,
+  Icon,
+  Input,
+  Badge,
+  Accordion,
+  Checkbox,
+  Label,
+  Card,
+} from './ui';
 
-export { Button, Icon, Input, Badge, Accordion, Checkbox, Label };
+export { Button, Icon, Input, Badge, Accordion, Checkbox, Label, Card };
