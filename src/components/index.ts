@@ -9,7 +9,7 @@ import {
   Card,
   Table,
   Separator,
-} from './ui';
+} from './atoms';
 
 export {
   Button,
