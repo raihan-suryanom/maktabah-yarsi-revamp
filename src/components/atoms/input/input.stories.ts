@@ -19,7 +19,7 @@ export const SmallInput: Story = {
   args: {
     placeholder: 'Small Input',
     dimension: 'small',
-    className:'rounded-none'
+    className: 'rounded-none',
   },
 };
 

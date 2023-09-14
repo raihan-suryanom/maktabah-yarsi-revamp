@@ -22,6 +22,7 @@ const config: StorybookConfig = {
   },
   core: {
     disableTelemetry: true,
+    disableWhatsNewNotifications: true,
   },
   webpackFinal: async (config) => {
     config!.resolve!.modules = [path.resolve(__dirname, '..'), 'node_modules'];

@@ -10,4 +10,4 @@ const Badge = ({ className, variant, ...props }: BadgeProps) => (
   <span className={cn(badgeVariants({ variant }), className)} {...props} />
 );
 
-export { Badge };
+export default Badge;

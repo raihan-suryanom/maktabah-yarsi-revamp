@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 export const SmallInput: Story = {
   args: {
     placeholder: 'Small Input',
-    dimension:'small'
+    dimension: 'small',
   },
 };
 
