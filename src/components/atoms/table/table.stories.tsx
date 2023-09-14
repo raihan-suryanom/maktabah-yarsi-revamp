@@ -1,9 +1,9 @@
-import { Table } from '~/components';
+import { Table } from '~/components/atoms';
 
 import type { Meta } from '@storybook/react';
 
 const meta = {
-  title: 'UI/Table',
+  title: 'Atoms/Table',
   parameters: {
     layout: 'centered',
   },

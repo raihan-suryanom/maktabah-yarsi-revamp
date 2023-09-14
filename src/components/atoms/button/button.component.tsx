@@ -6,7 +6,7 @@ import { buttonVariants } from './button.styles';
 
 import type { VariantProps } from 'class-variance-authority';
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
   };
@@ -27,4 +27,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = 'Button';
 
-export { Button };
+export default Button;

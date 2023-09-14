@@ -2,10 +2,10 @@ import Link from 'next/link';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Accordion, Badge, Button, Icon } from '~/components';
+import { Accordion, Badge, Button, Icon } from '~/components/atoms';
 
 const meta = {
-  title: 'UI/Accordion',
+  title: 'Atoms/Accordion',
   component: Accordion.Content,
   decorators: [
     (Story) => (

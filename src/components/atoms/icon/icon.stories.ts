@@ -1,11 +1,11 @@
 import dynamicIconImports from 'lucide-react/dynamicIconImports';
 
-import { Icon } from '~/components';
+import { Icon } from '~/components/atoms';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'UI/Icon',
+  title: 'Atoms/Icon',
   component: Icon,
   parameters: {
     layout: 'centered',

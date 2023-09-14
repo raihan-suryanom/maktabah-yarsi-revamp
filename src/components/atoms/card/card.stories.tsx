@@ -1,12 +1,12 @@
 import Image from 'next/image';
 
-import { Icon, Card } from '~/components';
+import { Icon, Card } from '~/components/atoms';
 import image from '../../../../public/book_cover_not_available.png';
 
 import type { Meta } from '@storybook/react';
 
 const meta = {
-  title: 'UI/Card',
+  title: 'Atoms/Card',
   parameters: {
     layout: 'centered',
   },

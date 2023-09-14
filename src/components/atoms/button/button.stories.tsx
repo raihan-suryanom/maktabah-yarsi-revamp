@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
-import { Button, Icon } from '~/components';
+import { Button, Icon } from '~/components/atoms';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'UI/Button',
+  title: 'Atoms/Button',
   component: Button,
   parameters: {
     layout: 'centered',

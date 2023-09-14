@@ -1,3 +1,5 @@
-import Input from './input.component';
+import Input, {type InputProps} from './input.component';
+import { inputVariants } from './input.styles';
 
-export { Input };
+
+export { Input, InputProps, inputVariants };

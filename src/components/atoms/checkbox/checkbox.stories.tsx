@@ -1,9 +1,9 @@
-import { Checkbox, Label } from '~/components';
+import { Checkbox, Label } from '~/components/atoms';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'UI/Checkbox',
+  title: 'Atoms/Checkbox',
   component: Checkbox,
   parameters: {
     layout: 'centered',

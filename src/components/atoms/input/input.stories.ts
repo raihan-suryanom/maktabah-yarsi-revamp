@@ -1,51 +1,37 @@
-import dynamicIconImports from 'lucide-react/dynamicIconImports';
-
-import { Input } from '~/components';
+import { Input } from '~/components/atoms';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'UI/Input',
+  title: 'Atoms/Input',
   component: Input,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    withIcon: {
-      control: 'select',
-      options: Object.keys(dynamicIconImports),
-    },
-  },
 } satisfies Meta<typeof Input>;
-
-export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const DefaultInput: Story = {
+export default meta;
+
+export const SmallInput: Story = {
   args: {
-    placeholder: 'Default Input',
+    placeholder: 'Small Input',
+    dimension: 'small',
+    className:'rounded-none'
   },
 };
 
-export const LargeInput: Story = {
+export const MediumInput: Story = {
   args: {
-    placeholder: 'Large Input',
+    placeholder: 'Medium Input',
   },
 };
 
-export const WideLargeInput: Story = {
+export const WideMediumInput: Story = {
   args: {
     placeholder: 'Cari nama buku, kategori, topik...',
     className: 'w-[992px]',
-  },
-};
-
-export const InputWithIcon: Story = {
-  args: {
-    placeholder: 'Input with lucide icon',
-    className: 'w-[992px]',
-    withIcon: 'search',
   },
 };

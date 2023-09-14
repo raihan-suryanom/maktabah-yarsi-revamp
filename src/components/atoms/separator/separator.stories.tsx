@@ -1,9 +1,9 @@
-import { Separator } from '~/components';
+import { Separator } from '~/components/atoms';
 
 import type { Meta } from '@storybook/react';
 
 const meta = {
-  title: 'UI/Separator',
+  title: 'Atoms/Separator',
   parameters: {
     layout: 'centered',
   },

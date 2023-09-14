@@ -1,3 +1,5 @@
-import { Button } from './button.component';
+import Button, {type ButtonProps} from './button.component';
+import { buttonVariants } from './button.styles';
 
-export { Button };
+
+export { Button, ButtonProps, buttonVariants };
