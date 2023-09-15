@@ -25,7 +25,7 @@ const config: Config = {
         },
         light: {
           100: '#f8fafc',
-          200: '#f1f5f9',
+          200: '#e5e5e5',
           300: '#e2e8f0',
           400: '#cbd5e1',
         },
