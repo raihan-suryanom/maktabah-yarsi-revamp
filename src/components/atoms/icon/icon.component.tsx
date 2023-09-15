@@ -15,4 +15,4 @@ const Icon = ({ name, ...props }: Iconprops) => {
 
 Icon.displayName = 'LucideIcon';
 
-export { Icon };
+export default Icon;

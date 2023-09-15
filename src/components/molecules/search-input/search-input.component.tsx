@@ -13,7 +13,7 @@ const SearchInput = forwardRef<HTMLInputElement, InputProps>(
       <Input type="search" className="w-full" ref={ref} {...props} />
       <Icon
         name="search"
-        className="absolute right-7 bg-light-100 text-primary-light dark:text-primary-dark"
+        className="absolute right-7 text-primary-light dark:text-primary-dark"
         size={36}
         strokeWidth={3}
       />
