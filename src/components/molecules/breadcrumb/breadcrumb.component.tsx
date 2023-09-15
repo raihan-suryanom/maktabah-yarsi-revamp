@@ -1,21 +1,36 @@
 import Link from 'next/link';
 
 import { Separator } from '~/components/atoms';
+import { cn } from '~/lib/utils';
 
-export type BreadcrumbProps = React.HTMLAttributes<HTMLElement>;
+export type BreadcrumbProps = React.HTMLAttributes<HTMLElement> & {
+  routes: { title: string; link?: string }[];
+};
 
-const Breadcrumb = ({ className, ...props }: BreadcrumbProps) => {
+const Breadcrumb = ({ routes, className, ...props }: BreadcrumbProps) => {
   return (
-    <nav {...props}>
-      <ul className="flex h-6 items-center gap-2.5 text-xl">
+    <nav className={cn('overflow-x-auto px-8 py-5', className)} {...props}>
+      <ul className="flex h-5 items-center gap-2.5">
         <Link href="#!">Home</Link>
-        <Separator orientation="vertical" className="w-0.5 rotate-12" />
+        <Separator
+          orientation="vertical"
+          className="w-0.5 rotate-12 opacity-70"
+        />
         <Link href="category">Category</Link>
-        <Separator orientation="vertical" className="w-0.5 rotate-12" />
+        <Separator
+          orientation="vertical"
+          className="w-0.5 rotate-12 opacity-70"
+        />
         <Link href="#!">Akhlak</Link>
-        <Separator orientation="vertical" className="w-0.5 rotate-12" />
+        <Separator
+          orientation="vertical"
+          className="w-0.5 rotate-12 opacity-70"
+        />
         <Link href="#!">Akhlakul Fiqih</Link>
-        <Separator orientation="vertical" className="w-0.5 rotate-12" />
+        <Separator
+          orientation="vertical"
+          className="w-0.5 rotate-12 opacity-70"
+        />
         <Link href="#!" className="font-bold">
           Dalail al-Khairat
         </Link>
