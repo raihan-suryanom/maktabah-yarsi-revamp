@@ -1,46 +1,99 @@
-import Link from 'next/link';
+import Image from 'next/image';
 
-import { Button, Checkbox, Label, Accordion, Input } from '~/components/atoms';
+import { Card, Icon, PageWrapper } from '~/components/atoms';
+import { SearchInput } from '~/components/molecules';
+import image from '../../public/book_cover_not_available.png';
+
+const categories = ['ahklak', 'aqidah', 'fiqih', 'hadits', 'sirah', 'lainnya'];
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-bold">src/app/page.js</code>
+    <PageWrapper>
+      <header className="mx-auto flex min-h-screen flex-col items-center gap-10 pt-20 text-center lg:w-9/12">
+        <h1 className="font-lpmq text-6xl font-normal text-primary-light dark:text-primary-dark">
+          مكتبة يرسي
+          <span className="block pt-7 text-7xl font-black text-dark-100 dark:text-light-100">
+            Maktabah YARSI
+          </span>
+        </h1>
+        <p className="text-xl">
+          Sebuah perpustakaan islam digital berbahasa Indonesia yang
+          memungkinkan pengguna untuk mencari topik atau permasalahan
+          berdasarkan kata kunci seperti{' '}
+          <span className="font-bold text-primary-light dark:text-primary-dark">
+            iman
+          </span>
+          ,{' '}
+          <span className="font-bold text-primary-light dark:text-primary-dark">
+            sabar
+          </span>
+          ,{' '}
+          <span className="font-bold text-primary-light dark:text-primary-dark">
+            shalat
+          </span>
+          , dan{' '}
+          <span className="font-bold text-primary-light dark:text-primary-dark">
+            riba
+          </span>
+          .
         </p>
-        <div className="flex items-center gap-2">
-          <Checkbox id="test" />
-          <Label htmlFor="test">Tester atuh bang</Label>
-        </div>
-        <Input dimension="medium" />
-        <Accordion.Root type="multiple">
-          <Accordion.Item value="item-1">
-            <Accordion.Trigger>Is it accessible?</Accordion.Trigger>
-            <Accordion.Content asChild>
-              <Button
-                variant="secondary"
-                className="cursor-pointer rounded-l-none border-l-4 border-dark-200/50 py-1"
-                asChild
-              >
-                <Link href="/test">Akhlakul karimah</Link>
-              </Button>
-            </Accordion.Content>
-            <Accordion.Content>Akhlak Fiqih</Accordion.Content>
-            <Accordion.Content>Akhlak Iman</Accordion.Content>
-            <Accordion.Content>Akhlak Pribadi</Accordion.Content>
-          </Accordion.Item>
-          <Accordion.Item value="item-2">
-            <Accordion.Trigger>Is it styled?</Accordion.Trigger>
-            <Accordion.Content>
-              Yes. It comes with default styles that matches the other
-              components&apos; aesthetic.
-            </Accordion.Content>
-          </Accordion.Item>
-        </Accordion.Root>
-        <Button size="medium">Test</Button>
-      </div>
-    </main>
+        <SearchInput
+          placeholder="Cari nama buku, kategori, topik ..."
+          className="text- w-full"
+        />
+        <section className="flex w-full items-center justify-between">
+          {categories.map((category) => (
+            <Card.Root
+              key={category}
+              className="rounded-[20px] p-7 lg:min-w-[150px]"
+            >
+              <Card.Header className="mb-2.5 items-center p-0">
+                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary-light text-white">
+                  <Icon name="book-open" size={28} strokeWidth={3} />
+                </span>
+              </Card.Header>
+              <Card.Content className="p-0">
+                <Card.Title className="text-center font-normal capitalize">
+                  {category}
+                </Card.Title>
+              </Card.Content>
+            </Card.Root>
+          ))}
+        </section>
+      </header>
+      <section className="flex flex-col gap-12 px-24 text-center">
+        <h2 className="text-3xl font-bold uppercase">
+          Buku yang sering dibaca
+        </h2>
+        <article className="flex w-full items-center justify-between gap-2">
+          {Array(6)
+            .fill('test')
+            .map((_, index) => (
+              <Card.Root key={index} className="w-[180px]">
+                <Card.Content className="p-0">
+                  <Image src={image} alt="Image not available" />
+                </Card.Content>
+              </Card.Root>
+            ))}
+        </article>
+        <h2 className="text-3xl font-bold uppercase">Buku aqidah</h2>
+        <article className="grid w-full grid-cols-6 grid-rows-2 items-center justify-between gap-2.5">
+          <Card.Root className="col-span-2 row-span-2 h-full">
+            <Card.Content className="p-0">
+              <Image src={image} alt="Image not available" />
+            </Card.Content>
+          </Card.Root>
+          {Array(8)
+            .fill('test')
+            .map((_, index) => (
+              <Card.Root key={index}>
+                <Card.Content className="p-0">
+                  <Image src={image} alt="Image not available" />
+                </Card.Content>
+              </Card.Root>
+            ))}
+        </article>
+      </section>
+    </PageWrapper>
   );
 }
