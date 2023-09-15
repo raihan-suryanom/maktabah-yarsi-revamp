@@ -8,6 +8,8 @@ import { Label } from './label';
 import { Card } from './card';
 import { Table } from './table';
 import { Separator } from './separator/separator.component';
+import { PageWrapper } from './page-wrapper';
+import { MaktabahIcon } from './maktabah-icon';
 
 export {
   Button,
@@ -20,4 +22,6 @@ export {
   Card,
   Table,
   Separator,
+  PageWrapper,
+  MaktabahIcon,
 };
