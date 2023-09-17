@@ -9,12 +9,12 @@ import {
   Icon,
   PageWrapper,
 } from '~/components/atoms';
-import { Breadcrumb } from '~/components/molecules';
+import { Breadcrumb, Pagination } from '~/components/molecules';
 
-export default function Home() {
+export default function ListOfBookPage() {
   return (
-    <PageWrapper className="flex min-h-screen pt-20">
-      <aside className="w-3/12">
+    <PageWrapper className="flex min-h-screen">
+      <aside className="flex w-3/12 flex-col gap-3 pl-10 pr-5 pt-5">
         <h2 className="text-2xl font-bold">Kategori Buku</h2>
         <Accordion.Root type="single" collapsible>
           <Accordion.Item value="item-1">
@@ -23,24 +23,23 @@ export default function Home() {
               className="[&[data-state=open]>svg[id=book-marked]]:rotate-0"
             >
               <Icon
-                id="book-marked"
-                name="book-marked"
-                className="mr-2.5"
-                size={30}
-                strokeWidth={3}
-              />
-              <span className="mr-2.5 text-2xl">Akhlak</span>
-              <Badge className="font-bold">34</Badge>
-              <Icon
-                name="chevron-down"
-                className="ml-auto shrink-0 text-primary-light transition-transform duration-200 dark:text-primary-dark"
-                size={24}
-                strokeWidth={3}
-              />
+            id='book-marked'
+            name="book-marked"
+            size={24}
+            strokeWidth={3}
+          />
+          <span className="text-lg">Akhlak</span>
+          <Badge className="font-bold">34</Badge>
+          <Icon
+            name="chevron-down"
+            className="ml-auto shrink-0 text-primary-light transition-transform duration-200 dark:text-primary-dark"
+            size={24}
+            strokeWidth={3}
+          />
             </Accordion.Trigger>
             <Accordion.Content asChild>
               <Button
-                className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+                className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
                 asChild
               >
                 <Link href="/test">Akhlakul Karimah</Link>
@@ -48,7 +47,7 @@ export default function Home() {
             </Accordion.Content>
             <Accordion.Content asChild>
               <Button
-                className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+                className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
                 asChild
               >
                 <Link href="/test">Akhlakul Fiqih</Link>
@@ -56,7 +55,7 @@ export default function Home() {
             </Accordion.Content>
             <Accordion.Content asChild>
               <Button
-                className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+                className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
                 asChild
               >
                 <Link href="/test">Akhlakul Iman</Link>
@@ -71,11 +70,10 @@ export default function Home() {
               <Icon
                 id="book-marked"
                 name="book-marked"
-                className="mr-2.5"
-                size={30}
+                size={24}
                 strokeWidth={3}
               />
-              <span className="mr-2.5 text-2xl">Fiqih</span>
+              <span className="text-lg">Fiqih</span>
               <Badge>34</Badge>
               <Icon
                 name="chevron-down"
@@ -86,7 +84,7 @@ export default function Home() {
             </Accordion.Trigger>
             <Accordion.Content asChild>
               <Button
-                className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+                className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
                 asChild
               >
                 <Link href="/test">Fiqih Ibadah</Link>
@@ -94,7 +92,7 @@ export default function Home() {
             </Accordion.Content>
             <Accordion.Content asChild>
               <Button
-                className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+                className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
                 asChild
               >
                 <Link href="/test">Fiqih Wanita</Link>
@@ -102,7 +100,7 @@ export default function Home() {
             </Accordion.Content>
             <Accordion.Content asChild>
               <Button
-                className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+                className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
                 asChild
               >
                 <Link href="/test">Fiqih Muamalat</Link>
@@ -111,7 +109,7 @@ export default function Home() {
           </Accordion.Item>
         </Accordion.Root>
       </aside>
-      <div className="min-h-screen w-9/12 bg-light-200">
+      <div className="flex min-h-screen w-9/12 flex-col gap-5 bg-light-300 p-6">
         <Breadcrumb routes={[]} className="pt-0" />
         <h1 className="text-center text-4xl font-bold">Daftar Buku Akhlak</h1>
         <section className="grid grid-rows-none gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 ">
@@ -145,6 +143,7 @@ export default function Home() {
               </Card.Root>
             ))}
         </section>
+        <Pagination className="mx-auto w-[384px]" />
       </div>
     </PageWrapper>
   );

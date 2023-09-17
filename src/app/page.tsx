@@ -6,10 +6,10 @@ import image from '../../public/book_cover_not_available.png';
 
 const categories = ['ahklak', 'aqidah', 'fiqih', 'hadits', 'sirah', 'lainnya'];
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <PageWrapper>
-      <header className="mx-auto flex min-h-screen flex-col items-center gap-10 pt-20 text-center lg:w-9/12">
+    <PageWrapper className="py-16">
+      <header className="mx-auto flex min-h-screen flex-col items-center gap-10 text-center lg:w-9/12">
         <h1 className="font-lpmq text-6xl font-normal text-primary-light dark:text-primary-dark">
           مكتبة يرسي
           <span className="block pt-7 text-7xl font-black text-dark-100 dark:text-light-100">
@@ -39,7 +39,7 @@ export default function Home() {
         </p>
         <SearchInput
           placeholder="Cari nama buku, kategori, topik ..."
-          className="text- w-full"
+          className="text- w-full bg-light-300"
         />
         <section className="flex w-full items-center justify-between">
           {categories.map((category) => (

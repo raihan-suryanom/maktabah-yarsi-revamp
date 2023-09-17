@@ -9,7 +9,7 @@ export type BreadcrumbProps = React.HTMLAttributes<HTMLElement> & {
 
 const Breadcrumb = ({ routes, className, ...props }: BreadcrumbProps) => {
   return (
-    <nav className={cn('overflow-x-auto px-8 py-5', className)} {...props}>
+    <nav className={cn('overflow-x-auto', className)} {...props}>
       <ul className="flex h-5 items-center gap-2.5">
         <Link href="#!">Home</Link>
         <Separator
