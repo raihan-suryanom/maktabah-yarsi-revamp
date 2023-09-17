@@ -33,13 +33,12 @@ export const DefaultAccordion: Story = {
           className="[&[data-state=open]>svg[id=book-marked]]:rotate-0"
         >
           <Icon
-            id="book-marked"
+            id='book-marked'
             name="book-marked"
-            className="mr-2.5"
-            size={30}
+            size={24}
             strokeWidth={3}
           />
-          <span className="mr-2.5 text-2xl">Akhlakul Karimah</span>
+          <span className="text-lg">Akhlakul Karimah</span>
           <Badge className="font-bold">34</Badge>
           <Icon
             name="chevron-down"
@@ -50,7 +49,7 @@ export const DefaultAccordion: Story = {
         </Accordion.Trigger>
         <Accordion.Content asChild>
           <Button
-            className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+            className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
@@ -58,7 +57,7 @@ export const DefaultAccordion: Story = {
         </Accordion.Content>
         <Accordion.Content asChild>
           <Button
-            className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+            className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
@@ -66,7 +65,7 @@ export const DefaultAccordion: Story = {
         </Accordion.Content>
         <Accordion.Content asChild>
           <Button
-            className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+            className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
@@ -82,10 +81,10 @@ export const DefaultAccordion: Story = {
             id="book-marked"
             name="book-marked"
             className="mr-2.5"
-            size={30}
+            size={24}
             strokeWidth={3}
           />
-          <span className="mr-2.5 text-2xl">Akhlakul Karimah</span>
+          <span className="mr-2.5 text-lg">Akhlakul Karimah</span>
           <Badge>34</Badge>
           <Icon
             name="chevron-down"
@@ -96,7 +95,7 @@ export const DefaultAccordion: Story = {
         </Accordion.Trigger>
         <Accordion.Content asChild>
           <Button
-            className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+            className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
@@ -104,7 +103,7 @@ export const DefaultAccordion: Story = {
         </Accordion.Content>
         <Accordion.Content asChild>
           <Button
-            className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+            className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
@@ -112,7 +111,7 @@ export const DefaultAccordion: Story = {
         </Accordion.Content>
         <Accordion.Content asChild>
           <Button
-            className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-2.5 text-2xl font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+            className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>
@@ -131,14 +130,14 @@ export const SimpleAccordion: Story = {
           <Icon
             name="chevron-right"
             className="mr-2.5"
-            size={30}
+            size={24}
             strokeWidth={3}
           />
-          <span className="text-2xl">Akhlakul Karimah</span>
+          <span className="text-lg">Akhlakul Karimah</span>
         </Accordion.Trigger>
         <Accordion.Content asChild>
           <Button
-            className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-2.5 text-2xl font-normal hover:text-primary-light dark:hover:text-primary-dark"
+            className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-1.5 text-lg font-normal hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">
@@ -157,14 +156,14 @@ export const SimpleAccordion: Story = {
                 <Icon
                   name="chevron-right"
                   className="mr-2.5"
-                  size={30}
+                  size={24}
                   strokeWidth={3}
                 />
-                <span className="text-2xl">Akhlakul Karimah</span>
+                <span className="text-lg">Akhlakul Karimah</span>
               </Accordion.Trigger>
               <Accordion.Content asChild>
                 <Button
-                  className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-2.5 text-2xl font-normal hover:text-primary-light dark:hover:text-primary-dark"
+                  className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-1.5 text-lg font-normal hover:text-primary-light dark:hover:text-primary-dark"
                   asChild
                 >
                   <Link href="/test">
@@ -175,7 +174,7 @@ export const SimpleAccordion: Story = {
               </Accordion.Content>
               <Accordion.Content asChild>
                 <Button
-                  className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-2.5 text-2xl font-normal hover:text-primary-light dark:hover:text-primary-dark"
+                  className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-1.5 text-lg font-normal hover:text-primary-light dark:hover:text-primary-dark"
                   asChild
                 >
                   <Link href="/test">Akhlakul karimah</Link>
@@ -183,7 +182,7 @@ export const SimpleAccordion: Story = {
               </Accordion.Content>
               <Accordion.Content asChild>
                 <Button
-                  className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-2.5 text-2xl font-normal hover:text-primary-light dark:hover:text-primary-dark"
+                  className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-1.5 text-lg font-normal hover:text-primary-light dark:hover:text-primary-dark"
                   asChild
                 >
                   <Link href="/test">Akhlakul karimah</Link>
@@ -194,7 +193,7 @@ export const SimpleAccordion: Story = {
         </Accordion.Content>
         <Accordion.Content asChild>
           <Button
-            className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-2.5 text-2xl font-normal hover:text-primary-light dark:hover:text-primary-dark"
+            className="block w-full cursor-pointer rounded-l-none border-l border-dashed border-[#e5e5e5] py-1.5 text-lg font-normal hover:text-primary-light dark:hover:text-primary-dark"
             asChild
           >
             <Link href="/test">Akhlakul karimah</Link>

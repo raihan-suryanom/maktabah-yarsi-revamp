@@ -12,7 +12,7 @@ const NavigationBar = ({ className, ...props }: NavigationBarProps) => {
   return (
     <nav
       className={cn(
-        'group fixed top-0 z-50 mb-14 flex w-full items-center justify-between gap-5 border-b border-black/10 bg-light-100 py-3.5 pl-8 pr-10 text-dark-300 dark:border-gray-800 dark:bg-dark-100 dark:text-light-300',
+        'flex w-full items-center justify-between gap-5 border-b border-black/10 bg-light-100 py-3.5 pl-8 pr-10 text-dark-300 dark:border-gray-800 dark:bg-dark-100 dark:text-light-300',
         className
       )}
       {...props}
