@@ -1,6 +1,7 @@
 'use client';
 
 import { forwardRef } from 'react';
+import { usePathname } from 'next/navigation';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 
 import { cn } from '~/lib/utils';
@@ -8,7 +9,21 @@ import { accordionTriggerVariants } from './accordion.style';
 
 import type { VariantProps } from 'class-variance-authority';
 
-const Accordion = AccordionPrimitive.Root;
+const Accordion = forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>
+>(({ ...props }, ref) => {
+  const pathname = usePathname();
+  const categories = pathname.split('/').slice(2);
+
+  return (
+    <AccordionPrimitive.Root
+      ref={ref}
+      defaultValue={categories as unknown as undefined}
+      {...props}
+    />
+  );
+});
 
 const AccordionItem = forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,

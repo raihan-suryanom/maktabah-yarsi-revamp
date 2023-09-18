@@ -32,12 +32,7 @@ export const DefaultAccordion: Story = {
           variant="categories"
           className="[&[data-state=open]>svg[id=book-marked]]:rotate-0"
         >
-          <Icon
-            id='book-marked'
-            name="book-marked"
-            size={24}
-            strokeWidth={3}
-          />
+          <Icon id="book-marked" name="book-marked" size={24} strokeWidth={3} />
           <span className="text-lg">Akhlakul Karimah</span>
           <Badge className="font-bold">34</Badge>
           <Icon

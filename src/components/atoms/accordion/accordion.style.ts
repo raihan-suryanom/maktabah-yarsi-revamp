@@ -6,8 +6,9 @@ export const accordionTriggerVariants = cva(
     variants: {
       variant: {
         categories:
-          'data-[state=open]:text-primary-light dark:data-[state=open]:text-primary-dark [&[data-state=open]>svg]:rotate-180 gap-1.5',
-        tableOfContent: 'p-0 [&[data-state=open]>svg]:rotate-90 items-start justify-start text-left',
+          'gap-1.5 data-[state=open]:text-primary-light dark:data-[state=open]:text-primary-dark [&[data-state=open]>svg]:rotate-180',
+        tableOfContent:
+          'items-start justify-start p-0 text-left [&[data-state=open]>svg]:rotate-90',
       },
     },
   }
