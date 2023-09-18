@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <PageWrapper>
-      <Breadcrumb routes={[{ title: 'about' }]} />
+      <Breadcrumb paths={[{ title: 'about' }]} />
       <h1
         id="main_content"
         className="mb-10 mt-5 px-10 text-center text-3xl font-bold text-dark-200 dark:text-light-200 md:px-0 md:text-4xl lg:text-5xl"

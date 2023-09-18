@@ -17,14 +17,14 @@ export default meta;
 
 export const SmallInput: Story = {
   args: {
-    routes: [],
+    paths: [],
     className: 'rounded-none',
   },
 };
 
 export const WideMediumInput: Story = {
   args: {
-    routes: [],
+    paths: [],
     placeholder: 'Cari nama buku, kategori, topik...',
     className: 'w-[992px]',
   },

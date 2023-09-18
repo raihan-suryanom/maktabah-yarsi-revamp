@@ -1,10 +1,6 @@
 import Image from 'next/image';
 
-import {
-  Card,
-  Icon,
-  PageWrapper,
-} from '~/components/atoms';
+import { Card, Icon, PageWrapper } from '~/components/atoms';
 import { Breadcrumb, Pagination } from '~/components/molecules';
 import { TableOfContent } from '~/components/organisms';
 
