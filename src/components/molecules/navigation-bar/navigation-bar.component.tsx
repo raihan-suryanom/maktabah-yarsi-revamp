@@ -33,7 +33,7 @@ const NavigationBar = ({ className, ...props }: NavigationBarProps) => {
         <li>
           <Link
             className="hover:text-primary-light dark:hover:text-primary-dark"
-            href="/books"
+            href="/categories"
           >
             Books
           </Link>
