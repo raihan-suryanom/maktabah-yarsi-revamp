@@ -11,9 +11,13 @@ export type BreadcrumbProps = React.HTMLAttributes<HTMLElement> & {
 const Breadcrumb = ({ paths, className, ...props }: BreadcrumbProps) => {
   const rootPath = { title: 'Home', link: '/' };
 
-  const previousPaths = [rootPath, ...paths].map((path, index) => {
-    if (index === paths.length) {
-      return <p className="font-semibold">{path.title}</p>;
+  const previousPaths = [rootPath, ...paths].map((path, level) => {
+    if (level === paths.length) {
+      return (
+        <p key={path.title} className="font-semibold">
+          {path.title}
+        </p>
+      );
     }
 
     return (
@@ -33,7 +37,7 @@ const Breadcrumb = ({ paths, className, ...props }: BreadcrumbProps) => {
   });
 
   return (
-    <nav className={cn('overflow-x-auto', className)} {...props}>
+    <nav className={cn('overflow-x-auto capitalize', className)} {...props}>
       <ul className="flex h-5 items-center gap-2.5">{previousPaths}</ul>
     </nav>
   );
