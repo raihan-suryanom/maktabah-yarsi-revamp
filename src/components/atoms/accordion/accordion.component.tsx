@@ -11,19 +11,24 @@ import type { VariantProps } from 'class-variance-authority';
 
 const Accordion = forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>
->(({ ...props }, ref) => {
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root> & {
+    controlled?: boolean;
+  }
+>(({ className, controlled, ...props }, ref) => {
   const pathname = usePathname();
-  const categories = pathname.split('/').slice(2);
+  const categories = controlled ? pathname.split('/').slice(2) : [props.itemID];
 
   return (
     <AccordionPrimitive.Root
+      className={cn('capitalize', className)}
       ref={ref}
       defaultValue={categories as unknown as undefined}
       {...props}
     />
   );
 });
+
+Accordion.displayName = AccordionPrimitive.Root.displayName;
 
 const AccordionItem = forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
