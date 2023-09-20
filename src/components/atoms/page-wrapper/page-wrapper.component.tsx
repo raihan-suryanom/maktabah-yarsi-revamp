@@ -7,7 +7,10 @@ type PageWrapperProps = React.DetailedHTMLProps<
 
 const PageWrapper = ({ className, children, ...props }: PageWrapperProps) => (
   <main
-    className={cn('w-full text-slate-700 dark:text-slate-400', className)}
+    className={cn(
+      'mt-[65px] w-full text-slate-700 dark:text-slate-400',
+      className
+    )}
     {...props}
   >
     {children}
