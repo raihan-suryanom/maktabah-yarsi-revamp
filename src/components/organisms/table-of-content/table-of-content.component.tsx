@@ -1,46 +1,61 @@
 import Link from 'next/link';
+import dynamicIconImports from 'lucide-react/dynamicIconImports';
 
 import { Accordion, Badge, Button, Icon } from '~/components/atoms';
+import { accordionTriggerVariants } from '~/components/atoms/accordion/accordion.style';
 
-type TableOfContentProps = {
+import type { VariantProps } from 'class-variance-authority';
+
+type Category = {
   category: string;
   path: string;
-  sub:
-    | {
-        category: string;
-        path: string;
-        sub?: undefined;
-      }
-    | {
-        category: string;
-        path: string;
-        sub: {
-          category: string;
-          path: string;
-        }[];
-      }[];
+  sub?: ReadonlyArray<Category>;
 };
 
-const TableOfContent = ({ category, path, sub, kntl }: any) => {
-  console.log(category, kntl);
+type TableOfContentProps = VariantProps<typeof accordionTriggerVariants> &
+  Category & {
+    className?: string;
+    iconName: keyof typeof dynamicIconImports;
+    isRootCategory?: boolean;
+    controlled?: boolean;
+    category: string;
+    path: string;
+  };
+
+const TableOfContent = ({
+  className,
+  category,
+  path,
+  sub,
+  variant,
+  iconName,
+  controlled,
+  isRootCategory,
+}: TableOfContentProps) => {
+  const hasSubCategory = Array.isArray(sub);
   return (
-    <Accordion.Root type="multiple" itemID={category}>
+    <Accordion.Root
+      type="multiple"
+      itemID={category}
+      className={className}
+      controlled={controlled}
+    >
       <Accordion.Item value={category}>
-        <Accordion.Trigger
-          variant="categories"
-          className="[&[data-state=open]>svg[id=book-marked]]:rotate-0"
-          asChild
-        >
+        <Accordion.Trigger variant={variant} asChild>
           <Link href={path} passHref>
-            <Icon
-              id="book-marked"
-              name="book-marked"
-              size={24}
-              strokeWidth={3}
-            />
-            <span className="text-lg capitalize">{category}</span>
-            <Badge className="font-bold">34</Badge>
-            {Array.isArray(sub) && (
+            {(hasSubCategory || variant === 'categories') && (
+              <Icon
+                id="book-marked"
+                name={iconName}
+                size={24}
+                strokeWidth={3}
+              />
+            )}
+            {category}
+            {variant === 'categories' && (
+              <Badge className="font-bold">34</Badge>
+            )}
+            {hasSubCategory && variant === 'categories' && (
               <Icon
                 name="chevron-down"
                 className="ml-auto shrink-0 text-primary-light transition-transform duration-200 dark:text-primary-dark"
@@ -51,24 +66,35 @@ const TableOfContent = ({ category, path, sub, kntl }: any) => {
           </Link>
         </Accordion.Trigger>
         <Accordion.Content asChild>
-          {Array.isArray(sub)
+          {hasSubCategory
             ? sub?.map((x) => {
                 if (Array.isArray(x.sub)) {
-                  return <TableOfContent key={x.category} {...x} />;
+                  return (
+                    <TableOfContent
+                      controlled={controlled}
+                      item
+                      key={x.category}
+                      className="border-l border-[#e5e5e5] pl-2"
+                      variant={variant}
+                      iconName={iconName}
+                      {...x}
+                    />
+                  );
                 }
 
                 return (
                   <Button
-                    className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+                    key={x.category}
+                    className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1.5 text-lg font-normal hover:text-primary-light dark:hover:text-primary-dark"
                     asChild
                   >
                     <Link href={x.path}>{x.category}</Link>
                   </Button>
                 );
               })
-            : !kntl && (
+            : !isRootCategory && (
                 <Button
-                  className="block w-full cursor-pointer rounded-l-none border-l-[3px] border-[#e5e5e5] py-1.5 text-lg font-normal hover:border-l-4 hover:border-primary-light hover:text-primary-light dark:hover:text-primary-dark"
+                  className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1.5 text-lg font-normal hover:text-primary-light dark:hover:text-primary-dark"
                   asChild
                 >
                   <Link href={path}>{category}</Link>
