@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className={`${poppins.variable} ${lpmq.variable}`}>
-      <body className="relative bg-light-100 antialiased dark:bg-dark-100">
+      <body className="bg-light-100 dark:bg-dark-100">
         <NavigationBar />
         {children}
       </body>
