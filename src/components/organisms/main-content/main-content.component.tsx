@@ -25,6 +25,7 @@ const MainContent = () => {
 
   return (
     <article
+      className="prose max-w-none"
       dangerouslySetInnerHTML={{ __html: highlightedWords(search as string) }}
     />
   );
