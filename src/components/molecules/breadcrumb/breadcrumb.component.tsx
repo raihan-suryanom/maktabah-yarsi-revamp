@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Fragment } from 'react';
 
 import { Separator } from '~/components/atoms';
 import { cn } from '~/lib/utils';
@@ -10,21 +9,26 @@ export type BreadcrumbProps = React.HTMLAttributes<HTMLElement> & {
 
 const Breadcrumb = ({ paths, className, ...props }: BreadcrumbProps) => {
   const rootPath = { title: 'Home', link: '/' };
+  const links: Array<string> = [];
 
   const previousPaths = [rootPath, ...paths].map((path, level) => {
     if (level === paths.length) {
       return (
-        <p key={path.title} className="font-semibold">
+        <li key={path.title} className="font-semibold">
           {path.title}
-        </p>
+        </li>
       );
     }
 
+    if (level) {
+      links.push(path.link as string);
+    }
+
     return (
-      <Fragment key={path.title}>
+      <li key={path.title} className="flex h-5 items-center gap-2.5">
         <Link
           className="whitespace-nowrap hover:underline hover:decoration-primary-light hover:decoration-2 hover:underline-offset-1 dark:hover:decoration-primary-dark"
-          href={path.link as string}
+          href={`/categories/${links.join('/')}`}
         >
           {path.title}
         </Link>
@@ -32,13 +36,13 @@ const Breadcrumb = ({ paths, className, ...props }: BreadcrumbProps) => {
           orientation="vertical"
           className="w-0.5 rotate-12 opacity-70"
         />
-      </Fragment>
+      </li>
     );
   });
 
   return (
     <nav className={cn('overflow-x-auto capitalize', className)} {...props}>
-      <ul className="flex h-5 items-center gap-2.5">{previousPaths}</ul>
+      <ul className="flex items-center gap-2.5">{previousPaths}</ul>
     </nav>
   );
 };
