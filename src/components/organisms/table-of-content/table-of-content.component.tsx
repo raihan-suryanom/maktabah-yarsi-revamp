@@ -33,6 +33,7 @@ const TableOfContent = ({
   isRootCategory,
 }: TableOfContentProps) => {
   const hasSubCategory = Array.isArray(sub);
+
   return (
     <Accordion.Root
       type="multiple"

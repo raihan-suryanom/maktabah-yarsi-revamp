@@ -3,7 +3,17 @@ import { Breadcrumb, SearchInput } from '~/components/molecules';
 import { MainContent, TableOfContent } from '~/components/organisms';
 import { categories } from '~/lib/utils';
 
-const DetailBookPage = () => {
+export type DetailBookPageProps = {
+  params: {
+    id: string;
+    page: string;
+  };
+  searchParams: {
+    query: string;
+  };
+};
+
+const DetailBookPage = (props: DetailBookPageProps) => {
   return (
     <PageWrapper className="flex">
       <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r pb-28 pl-7 pr-5 pt-5">
@@ -47,7 +57,7 @@ const DetailBookPage = () => {
             </div>
           </Card.Footer>
         </Card.Root>
-        <MainContent />
+        <MainContent query={props?.searchParams?.query} />
       </div>
     </PageWrapper>
   );

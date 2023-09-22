@@ -7,10 +7,6 @@
     @apply font-poppins;
   }
 
-  mark {
-    @apply bg-cyan-500;
-  }
-
   input[type='number'].appearance-none::-webkit-inner-spin-button,
   input[type='number'].appearance-none::-webkit-outer-spin-button {
     -webkit-appearance: none;
