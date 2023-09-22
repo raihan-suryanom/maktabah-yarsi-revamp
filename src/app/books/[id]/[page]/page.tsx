@@ -42,7 +42,7 @@ const DetailBookPage = (props: DetailBookPageProps) => {
             dimension="medium"
           />
         </div>
-        <Card.Root className="w-full bg-primary-light p-5 text-light-100 flex flex-col gap-1.5">
+        <Card.Root className="flex w-full flex-col gap-1.5 bg-primary-light p-5 text-light-100">
           <Card.Header className="p-0">
             <Card.Title className="text-4xl">
               Adab Murid Terhadap Diri Sendiri

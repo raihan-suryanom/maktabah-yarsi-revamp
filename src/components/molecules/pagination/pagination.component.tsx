@@ -12,7 +12,7 @@ const Pagination = ({ className, ...props }: PaginationProps) => {
   return (
     <footer
       className={cn(
-        'flex h-8 items-stretch w-min mx-auto justify-between gap-0.5 [&_a]:w-8 [&_svg]:h-full [&_svg]:w-8 [&_svg]:p-1',
+        'mx-auto flex h-8 w-min items-stretch justify-between gap-0.5 [&_a]:w-8 [&_svg]:h-full [&_svg]:w-8 [&_svg]:p-1',
         className
       )}
       {...props}
@@ -21,12 +21,10 @@ const Pagination = ({ className, ...props }: PaginationProps) => {
         <Icon name="chevrons-left" />
       </Button>
       <Button variant="primary" asChild>
-        <Icon name="chevron-left"/>
+        <Icon name="chevron-left" />
       </Button>
       <Button variant="primary" asChild>
-        <Link href="#!">
-          1
-        </Link>
+        <Link href="#!">1</Link>
       </Button>
       <Input
         className="w-8 appearance-none rounded-none text-center"
@@ -35,9 +33,7 @@ const Pagination = ({ className, ...props }: PaginationProps) => {
         placeholder="..."
       />
       <Button variant="primary" asChild>
-        <Link href="#!">
-          2
-        </Link>
+        <Link href="#!">2</Link>
       </Button>
       <Button variant="primary" asChild>
         <Icon name="chevrons-right" />
