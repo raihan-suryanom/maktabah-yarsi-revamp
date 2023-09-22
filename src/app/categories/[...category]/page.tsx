@@ -2,11 +2,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Card, Icon, PageWrapper } from '~/components/atoms';
-import { Pagination } from '~/components/molecules';
-import { DynamicBreadcrumb, TableOfContent } from '~/components/organisms';
+import { Breadcrumb, Pagination } from '~/components/molecules';
+import { TableOfContent } from '~/components/organisms';
 import { categories } from '~/lib/utils';
 
-export default function ListOfBookPage() {
+export default function ListOfBookPage({
+  params,
+}: {
+  params: { category: ReadonlyArray<string> };
+}) {
+  const paths = params.category.map((path) => ({ title: path, link: path }));
+
   return (
     <PageWrapper className="flex min-h-screen">
       <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll pb-28 pl-7 pr-5 pt-5">
@@ -23,7 +29,7 @@ export default function ListOfBookPage() {
         ))}
       </aside>
       <div className="ml-auto flex min-h-screen w-9/12 flex-col gap-5 bg-light-300 p-6">
-        <DynamicBreadcrumb />
+        <Breadcrumb paths={paths} />
         <h1 className="text-center text-4xl font-bold">Daftar Buku Akhlak</h1>
         <section className="grid grid-rows-none gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 ">
           {Array(10)
