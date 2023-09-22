@@ -12,7 +12,7 @@ const NavigationBar = ({ className, ...props }: NavigationBarProps) => {
   return (
     <nav
       className={cn(
-        'fixed top-0 z-10 flex w-full items-center justify-between gap-5 border-b border-black/10 bg-light-100 py-3.5 pl-8 pr-10 text-dark-300 dark:border-gray-800 dark:bg-dark-100 dark:text-light-300',
+        'fixed top-0 z-10 flex w-full items-center justify-between gap-5 border-b border-black/10 bg-light-100 px-8 py-3.5 text-dark-300 dark:border-gray-800 dark:bg-dark-100 dark:text-light-300',
         className
       )}
       {...props}
@@ -50,7 +50,7 @@ const NavigationBar = ({ className, ...props }: NavigationBarProps) => {
       <span className="h-6">
         <Separator orientation="vertical" className="w-0.5 opacity-20" />
       </span>
-      <Button size="small">
+      <Button>
         <Icon
           name="sun"
           className="text-primary-light dark:text-primary-dark"
