@@ -12,37 +12,37 @@ const Pagination = ({ className, ...props }: PaginationProps) => {
   return (
     <footer
       className={cn(
-        'flex h-12 items-stretch justify-between gap-1 [&_a]:w-12 [&_svg]:h-full [&_svg]:w-12',
+        'flex h-8 items-stretch w-min mx-auto justify-between gap-0.5 [&_a]:w-8 [&_svg]:h-full [&_svg]:w-8 [&_svg]:p-1',
         className
       )}
       {...props}
     >
-      <Button size="small" variant="primary" asChild>
+      <Button variant="primary" asChild>
         <Icon name="chevrons-left" />
       </Button>
-      <Button size="small" variant="primary" asChild>
-        <Icon name="chevron-left" />
+      <Button variant="primary" asChild>
+        <Icon name="chevron-left"/>
       </Button>
-      <Button size="small" variant="primary" asChild>
-        <Link href="#!" className="text-2xl">
+      <Button variant="primary" asChild>
+        <Link href="#!">
           1
         </Link>
       </Button>
       <Input
-        className="w-12 appearance-none rounded-[1px] text-center"
+        className="w-8 appearance-none rounded-none text-center"
         dimension="small"
         type="number"
         placeholder="..."
       />
-      <Button size="small" variant="primary" asChild>
-        <Link href="#!" className="text-2xl">
+      <Button variant="primary" asChild>
+        <Link href="#!">
           2
         </Link>
       </Button>
-      <Button size="small" variant="primary" asChild>
+      <Button variant="primary" asChild>
         <Icon name="chevrons-right" />
       </Button>
-      <Button size="small" variant="primary" asChild>
+      <Button variant="primary" asChild>
         <Icon name="chevron-right" />
       </Button>
     </footer>
