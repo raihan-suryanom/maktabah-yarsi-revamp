@@ -14,8 +14,8 @@ export default function ListOfBookPage({
   const paths = params.category.map((path) => ({ title: path, link: path }));
 
   return (
-    <PageWrapper className="flex min-h-screen">
-      <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll pb-28 pl-7 pr-5 pt-5">
+    <PageWrapper className="flex">
+      <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5">
         <h2 className="text-2xl font-bold">Kategori Buku</h2>
         {categories.map((category) => (
           <TableOfContent
@@ -28,7 +28,7 @@ export default function ListOfBookPage({
           />
         ))}
       </aside>
-      <div className="ml-auto flex min-h-screen w-9/12 flex-col gap-5 bg-light-300 p-6">
+      <div className="ml-auto flex min-h-screen w-9/12 flex-col gap-7 bg-light-300 px-8 pl-5 pt-5">
         <Breadcrumb paths={paths} />
         <h1 className="text-center text-4xl font-bold">Daftar Buku Akhlak</h1>
         <section className="grid grid-rows-none gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 ">
@@ -36,13 +36,15 @@ export default function ListOfBookPage({
             .fill('')
             .map((_, index) => (
               <Card.Root key={index}>
-                <Link href="/books/dummy-template" passHref>
+                <Link href="/books/dummy-template/3" passHref>
                   <Card.Content className="relative aspect-[1/1.5] w-full bg-gray-100">
                     <Image
                       src="https://template.canva.com/EADaopxBna4/1/0/251w-ujD6UPGa9hw.jpg"
                       alt=""
-                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="rounded-[10px] object-cover"
+                      priority
+                      fill
                     />
                   </Card.Content>
                 </Link>
@@ -64,7 +66,7 @@ export default function ListOfBookPage({
               </Card.Root>
             ))}
         </section>
-        <Pagination className="mx-auto w-[384px]" />
+        <Pagination />
       </div>
     </PageWrapper>
   );
