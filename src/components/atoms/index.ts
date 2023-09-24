@@ -10,6 +10,7 @@ import { Table } from './table';
 import { Separator } from './separator/separator.component';
 import { PageWrapper } from './page-wrapper';
 import { MaktabahIcon } from './maktabah-icon';
+import { Skeleton } from './skeleton';
 
 export {
   Button,
@@ -24,4 +25,5 @@ export {
   Separator,
   PageWrapper,
   MaktabahIcon,
+  Skeleton,
 };
