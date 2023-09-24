@@ -6,7 +6,7 @@ import { cn } from '~/lib/utils';
 
 const TableRow = forwardRef<
   HTMLTableRowElement,
-  React.HTMLAttributes<HTMLTableRowElement>
+  React.HTMLAttributes<HTMLTableRowElement> & { test?: string }
 >(({ className, test, ...props }, ref) => {
   const router = useRouter();
   const handleNavigation = () => {
