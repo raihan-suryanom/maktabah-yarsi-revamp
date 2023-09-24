@@ -31,22 +31,24 @@ export default function Loading() {
           Daftar Buku Akhlak
         </h1>
         <section className="grid grid-rows-none gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 [&>div]:rounded-[10px]">
-          {Array(10).fill(null).map(_=> (
-            <div className="flex flex-col">
-            <Skeleton className="h-[284.39px]" />
-            <div className="mt-1.5 flex-col items-start gap-0.5 p-0">
-              <Skeleton className="my-1.5 h-4 w-10/12" />
-              <div className="mb-1.5 flex items-center gap-1.5">
-                <Skeleton className="h-3 w-3 rounded-full" />
-                <Skeleton className="h-3 w-8/12" />
+          {Array(10)
+            .fill(null)
+            .map((_, index) => (
+              <div key={index} className="flex flex-col">
+                <Skeleton className="h-[284.39px]" />
+                <div className="mt-1.5 flex-col items-start gap-0.5 p-0">
+                  <Skeleton className="my-1.5 h-4 w-10/12" />
+                  <div className="mb-1.5 flex items-center gap-1.5">
+                    <Skeleton className="h-3 w-3 rounded-full" />
+                    <Skeleton className="h-3 w-8/12" />
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Skeleton className="h-3 w-3 rounded-full" />
+                    <Skeleton className="h-3 w-5/12" />
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-1.5">
-                <Skeleton className="h-3 w-3 rounded-full" />
-                <Skeleton className="h-3 w-5/12" />
-              </div>
-            </div>
-          </div>
-          ))}
+            ))}
         </section>
         <div className="flex items-center gap-1">
           <Skeleton />

@@ -12,7 +12,7 @@ const TableRow = forwardRef<
   const handleNavigation = () => {
     router.push('/books/dummy-template/4?query=ti');
   };
-  
+
   return (
     <tr
       ref={ref}
