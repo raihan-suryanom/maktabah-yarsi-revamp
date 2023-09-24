@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 
 import { cn } from '~/lib/utils';
+import TableRow from './table.client.component';
 
 const Table = forwardRef<
   HTMLTableElement,
@@ -61,22 +62,6 @@ const TableFooter = forwardRef<
 ));
 
 TableFooter.displayName = 'TableFooter';
-
-const TableRow = forwardRef<
-  HTMLTableRowElement,
-  React.HTMLAttributes<HTMLTableRowElement>
->(({ className, ...props }, ref) => (
-  <tr
-    ref={ref}
-    className={cn(
-      'cursor-pointer border-b transition-colors hover:bg-slate-100/50 data-[state=selected]:bg-slate-100 dark:hover:bg-slate-800/50 dark:data-[state=selected]:bg-slate-800',
-      className
-    )}
-    {...props}
-  />
-));
-
-TableRow.displayName = 'TableRow';
 
 const TableHead = forwardRef<
   HTMLTableCellElement,
