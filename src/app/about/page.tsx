@@ -11,15 +11,15 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <PageWrapper>
+    <PageWrapper className="px-8 py-5">
       <Breadcrumb paths={[{ title: 'about' }]} />
       <h1
         id="main_content"
-        className="mb-10 mt-5 px-10 text-center text-3xl font-bold text-dark-200 dark:text-light-200 md:px-0 md:text-4xl lg:text-5xl"
+        className="mb-10 mt-5 text-center text-3xl font-bold text-dark-200 dark:text-light-200 md:text-4xl lg:text-5xl"
       >
         Tentang Maktabah YARSI
       </h1>
-      <p className="mx-auto mt-3 px-10 text-center text-sm text-dark-100 dark:text-light-400 md:text-justify md:indent-12 md:text-lg">
+      <p className="mx-auto mt-3 text-center text-sm text-dark-100 dark:text-light-400 md:text-justify md:indent-12 md:text-lg">
         Maktabah YARSI merupakan perpustakaan Islam digital berbahasa Indonesia
         pertama yang hadir dengan fitur pencarian topik permasalahan berdasarkan{' '}
         <span className="highlight">kata kunci</span> dari{' '}
@@ -30,7 +30,7 @@ export default function AboutPage() {
         <span className="highlight">legal</span> untuk dimanfaatkan dan
         digunakan. Berikut referensi yang digunakan:
       </p>
-      <ul className="mt-3 space-y-2 px-10 text-sm text-dark-100 marker:text-primary-light dark:text-light-400 dark:marker:text-primary-dark md:text-base">
+      <ul className="mt-3 space-y-2 text-sm text-dark-100 marker:text-primary-light dark:text-light-400 dark:marker:text-primary-dark md:text-base">
         <li className="list-inside list-disc">
           <a
             className="underline decoration-primary-light underline-offset-2 hover:text-primary-light dark:decoration-primary-dark dark:hover:text-primary-dark"
@@ -76,10 +76,10 @@ export default function AboutPage() {
           , sumber repositori buku literatur Keislaman.
         </li>
       </ul>
-      <p className="mx-auto mt-12 px-10 text-center text-sm text-dark-100 dark:text-light-400 md:text-justify md:indent-12 md:text-lg">
+      <p className="mx-auto mt-12 text-center text-sm text-dark-100 dark:text-light-400 md:text-justify md:indent-12 md:text-lg">
         Maktabah YARSI dikembangkan dan dipelihara oleh:
       </p>
-      <ul className="mt-3 space-y-2 px-10 text-sm text-dark-100 marker:text-primary-light dark:text-light-400 dark:marker:text-primary-dark md:text-base">
+      <ul className="mt-3 space-y-2 text-sm text-dark-100 marker:text-primary-light dark:text-light-400 dark:marker:text-primary-dark md:text-base">
         <li className="list-inside list-disc">
           <a
             className="underline decoration-primary-light underline-offset-2 hover:text-primary-light dark:decoration-primary-dark dark:hover:text-primary-dark"
