@@ -3,7 +3,6 @@ import dynamicIconImports from 'lucide-react/dynamicIconImports';
 
 import { Accordion, Badge, Button, Icon } from '~/components/atoms';
 import { accordionTriggerVariants } from '~/components/atoms/accordion/accordion.style';
-import { wait } from '~/lib/utils';
 
 import type { VariantProps } from 'class-variance-authority';
 
@@ -33,7 +32,6 @@ const CollapsibleMenu = async ({
   controlled,
   isRootCategory,
 }: CollapsibleMenuProps) => {
-  await wait(2000);
   const hasSubCategory = Array.isArray(sub);
 
   return (
