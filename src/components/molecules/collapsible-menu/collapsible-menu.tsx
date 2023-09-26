@@ -12,7 +12,7 @@ type Category = {
   sub?: ReadonlyArray<Category>;
 };
 
-type TableOfContentProps = VariantProps<typeof accordionTriggerVariants> &
+type CollapsibleMenuProps = VariantProps<typeof accordionTriggerVariants> &
   Category & {
     className?: string;
     iconName: keyof typeof dynamicIconImports;
@@ -22,7 +22,7 @@ type TableOfContentProps = VariantProps<typeof accordionTriggerVariants> &
     path: string;
   };
 
-const TableOfContent = ({
+const CollapsibleMenu = async ({
   className,
   category,
   path,
@@ -31,7 +31,7 @@ const TableOfContent = ({
   iconName,
   controlled,
   isRootCategory,
-}: TableOfContentProps) => {
+}: CollapsibleMenuProps) => {
   const hasSubCategory = Array.isArray(sub);
 
   return (
@@ -43,7 +43,7 @@ const TableOfContent = ({
     >
       <Accordion.Item value={category}>
         <Accordion.Trigger variant={variant} asChild>
-          <Link href={path} passHref>
+          <Link href={path} scroll={false} passHref>
             {(hasSubCategory || variant === 'categories') && (
               <Icon
                 id="book-marked"
@@ -71,7 +71,7 @@ const TableOfContent = ({
             ? sub?.map((x) => {
                 if (Array.isArray(x.sub)) {
                   return (
-                    <TableOfContent
+                    <CollapsibleMenu
                       controlled={controlled}
                       item
                       key={x.category}
@@ -89,7 +89,9 @@ const TableOfContent = ({
                     className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1.5 text-lg font-normal hover:text-primary-light dark:hover:text-primary-dark"
                     asChild
                   >
-                    <Link href={x.path}>{x.category}</Link>
+                    <Link href={x.path} scroll={false}>
+                      {x.category}
+                    </Link>
                   </Button>
                 );
               })
@@ -98,7 +100,9 @@ const TableOfContent = ({
                   className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1.5 text-lg font-normal hover:text-primary-light dark:hover:text-primary-dark"
                   asChild
                 >
-                  <Link href={path}>{category}</Link>
+                  <Link href={path} scroll={false}>
+                    {category}
+                  </Link>
                 </Button>
               )}
         </Accordion.Content>
@@ -107,4 +111,4 @@ const TableOfContent = ({
   );
 };
 
-export default TableOfContent;
+export default CollapsibleMenu;

@@ -1,4 +1,5 @@
+import { BookList } from './book-list';
+import { CategoriesOutline } from './categories-outline';
 import { MainContent } from './main-content';
-import { TableOfContent } from './table-of-content';
 
-export { MainContent, TableOfContent };
+export { BookList, CategoriesOutline, MainContent };
