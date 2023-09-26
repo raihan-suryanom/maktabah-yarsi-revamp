@@ -28,6 +28,7 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
+  "ignorePatterns": ["next.config.js"],
   "rules": {
     "react/prop-types": [2, { "ignore": ["className"] }]
   }
