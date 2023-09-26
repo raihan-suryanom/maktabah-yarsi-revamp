@@ -38,7 +38,7 @@ const invoices = [
 
 const SearchTable = async (props: DetailBookPageProps) => {
   if (!props.searchParams.query) {
-    return false;
+    return null;
   }
 
   // await new Promise((r) => setTimeout(() => r(''), 1000));

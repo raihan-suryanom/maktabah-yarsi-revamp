@@ -1,6 +1,10 @@
 import { Card, Icon, PageWrapper } from '~/components/atoms';
-import { Breadcrumb, SearchInput } from '~/components/molecules';
-import { MainContent, TableOfContent } from '~/components/organisms';
+import {
+  Breadcrumb,
+  SearchInput,
+  CollapsibleMenu,
+} from '~/components/molecules';
+import { MainContent } from '~/components/organisms';
 import { categories } from '~/lib/utils';
 
 export type DetailBookPageProps = {
@@ -19,7 +23,7 @@ const DetailBookPage = async (props: DetailBookPageProps) => {
       <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5">
         <h2 className="text-2xl font-bold">Daftar Isi</h2>
         {categories.map((category) => (
-          <TableOfContent
+          <CollapsibleMenu
             variant="tableOfContent"
             iconName="chevron-right"
             key={category.category}
