@@ -3,6 +3,9 @@ import { twMerge } from 'tailwind-merge';
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
+export const wait = (miliSecond: number) =>
+  new Promise((resolve) => setTimeout(resolve, miliSecond));
+
 export const categories = [
   {
     category: 'ahklak',

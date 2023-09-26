@@ -4,14 +4,35 @@ import Link from 'next/link';
 import { Card, Icon, PageWrapper } from '~/components/atoms';
 import { Breadcrumb, Pagination } from '~/components/molecules';
 import { TableOfContent } from '~/components/organisms';
-import { categories } from '~/lib/utils';
+import { categories, wait } from '~/lib/utils';
 
-export default function ListOfBookPage({
+async function getPaths(category: ReadonlyArray<string>) {
+  await wait(10_000);
+
+  return category.map((path) => ({ title: path, link: path }));
+}
+
+export async function generateStaticParams() {
+  return [
+    { category: ['ahklak'] },
+    { category: ['ahklak', 'akhlakul-karimah'] },
+    { category: ['ahklak', 'tematik'] },
+    { category: ['ahklak', 'tematik', 'test-2'] },
+    { category: ['ahklak', 'tematik', 'test-1'] },
+    { category: ['ahklak', 'tematik', 'test-1', 'ayolohh'] },
+    { category: ['ahklak', 'akhlak-budaya'] },
+    { category: ['fiqih'] },
+    { category: ['fiqih', 'fiqih-ibadah'] },
+    { category: ['al-quran'] },
+  ];
+}
+
+export default async function ListOfBookPage({
   params,
 }: {
   params: { category: ReadonlyArray<string> };
 }) {
-  const paths = params.category.map((path) => ({ title: path, link: path }));
+  const paths = await getPaths(params.category);
 
   return (
     <PageWrapper className="flex">
