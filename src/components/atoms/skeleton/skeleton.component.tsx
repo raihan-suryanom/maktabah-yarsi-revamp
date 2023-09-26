@@ -5,6 +5,7 @@ const Skeleton = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
+    aria-label="skeleton"
     className={cn('h-5 w-full animate-pulse bg-slate-300', className)}
     {...props}
   />

@@ -1,3 +1,5 @@
-import CategoriesOutline from './categories-outline.component';
+import CategoriesOutline, {
+  CategoriesOutlineSkeleton,
+} from './categories-outline.component';
 
-export { CategoriesOutline };
+export { CategoriesOutline, CategoriesOutlineSkeleton };

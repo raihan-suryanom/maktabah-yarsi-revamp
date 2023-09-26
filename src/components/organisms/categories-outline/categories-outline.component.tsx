@@ -1,3 +1,4 @@
+import { Skeleton } from '~/components/atoms';
 import { CollapsibleMenu } from '~/components/molecules';
 import { categories as _categories } from '~/lib/utils';
 
@@ -23,5 +24,29 @@ const CategoriesOutline = async () => {
     </>
   );
 };
+
+export const CategoriesOutlineSkeleton = () => (
+  <>
+    <Skeleton className="mt-1" />
+    <Skeleton className="w-11/12" />
+    <Skeleton className="w-11/12" />
+    <Skeleton className="w-10/12" />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+    <Skeleton />
+  </>
+);
 
 export default CategoriesOutline;
