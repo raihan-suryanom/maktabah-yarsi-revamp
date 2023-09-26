@@ -43,8 +43,8 @@ export default async function ListOfBookPage({
       </aside>
       <div className="ml-auto flex min-h-screen w-9/12 flex-col gap-7 bg-light-300 px-8 pl-5 pt-5">
         <Breadcrumb paths={paths} />
-        <h1 className="text-center text-4xl font-bold">
-          Daftar Buku {visitedCategory}
+        <h1 className="text-center text-4xl font-bold capitalize">
+          Daftar Buku {visitedCategory.replaceAll('-', ' ')}
         </h1>
         <section className="grid grid-rows-none gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 [&>div[aria-label=skeleton]]:rounded-[10px]">
           <Suspense fallback={<BookListSkeleton />}>

@@ -1,10 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, Icon, Skeleton } from '~/components/atoms';
-import { wait } from '~/lib/utils';
 
 async function getBooks(category: string) {
-  await wait(1200);
   console.log(category);
   return [
     {
@@ -97,12 +95,17 @@ const BookList = async ({ category }: { category: string }) => {
       {books.map((book) => (
         <Card.Root key={book.link}>
           <Link href="/books/dummy-template/3" passHref>
-            <Card.Content className="relative aspect-[1/1.5] w-full bg-gray-100">
+            <Card.Content className="relative aspect-[1/1.5] w-full bg-gray-100 md:rounded-[10px]">
               <Image
                 src={book.image}
-                alt=""
+                alt={`${book.title}'s cover book`}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="rounded-[10px] object-cover"
+                className="rounded-[inherit]"
+                objectFit="cover"
+                objectPosition="center"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMU2Nn4HwAEdgJL7ELe/AAAAABJRU5ErkJggg=="
+                placeholder="blur"
+                layout="fill"
                 priority
                 fill
               />
@@ -135,7 +138,9 @@ export const BookListSkeleton = () => (
       .fill(null)
       .map((_, index) => (
         <div key={index} className="flex flex-col">
-          <Skeleton className="h-[284.39px]" />
+          <div className="relative aspect-[1/1.5] md:rounded-[10px]">
+            <Skeleton className="h-full rounded-[inherit]" />
+          </div>
           <div className="mt-1.5 flex-col items-start gap-0.5 p-0">
             <Skeleton className="my-1.5 h-4 w-10/12" />
             <div className="mb-1.5 flex items-center gap-1.5">
