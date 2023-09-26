@@ -41,7 +41,6 @@ const SearchTable = async (props: DetailBookPageProps) => {
     return null;
   }
 
-  // await new Promise((r) => setTimeout(() => r(''), 1000));
   // console.log(
   //   `/${props.params.id}/${props.params.page}?query=${props.searchParams.query}`,
   //   'SERVER'
