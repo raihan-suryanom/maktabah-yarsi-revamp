@@ -66,15 +66,13 @@ export default function HomePage() {
           Buku yang sering dibaca
         </h2>
         <article className="flex w-full items-center justify-between gap-2">
-          {Array(6)
-            .fill('test')
-            .map((_, index) => (
-              <Card.Root key={index} className="w-[180px]">
-                <Card.Content className="p-0">
-                  <Image src={image} alt="Image not available" />
-                </Card.Content>
-              </Card.Root>
-            ))}
+          {[...Array(6)].map((_, index) => (
+            <Card.Root key={index} className="w-[180px]">
+              <Card.Content className="p-0">
+                <Image src={image} alt="Image not available" />
+              </Card.Content>
+            </Card.Root>
+          ))}
         </article>
         <h2 className="text-3xl font-bold uppercase">Buku aqidah</h2>
         <article className="grid w-full grid-cols-6 grid-rows-2 items-center justify-between gap-2.5">
@@ -83,15 +81,13 @@ export default function HomePage() {
               <Image src={image} alt="Image not available" />
             </Card.Content>
           </Card.Root>
-          {Array(8)
-            .fill('test')
-            .map((_, index) => (
-              <Card.Root key={index}>
-                <Card.Content className="p-0">
-                  <Image src={image} alt="Image not available" />
-                </Card.Content>
-              </Card.Root>
-            ))}
+          {[...Array(8)].map((_, index) => (
+            <Card.Root key={index}>
+              <Card.Content className="p-0">
+                <Image src={image} alt="Image not available" />
+              </Card.Content>
+            </Card.Root>
+          ))}
         </article>
       </section>
     </PageWrapper>

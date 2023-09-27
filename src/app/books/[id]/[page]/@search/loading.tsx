@@ -20,24 +20,22 @@ export default function Loading() {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {Array(5)
-            .fill(0)
-            .map((invoice) => (
-              <Table.Row key={invoice.no}>
-                <Table.Cell>
-                  <Skeleton />
-                </Table.Cell>
-                <Table.Cell>
-                  <Skeleton />
-                </Table.Cell>
-                <Table.Cell>
-                  <Skeleton />
-                </Table.Cell>
-                <Table.Cell>
-                  <Skeleton />
-                </Table.Cell>
-              </Table.Row>
-            ))}
+          {[...Array(5)].map((_, index) => (
+            <Table.Row key={index}>
+              <Table.Cell>
+                <Skeleton />
+              </Table.Cell>
+              <Table.Cell>
+                <Skeleton />
+              </Table.Cell>
+              <Table.Cell>
+                <Skeleton />
+              </Table.Cell>
+              <Table.Cell>
+                <Skeleton />
+              </Table.Cell>
+            </Table.Row>
+          ))}
         </Table.Body>
       </Table.Root>
     </div>
