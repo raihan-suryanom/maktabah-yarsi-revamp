@@ -1,3 +1,3 @@
-import Pagination from './pagination.component';
+import Pagination, { PaginationSkeleton } from './pagination.component';
 
-export { Pagination };
+export { Pagination, PaginationSkeleton };

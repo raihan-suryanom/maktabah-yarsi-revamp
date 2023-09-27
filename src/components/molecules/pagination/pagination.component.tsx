@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Button, Icon, Input } from '~/components/atoms';
+import { Button, Icon, Input, Skeleton } from '~/components/atoms';
 import { cn } from '~/lib/utils';
 
 type PaginationProps = React.DetailedHTMLProps<
@@ -44,5 +44,13 @@ const Pagination = ({ className, ...props }: PaginationProps) => {
     </footer>
   );
 };
+
+export const PaginationSkeleton = () => (
+  <div className="mx-auto flex h-8 w-min items-stretch justify-between gap-0.5 [&>div]:h-full [&>div]:w-8 [&>div]:p-1">
+    {[...Array(7)].map((_, index) => (
+      <Skeleton key={index} />
+    ))}
+  </div>
+);
 
 export default Pagination;

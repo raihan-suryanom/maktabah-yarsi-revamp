@@ -5,6 +5,7 @@ import { BookList, CategoriesOutline } from '~/components/organisms';
 import { CategoriesOutlineSkeleton } from '~/components/organisms/categories-outline';
 import { Breadcrumb, Pagination } from '~/components/molecules';
 import { BookListSkeleton } from '~/components/organisms/book-list';
+import { PaginationSkeleton } from '~/components/molecules/pagination';
 
 function getPaths(category: ReadonlyArray<string>) {
   return category.map((path) => ({ title: path, link: path }));
@@ -51,7 +52,9 @@ export default async function ListOfBookPage({
             <BookList category={visitedCategory} />
           </Suspense>
         </section>
-        <Pagination />
+        <Suspense fallback={<PaginationSkeleton />}>
+          <Pagination />
+        </Suspense>
       </div>
     </PageWrapper>
   );
