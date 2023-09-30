@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Card, Icon, PageWrapper } from '~/components/atoms';
 import { SearchButton } from '~/components/molecules';
 import image from '../../public/book_cover_not_available.png';
+import { SearchForm } from '~/components/molecules/search-form';
 
 const categories = ['ahklak', 'aqidah', 'fiqih', 'hadits', 'sirah', 'lainnya'];
 
@@ -40,7 +41,10 @@ export default function HomePage() {
         <SearchButton
           placeholder="Cari nama buku, kategori, topik ..."
           className="w-full bg-light-300"
-        />
+          size="large"
+        >
+          <SearchForm />
+        </SearchButton>
         <section className="flex w-full items-center justify-between">
           {categories.map((category) => (
             <Card.Root
