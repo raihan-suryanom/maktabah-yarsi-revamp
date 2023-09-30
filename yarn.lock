@@ -2624,7 +2624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-label@npm:2.0.2, @radix-ui/react-label@npm:^2.0.2":
+"@radix-ui/react-label@npm:2.0.2":
   version: 2.0.2
   resolution: "@radix-ui/react-label@npm:2.0.2"
   dependencies:
@@ -10350,7 +10350,6 @@ __metadata:
     "@radix-ui/react-checkbox": ^1.0.4
     "@radix-ui/react-dialog": ^1.0.5
     "@radix-ui/react-form": ^0.0.3
-    "@radix-ui/react-label": ^2.0.2
     "@radix-ui/react-separator": ^1.0.3
     "@radix-ui/react-slot": ^1.0.2
     "@storybook/addon-essentials": ^7.4.1
