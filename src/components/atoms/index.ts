@@ -12,6 +12,7 @@ import { PageWrapper } from './page-wrapper';
 import { MaktabahIcon } from './maktabah-icon';
 import { Skeleton } from './skeleton';
 import { Dialog } from './dialog';
+import { Form } from './form';
 
 export {
   Button,
@@ -28,4 +29,5 @@ export {
   MaktabahIcon,
   Skeleton,
   Dialog,
+  Form,
 };

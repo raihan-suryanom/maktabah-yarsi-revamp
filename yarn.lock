@@ -2583,6 +2583,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@radix-ui/react-form@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@radix-ui/react-form@npm:0.0.3"
+  dependencies:
+    "@babel/runtime": ^7.13.10
+    "@radix-ui/primitive": 1.0.1
+    "@radix-ui/react-compose-refs": 1.0.1
+    "@radix-ui/react-context": 1.0.1
+    "@radix-ui/react-id": 1.0.1
+    "@radix-ui/react-label": 2.0.2
+    "@radix-ui/react-primitive": 1.0.3
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: a2cc8e3787643b16e8c7a77aeac3707e7d7858ca65818631d46184abd7ab7047d496f646f404cbeddc4aeaf974a4e0d778044b09236d156ca2ab6f5e21851dac
+  languageName: node
+  linkType: hard
+
 "@radix-ui/react-id@npm:1.0.1":
   version: 1.0.1
   resolution: "@radix-ui/react-id@npm:1.0.1"
@@ -2599,7 +2624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-label@npm:^2.0.2":
+"@radix-ui/react-label@npm:2.0.2, @radix-ui/react-label@npm:^2.0.2":
   version: 2.0.2
   resolution: "@radix-ui/react-label@npm:2.0.2"
   dependencies:
@@ -10324,6 +10349,7 @@ __metadata:
     "@radix-ui/react-accordion": ^1.1.2
     "@radix-ui/react-checkbox": ^1.0.4
     "@radix-ui/react-dialog": ^1.0.5
+    "@radix-ui/react-form": ^0.0.3
     "@radix-ui/react-label": ^2.0.2
     "@radix-ui/react-separator": ^1.0.3
     "@radix-ui/react-slot": ^1.0.2
