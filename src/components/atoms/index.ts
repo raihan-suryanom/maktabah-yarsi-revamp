@@ -12,6 +12,7 @@ import { MaktabahIcon } from './maktabah-icon';
 import { Skeleton } from './skeleton';
 import { Dialog } from './dialog';
 import { Form } from './form';
+import { Select } from './select';
 
 export {
   Button,
@@ -28,4 +29,5 @@ export {
   Skeleton,
   Dialog,
   Form,
+  Select,
 };
