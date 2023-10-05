@@ -36,7 +36,7 @@ const SearchButton: FC<SearchButtonProps> = ({
     </Dialog.Trigger>
     <Dialog.Content className="gap-1.5">
       <Dialog.Header>
-        <Dialog.Title className="text-center text-3xl">
+        <Dialog.Title className="text-center lg:text-3xl">
           Fitur Pencarian Topik
         </Dialog.Title>
       </Dialog.Header>

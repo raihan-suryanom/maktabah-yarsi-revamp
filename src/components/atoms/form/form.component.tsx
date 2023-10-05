@@ -17,7 +17,7 @@ const FormField: FC<FormPrimitive.FormFieldProps> = ({
   ...props
 }) => (
   <FormPrimitive.FormField
-    className={cn('flex flex-col gap-2', className)}
+    className={cn('flex flex-col gap-1', className)}
     {...props}
   />
 );

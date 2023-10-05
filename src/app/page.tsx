@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <PageWrapper className="py-16">
       <header className="mx-auto flex min-h-screen flex-col items-center gap-10 text-center lg:w-9/12">
-        <h1 className="font-lpmq text-6xl font-normal text-primary-light dark:text-primary-dark">
+        <h1 className="!font-lpmq text-6xl font-normal text-primary-light dark:text-primary-dark">
           مكتبة يرسي
           <span className="block pt-7 text-7xl font-black text-dark-100 dark:text-light-100">
             Maktabah YARSI
