@@ -1,8 +1,9 @@
 import Image from 'next/image';
 
 import { Card, Icon, PageWrapper } from '~/components/atoms';
-import { SearchInput } from '~/components/molecules';
+import { SearchButton } from '~/components/molecules';
 import image from '../../public/book_cover_not_available.png';
+import { SearchForm } from '~/components/molecules/search-form';
 
 const categories = ['ahklak', 'aqidah', 'fiqih', 'hadits', 'sirah', 'lainnya'];
 
@@ -10,7 +11,7 @@ export default function HomePage() {
   return (
     <PageWrapper className="py-16">
       <header className="mx-auto flex min-h-screen flex-col items-center gap-10 text-center lg:w-9/12">
-        <h1 className="font-lpmq text-6xl font-normal text-primary-light dark:text-primary-dark">
+        <h1 className="!font-lpmq text-6xl font-normal text-primary-light dark:text-primary-dark">
           مكتبة يرسي
           <span className="block pt-7 text-7xl font-black text-dark-100 dark:text-light-100">
             Maktabah YARSI
@@ -37,10 +38,13 @@ export default function HomePage() {
           </span>
           .
         </p>
-        <SearchInput
+        <SearchButton
           placeholder="Cari nama buku, kategori, topik ..."
-          className="text- w-full bg-light-300"
-        />
+          className="w-full bg-light-300"
+          size="large"
+        >
+          <SearchForm />
+        </SearchButton>
         <section className="flex w-full items-center justify-between">
           {categories.map((category) => (
             <Card.Root
@@ -66,15 +70,13 @@ export default function HomePage() {
           Buku yang sering dibaca
         </h2>
         <article className="flex w-full items-center justify-between gap-2">
-          {Array(6)
-            .fill('test')
-            .map((_, index) => (
-              <Card.Root key={index} className="w-[180px]">
-                <Card.Content className="p-0">
-                  <Image src={image} alt="Image not available" />
-                </Card.Content>
-              </Card.Root>
-            ))}
+          {[...Array(6)].map((_, index) => (
+            <Card.Root key={index} className="w-[180px]">
+              <Card.Content className="p-0">
+                <Image src={image} alt="Image not available" />
+              </Card.Content>
+            </Card.Root>
+          ))}
         </article>
         <h2 className="text-3xl font-bold uppercase">Buku aqidah</h2>
         <article className="grid w-full grid-cols-6 grid-rows-2 items-center justify-between gap-2.5">
@@ -83,15 +85,13 @@ export default function HomePage() {
               <Image src={image} alt="Image not available" />
             </Card.Content>
           </Card.Root>
-          {Array(8)
-            .fill('test')
-            .map((_, index) => (
-              <Card.Root key={index}>
-                <Card.Content className="p-0">
-                  <Image src={image} alt="Image not available" />
-                </Card.Content>
-              </Card.Root>
-            ))}
+          {[...Array(8)].map((_, index) => (
+            <Card.Root key={index}>
+              <Card.Content className="p-0">
+                <Image src={image} alt="Image not available" />
+              </Card.Content>
+            </Card.Root>
+          ))}
         </article>
       </section>
     </PageWrapper>

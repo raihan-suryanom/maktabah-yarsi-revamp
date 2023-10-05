@@ -1,19 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { Card, Icon, Skeleton } from '~/components/atoms';
 
 async function getBooks(category: string) {
   console.log(category);
   return [
     {
-      link: '/books/dummy-template/1',
+      link: '/books/dummy-template/1?query=ti',
       title: 'Dalal al-Khairat',
       image: 'https://template.canva.com/EADaopxBna4/1/0/251w-ujD6UPGa9hw.jpg',
       author: 'Abdul Somad Al Bukhari',
       pages: 64,
     },
     {
-      link: '/books/dummy-template/2',
+      link: '/books/dummy-template/2?query=ti',
       title: 'Dalal al-Khairat',
       image:
         'https://edit.org/photos/img/blog/d3s-design-book-covers.jpg-840.jpg',
@@ -21,7 +22,7 @@ async function getBooks(category: string) {
       pages: 45,
     },
     {
-      link: '/books/dummy-template/3',
+      link: '/books/dummy-template/3?query=ti',
       title: 'Dalal al-Khairat',
       image:
         'https://edit.org/photos/img/blog/m68-book-cover-templates.jpg-840.jpg',
@@ -29,7 +30,7 @@ async function getBooks(category: string) {
       pages: 24,
     },
     {
-      link: '/books/dummy-template/4',
+      link: '/books/dummy-template/4?query=ti',
       title: 'Dalal al-Khairat',
       image:
         'https://edit.org/photos/img/blog/t9i-edit-book-covers-online.jpg-840.jpg',
@@ -37,7 +38,7 @@ async function getBooks(category: string) {
       pages: 40,
     },
     {
-      link: '/books/dummy-template/5',
+      link: '/books/dummy-template/5?query=ti',
       title: 'Dalal al-Khairat',
       image:
         'https://edit.org/photos/editor/json/2021/10/01/e/4/e4c35da4496e6f5c47374a40820754b8_edit.org.jpg-376.jpg',
@@ -45,7 +46,7 @@ async function getBooks(category: string) {
       pages: 81,
     },
     {
-      link: '/books/dummy-template/6',
+      link: '/books/dummy-template/6?query=ti',
       title: 'Dalal al-Khairat',
       image:
         'https://edit.org/photos/editor/json/2021/10/01/f/1/f138d23cb50c92bff3b3b9200e09fa04_edit.org.jpg-376.jpg',
@@ -53,7 +54,7 @@ async function getBooks(category: string) {
       pages: 124,
     },
     {
-      link: '/books/dummy-template/7',
+      link: '/books/dummy-template/7?query=ti',
       title: 'Dalal al-Khairat',
       image:
         'https://edit.org/photos/editor/json/2021/10/01/e/2/e2b55d5be2a1e2c3b13aa345e1578e0e_edit.org.jpg-376.jpg',
@@ -61,7 +62,7 @@ async function getBooks(category: string) {
       pages: 55,
     },
     {
-      link: '/books/dummy-template/8',
+      link: '/books/dummy-template/8?query=ti',
       title: 'Dalal al-Khairat',
       image:
         'https://edit.org/photos/editor/json/2021/10/01/8/8/88f09492e9c5874f60e8351989978cf2_edit.org.jpg-376.jpg',
@@ -69,7 +70,7 @@ async function getBooks(category: string) {
       pages: 43,
     },
     {
-      link: '/books/dummy-template/9',
+      link: '/books/dummy-template/9?query=ti',
       title: 'Dalal al-Khairat',
       image:
         'https://edit.org/photos/editor/json/2021/10/01/0/8/08c30ebb37c2f6b534c3880469503c0b_edit.org.jpg-376.jpg',
@@ -77,7 +78,7 @@ async function getBooks(category: string) {
       pages: 134,
     },
     {
-      link: '/books/dummy-template/10',
+      link: '/books/dummy-template/10?query=ti',
       title: 'Dalal al-Khairat',
       image:
         'https://edit.org/photos/editor/json/2021/10/01/e/1/e1b71f04c341c78008a82193726a289a_edit.org.jpg-376.jpg',
@@ -94,18 +95,15 @@ const BookList = async ({ category }: { category: string }) => {
     <>
       {books.map((book) => (
         <Card.Root key={book.link}>
-          <Link href="/books/dummy-template/3" passHref>
+          <Link href={book.link} passHref>
             <Card.Content className="relative aspect-[1/1.5] w-full bg-gray-100 md:rounded-[10px]">
               <Image
                 src={book.image}
                 alt={`${book.title}'s cover book`}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="rounded-[inherit]"
-                objectFit="cover"
-                objectPosition="center"
+                className="rounded-[inherit] object-cover object-center"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMU2Nn4HwAEdgJL7ELe/AAAAABJRU5ErkJggg=="
                 placeholder="blur"
-                layout="fill"
                 priority
                 fill
               />
@@ -134,26 +132,24 @@ const BookList = async ({ category }: { category: string }) => {
 
 export const BookListSkeleton = () => (
   <>
-    {Array(10)
-      .fill(null)
-      .map((_, index) => (
-        <div key={index} className="flex flex-col">
-          <div className="relative aspect-[1/1.5] md:rounded-[10px]">
-            <Skeleton className="h-full rounded-[inherit]" />
+    {[...Array(10)].map((_, index) => (
+      <div key={index} className="flex flex-col">
+        <div className="relative aspect-[1/1.5] md:rounded-[10px]">
+          <Skeleton className="h-full rounded-[inherit]" />
+        </div>
+        <div className="mt-1.5 flex-col items-start gap-0.5 p-0">
+          <Skeleton className="my-1.5 h-4 w-10/12" />
+          <div className="mb-1.5 flex items-center gap-1.5">
+            <Skeleton className="h-3 w-3 rounded-full" />
+            <Skeleton className="h-3 w-8/12" />
           </div>
-          <div className="mt-1.5 flex-col items-start gap-0.5 p-0">
-            <Skeleton className="my-1.5 h-4 w-10/12" />
-            <div className="mb-1.5 flex items-center gap-1.5">
-              <Skeleton className="h-3 w-3 rounded-full" />
-              <Skeleton className="h-3 w-8/12" />
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Skeleton className="h-3 w-3 rounded-full" />
-              <Skeleton className="h-3 w-5/12" />
-            </div>
+          <div className="flex items-center gap-1.5">
+            <Skeleton className="h-3 w-3 rounded-full" />
+            <Skeleton className="h-3 w-5/12" />
           </div>
         </div>
-      ))}
+      </div>
+    ))}
   </>
 );
 

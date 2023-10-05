@@ -1,9 +1,10 @@
 import { Card, Icon, PageWrapper } from '~/components/atoms';
 import {
   Breadcrumb,
-  SearchInput,
+  SearchButton,
   CollapsibleMenu,
 } from '~/components/molecules';
+import { SearchForm } from '~/components/molecules/search-form';
 import { MainContent } from '~/components/organisms';
 import { categories } from '~/lib/utils';
 
@@ -36,15 +37,17 @@ const DetailBookPage = async (props: DetailBookPageProps) => {
         <div className="flex justify-between">
           <Breadcrumb
             paths={[
-              { title: 'Categories', link: '/categories' },
+              { title: 'Categories', link: 'categories' },
               { title: 'Adab Murid Terhadap Diri Sendiri' },
             ]}
           />
-          <SearchInput
-            className="bg-light-300 lg:w-60"
-            placeholder="Cari topik ..."
-            dimension="small"
-          />
+          <SearchButton
+            placeholder="Cari topik..."
+            size="medium"
+            className="gap-7 rounded-md"
+          >
+            <SearchForm />
+          </SearchButton>
         </div>
         <Card.Root className="flex w-full flex-col gap-1.5 bg-primary-light p-5 text-light-100">
           <Card.Header className="p-0">

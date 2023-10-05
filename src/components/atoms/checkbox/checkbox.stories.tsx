@@ -1,4 +1,4 @@
-import { Checkbox, Label } from '~/components/atoms';
+import { Checkbox } from '~/components/atoms';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -21,7 +21,7 @@ export const CheckboxWithLabel: Story = {
   render: () => (
     <div className="flex items-center gap-2">
       <Checkbox id="example" />
-      <Label htmlFor="example">This is a label</Label>
+      <label htmlFor="example">This is a label</label>
     </div>
   ),
 };

@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className={`${poppins.variable} ${lpmq.variable}`}>
-      <body className="bg-light-100 text-slate-700 dark:bg-dark-100 dark:text-slate-400">
+      <body className="bg-light-100 text-slate-700 dark:bg-dark-100 dark:text-slate-400 [&_*]:font-poppins">
         <NavigationBar />
         {children}
       </body>
