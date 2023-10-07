@@ -1,9 +1,10 @@
 import type { Config } from 'tailwindcss';
 
-const tailwindcssAnimate = require('tailwindcss-animate');
-const tailwindcssTypography = require('@tailwindcss/typography');
+import tailwindcssAnimate from 'tailwindcss-animate';
+import tailwindcssTypography from '@tailwindcss/typography';
+
 const config: Config = {
-  darkMode: ['class'],
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{ts,tsx}',
     './src/components/**/*.{ts,tsx}',
