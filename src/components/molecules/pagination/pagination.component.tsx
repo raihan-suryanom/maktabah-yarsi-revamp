@@ -1,6 +1,12 @@
 import Link from 'next/link';
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from 'lucide-react';
 
-import { Button, Icon, Input, Skeleton } from '~/components/atoms';
+import { Button, Input, Skeleton } from '~/components/atoms';
 import { cn } from '~/lib/utils';
 
 type PaginationProps = React.DetailedHTMLProps<
@@ -18,10 +24,10 @@ const Pagination = ({ className, ...props }: PaginationProps) => {
       {...props}
     >
       <Button variant="primary" asChild>
-        <Icon name="chevrons-left" />
+        <ChevronsLeft />
       </Button>
       <Button variant="primary" asChild>
-        <Icon name="chevron-left" />
+        <ChevronLeft />
       </Button>
       <Button variant="primary" asChild>
         <Link href="#!">1</Link>
@@ -36,10 +42,10 @@ const Pagination = ({ className, ...props }: PaginationProps) => {
         <Link href="#!">2</Link>
       </Button>
       <Button variant="primary" asChild>
-        <Icon name="chevrons-right" />
+        <ChevronsRight />
       </Button>
       <Button variant="primary" asChild>
-        <Icon name="chevron-right" />
+        <ChevronRight />
       </Button>
     </footer>
   );

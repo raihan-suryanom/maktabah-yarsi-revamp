@@ -1,11 +1,5 @@
-import {
-  Button,
-  Checkbox,
-  Form,
-  Icon,
-  Input,
-  Select,
-} from '~/components/atoms';
+import { BookOpen, LayoutGrid, Search } from 'lucide-react';
+import { Button, Checkbox, Form, Input, Select } from '~/components/atoms';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -56,12 +50,7 @@ const SearchForm = () => {
           </Form.Message>
         </div>
         <div className="relative flex items-center">
-          <Icon
-            name="search"
-            className="absolute left-3"
-            strokeWidth={3}
-            size={20}
-          />
+          <Search className="absolute left-3" strokeWidth={3} size={20} />
           <Form.Control asChild>
             <Input
               type="search"
@@ -91,8 +80,7 @@ const SearchForm = () => {
       </div>
       <Form.Field name="category">
         <div className="relative flex items-center">
-          <Icon
-            name="layout-grid"
+          <LayoutGrid
             className="absolute left-3 z-10"
             strokeWidth={3}
             size={20}
@@ -115,8 +103,7 @@ const SearchForm = () => {
       </Form.Field>
       <Form.Field name="book">
         <div className="relative flex items-center">
-          <Icon
-            name="book-open"
+          <BookOpen
             className="absolute left-3 z-10"
             strokeWidth={3}
             size={20}
