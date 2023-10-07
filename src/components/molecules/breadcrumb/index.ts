@@ -1,3 +1,6 @@
-import Breadcrumb, { type BreadcrumbProps } from './breadcrumb.component';
+import Breadcrumb, {
+  BreadcrumbSkeleton,
+  type BreadcrumbProps,
+} from './breadcrumb.component';
 
-export { Breadcrumb, BreadcrumbProps };
+export { Breadcrumb, BreadcrumbProps, BreadcrumbSkeleton };

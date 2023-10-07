@@ -1,4 +1,5 @@
-import { Card, Icon, PageWrapper } from '~/components/atoms';
+import { Calendar, ChevronRight, Layers, Pencil } from 'lucide-react';
+import { Card, PageWrapper } from '~/components/atoms';
 import {
   Breadcrumb,
   SearchButton,
@@ -6,7 +7,7 @@ import {
 } from '~/components/molecules';
 import { SearchForm } from '~/components/molecules/search-form';
 import { MainContent } from '~/components/organisms';
-import { categories } from '~/lib/utils';
+import { dummyCategories } from '~/lib/utils';
 
 export type DetailBookPageProps = {
   params: {
@@ -23,10 +24,10 @@ const DetailBookPage = async (props: DetailBookPageProps) => {
     <PageWrapper className="flex">
       <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5">
         <h2 className="text-2xl font-bold">Daftar Isi</h2>
-        {categories.map((category) => (
+        {dummyCategories.map((category) => (
           <CollapsibleMenu
             variant="tableOfContent"
-            iconName="chevron-right"
+            Icon={<ChevronRight id="book-marked" size={24} strokeWidth={3} />}
             key={category.category}
             isRootCategory
             {...category}
@@ -57,15 +58,15 @@ const DetailBookPage = async (props: DetailBookPageProps) => {
           </Card.Header>
           <Card.Footer className="flex gap-7 p-0">
             <div className="flex items-center gap-1">
-              <Icon size={20} name="pencil" />
+              <Pencil size={20} />
               <small className="text-base">Abdul Somad Al Bukhari</small>
             </div>
             <div className="flex items-center gap-1">
-              <Icon size={20} name="layers" />
+              <Layers size={20} />
               <small className="text-base">124 halaman</small>
             </div>
             <div className="flex items-center gap-1">
-              <Icon size={20} name="calendar" />
+              <Calendar size={20} />
               <small className="text-base">2020</small>
             </div>
           </Card.Footer>

@@ -1,20 +1,20 @@
+import { BookMarked } from 'lucide-react';
+
 import { Skeleton } from '~/components/atoms';
 import { CollapsibleMenu } from '~/components/molecules';
-import { categories as _categories } from '~/lib/utils';
+import { CategoryProps } from '~/components/molecules/collapsible-menu/collapsible-menu';
 
-const getCategories = async () => {
-  return _categories;
-};
-
-const CategoriesOutline = async () => {
-  const categories = await getCategories();
-
+const CategoriesOutline = async ({
+  categories,
+}: {
+  categories: ReadonlyArray<CategoryProps>;
+}) => {
   return (
     <>
       {categories.map((category) => (
         <CollapsibleMenu
           variant="categories"
-          iconName="book-marked"
+          Icon={<BookMarked id="book-marked" size={24} strokeWidth={3} />}
           key={category.category}
           {...category}
           controlled
