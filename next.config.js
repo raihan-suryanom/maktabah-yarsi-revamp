@@ -3,7 +3,6 @@ const nextConfig = {
   images: {
     domains: ['template.canva.com', 'edit.org'],
   },
-  swcMinify: true,
 };
 
 module.exports = nextConfig;
