@@ -1,3 +1,3 @@
-import CollapsibleMenu from './collapsible-menu';
+import CollapsibleMenu, { type CategoryProps } from './collapsible-menu';
 
-export { CollapsibleMenu };
+export { CollapsibleMenu, CategoryProps };

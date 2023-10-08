@@ -1,10 +1,11 @@
 import { FC } from 'react';
 
-import { Icon, Button, Dialog, Separator } from '~/components/atoms';
+import { Button, Dialog, Separator } from '~/components/atoms';
 import { cn } from '~/lib/utils';
 
 import type { DialogProps, DialogTriggerProps } from '@radix-ui/react-dialog';
 import type { ButtonProps } from '~/components/atoms/button';
+import { Search } from 'lucide-react';
 
 type SearchButtonProps = DialogProps &
   DialogTriggerProps &
@@ -27,8 +28,7 @@ const SearchButton: FC<SearchButtonProps> = ({
         variant="secondary"
       >
         <span className="opacity-50">{placeholder}</span>
-        <Icon
-          name="search"
+        <Search
           className="text-primary-light dark:text-primary-dark"
           strokeWidth={3}
         />

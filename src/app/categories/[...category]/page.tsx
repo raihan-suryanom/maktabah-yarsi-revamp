@@ -1,15 +1,16 @@
 import { Suspense } from 'react';
+import { BookMarked } from 'lucide-react';
 
 import { PageWrapper } from '~/components/atoms';
-import { BookList, CategoriesOutline } from '~/components/organisms';
-import { CategoriesOutlineSkeleton } from '~/components/organisms/categories-outline';
+import { BookList } from '~/components/organisms';
+import {
+  MenuOutline,
+  CategoryOutlineSkeleton,
+} from '~/components/organisms/menu-outline';
 import { Breadcrumb, Pagination } from '~/components/molecules';
 import { BookListSkeleton } from '~/components/organisms/book-list';
+import { Await, getBooks, getCategories, getPaths } from '~/lib/utils';
 import { PaginationSkeleton } from '~/components/molecules/pagination';
-
-function getPaths(category: ReadonlyArray<string>) {
-  return category.map((path) => ({ title: path, link: path }));
-}
 
 export async function generateStaticParams() {
   return [
@@ -26,20 +27,32 @@ export async function generateStaticParams() {
   ];
 }
 
-export default async function ListOfBookPage({
+export default function ListOfBookPage({
   params,
 }: {
   params: { category: ReadonlyArray<string> };
 }) {
   const visitedCategory = params.category.at(-1)!;
   const paths = getPaths(params.category);
+  const booksPromise = getBooks(visitedCategory);
+  const categoriesPromise = getCategories();
 
   return (
     <PageWrapper className="flex">
       <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5 [&>div[aria-label=skeleton]]:ml-auto">
         <h2 className="text-2xl font-bold">Kategori Buku</h2>
-        <Suspense fallback={<CategoriesOutlineSkeleton />}>
-          <CategoriesOutline />
+        <Suspense fallback={<CategoryOutlineSkeleton />}>
+          <Await promise={categoriesPromise}>
+            {({ categories }) => (
+              <MenuOutline
+                variant="categories"
+                outlines={categories}
+                Icon={<BookMarked id="book-marked" size={24} strokeWidth={3} />}
+                controlled
+                isRootCategory
+              />
+            )}
+          </Await>
         </Suspense>
       </aside>
       <div className="ml-auto flex min-h-screen w-9/12 flex-col gap-7 bg-light-300 px-8 pl-5 pt-5">
@@ -49,7 +62,9 @@ export default async function ListOfBookPage({
         </h1>
         <section className="grid grid-rows-none gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 [&>div[aria-label=skeleton]]:rounded-[10px]">
           <Suspense fallback={<BookListSkeleton />}>
-            <BookList category={visitedCategory} />
+            <Await promise={booksPromise}>
+              {({ books }) => <BookList books={books} />}
+            </Await>
           </Suspense>
         </section>
         <Suspense fallback={<PaginationSkeleton />}>

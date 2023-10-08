@@ -1,21 +1,23 @@
 import Link from 'next/link';
-import dynamicIconImports from 'lucide-react/dynamicIconImports';
 
-import { Accordion, Badge, Button, Icon } from '~/components/atoms';
+import { Accordion, Badge, Button } from '~/components/atoms';
 import { accordionTriggerVariants } from '~/components/atoms/accordion/accordion.style';
+import { ChevronDown } from 'lucide-react';
 
 import type { VariantProps } from 'class-variance-authority';
 
-type Category = {
+export type CategoryProps = {
   category: string;
   path: string;
-  sub?: ReadonlyArray<Category>;
+  sub?: ReadonlyArray<CategoryProps>;
 };
 
-type CollapsibleMenuProps = VariantProps<typeof accordionTriggerVariants> &
-  Category & {
+export type CollapsibleMenuProps = VariantProps<
+  typeof accordionTriggerVariants
+> &
+  CategoryProps & {
     className?: string;
-    iconName: keyof typeof dynamicIconImports;
+    Icon: JSX.Element;
     isRootCategory?: boolean;
     controlled?: boolean;
     category: string;
@@ -28,7 +30,7 @@ const CollapsibleMenu = async ({
   path,
   sub,
   variant,
-  iconName,
+  Icon,
   controlled,
   isRootCategory,
 }: CollapsibleMenuProps) => {
@@ -44,21 +46,13 @@ const CollapsibleMenu = async ({
       <Accordion.Item value={category}>
         <Accordion.Trigger variant={variant} asChild>
           <Link href={path} scroll={false} passHref>
-            {(hasSubCategory || variant === 'categories') && (
-              <Icon
-                id="book-marked"
-                name={iconName}
-                size={24}
-                strokeWidth={3}
-              />
-            )}
+            {(hasSubCategory || variant === 'categories') && Icon}
             {category}
             {variant === 'categories' && (
               <Badge className="font-bold">34</Badge>
             )}
             {hasSubCategory && variant === 'categories' && (
-              <Icon
-                name="chevron-down"
+              <ChevronDown
                 className="ml-auto shrink-0 text-primary-light transition-transform duration-200 dark:text-primary-dark"
                 size={24}
                 strokeWidth={3}
@@ -77,7 +71,7 @@ const CollapsibleMenu = async ({
                       key={x.category}
                       className="border-l border-[#e5e5e5] pl-2"
                       variant={variant}
-                      iconName={iconName}
+                      Icon={Icon}
                       {...x}
                     />
                   );

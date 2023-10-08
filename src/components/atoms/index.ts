@@ -13,6 +13,7 @@ import { Skeleton } from './skeleton';
 import { Dialog } from './dialog';
 import { Form } from './form';
 import { Select } from './select';
+import { DropdownMenu } from './dropdown-menu';
 
 export {
   Button,
@@ -30,4 +31,5 @@ export {
   Dialog,
   Form,
   Select,
+  DropdownMenu,
 };

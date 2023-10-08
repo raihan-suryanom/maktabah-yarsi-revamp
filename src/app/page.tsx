@@ -1,9 +1,10 @@
 import Image from 'next/image';
 
-import { Card, Icon, PageWrapper } from '~/components/atoms';
+import { Card, PageWrapper } from '~/components/atoms';
 import { SearchButton } from '~/components/molecules';
 import image from '../../public/book_cover_not_available.png';
 import { SearchForm } from '~/components/molecules/search-form';
+import { BookOpen } from 'lucide-react';
 
 const categories = ['ahklak', 'aqidah', 'fiqih', 'hadits', 'sirah', 'lainnya'];
 
@@ -53,7 +54,7 @@ export default function HomePage() {
             >
               <Card.Header className="mb-2.5 items-center p-0">
                 <span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary-light text-white">
-                  <Icon name="book-open" size={28} strokeWidth={3} />
+                  <BookOpen size={28} strokeWidth={3} />
                 </span>
               </Card.Header>
               <Card.Content className="p-0">

@@ -1,5 +1,14 @@
 import { BookList } from './book-list';
-import { CategoriesOutline } from './categories-outline';
 import { MainContent } from './main-content';
+import { MenuOutline } from './menu-outline';
+import { SearchTable } from './search-table';
+import { ThemeProvider, ThemeToggle } from './theme';
 
-export { BookList, CategoriesOutline, MainContent };
+export {
+  BookList,
+  MainContent,
+  MenuOutline,
+  SearchTable,
+  ThemeProvider,
+  ThemeToggle,
+};

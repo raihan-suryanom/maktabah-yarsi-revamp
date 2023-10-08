@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-import { Button, Icon, MaktabahIcon, Separator } from '~/components/atoms';
+import { MaktabahIcon, Separator } from '~/components/atoms';
+import { ThemeToggle } from '~/components/organisms';
 import { cn } from '~/lib/utils';
 
 type NavigationBarProps = React.DetailedHTMLProps<
@@ -27,7 +28,7 @@ const NavigationBar = ({ className, ...props }: NavigationBarProps) => {
             className="hover:text-primary-light dark:hover:text-primary-dark"
             href="/"
           >
-            Homepage
+            Halaman Utama
           </Link>
         </li>
         <li>
@@ -35,7 +36,7 @@ const NavigationBar = ({ className, ...props }: NavigationBarProps) => {
             className="hover:text-primary-light dark:hover:text-primary-dark"
             href="/categories"
           >
-            Books
+            Daftar Buku
           </Link>
         </li>
         <li>
@@ -43,19 +44,14 @@ const NavigationBar = ({ className, ...props }: NavigationBarProps) => {
             className="hover:text-primary-light dark:hover:text-primary-dark"
             href="/about"
           >
-            About
+            Tentang
           </Link>
         </li>
       </ul>
       <span className="h-6">
         <Separator orientation="vertical" className="w-0.5 opacity-20" />
       </span>
-      <Button>
-        <Icon
-          name="sun"
-          className="text-primary-light dark:text-primary-dark"
-        />
-      </Button>
+      <ThemeToggle />
     </nav>
   );
 };

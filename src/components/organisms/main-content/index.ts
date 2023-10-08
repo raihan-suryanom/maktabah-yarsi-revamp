@@ -1,3 +1,3 @@
-import MainContent from './main-content.component';
+import MainContent, { MainContentSkeleton } from './main-content.component';
 
-export { MainContent };
+export { MainContent, MainContentSkeleton };
