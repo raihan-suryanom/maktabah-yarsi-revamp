@@ -12,7 +12,9 @@ export type CategoryProps = {
   sub?: ReadonlyArray<CategoryProps>;
 };
 
-type CollapsibleMenuProps = VariantProps<typeof accordionTriggerVariants> &
+export type CollapsibleMenuProps = VariantProps<
+  typeof accordionTriggerVariants
+> &
   CategoryProps & {
     className?: string;
     Icon: JSX.Element;
