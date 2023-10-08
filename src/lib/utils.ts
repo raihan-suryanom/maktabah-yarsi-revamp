@@ -8,6 +8,18 @@ export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 export const wait = (milliSecond: number) =>
   new Promise((resolve) => setTimeout(resolve, milliSecond));
 
+export const getRegex = (
+  caseSensitiveParams: string,
+  exactMatchParams: string,
+  query: string
+) => {
+  const flags = caseSensitiveParams === 'true' ? 'gum' : 'gium';
+  const pattern = exactMatchParams === 'true' ? `\\b${query}\\b` : query;
+  const regex = new RegExp(pattern, flags);
+
+  return regex;
+};
+
 export const Await = async <T>({
   promise,
   children,
@@ -23,7 +35,7 @@ export const Await = async <T>({
   return children(data);
 };
 
-export const dummyCategories = [
+const dummyCategories = [
   {
     category: 'ahklak',
     path: '/categories/ahklak',
@@ -74,6 +86,58 @@ export const dummyCategories = [
   },
 ];
 
+const dummyInvoices = [
+  {
+    no: 1,
+    page: 9,
+    relevantQuery: 'Hati Dari Sifat Tercela...',
+    title: 'Adab Murid Terhadap Diri Sendiri',
+  },
+  {
+    no: 12,
+    page: 19,
+    relevantQuery: 'hati, maka tidak dibenarkan menimbanya kecuali dala...',
+    title: 'Adab Murid Terhadap Diri Sendiri',
+  },
+  {
+    no: 13,
+    page: 19,
+    relevantQuery: 'hati (jantung).”...',
+    title: 'Adab Murid Terhadap Diri Sendiri',
+  },
+  {
+    no: 14,
+    page: 29,
+    relevantQuery: 'hatinya, menghiasi batinnya, mendekatkan diri kepad...',
+    title: 'Adab Murid Terhadap Diri Sendiri',
+  },
+  {
+    no: 151,
+    page: 139,
+    relevantQuery: 'sejatinya dia telah menukar sesuatu yang baik dengan ...',
+    title: 'Adab Murid Terhadap Diri Sendiri',
+  },
+];
+
+export const getContents = () =>
+  new Promise<string>((resolve) =>
+    resolve(
+      `<h2>A. Penyucian Hati Dari Sifat Tercela</h2><h3>1. Bersihkan Hati</h3><blockquote>Pertama, hendaknya membersihkan hati dari segala perbuatan curang, kotor, benci, dengki, akidah yang buruk dan perangai (budi pekerti) yang tidak baik; hal itu dilakukan untuk memperbaiki dalam menerima ilmu, menjaganya serta mengulas makna-maknanya secara detail dan hakikat-hakikatnya yang samar.</blockquote><h3>2. Kedudukan Ilmu</h3><q>Karena sebagaimana yang disampaikan oleh sebagian ulama bahwa ilmu itu adalah shalat yang tersembunyi, ibadah hati dan kedekatan batin</q><h3>3. Syarat Menimba Ilmu</h3><blockquote dir="ltr" lang="en" cite="Romeo and Juliet (II, ii, 1-2)">But, soft! What light through yonder window breaks? It is the east, and Juliet is the sun.</blockquote>`
+    )
+  );
+
+export const getInvoices = async (): Promise<{
+  invoices: {
+    no: number;
+    page: number;
+    relevantQuery: string;
+    title: string;
+  }[];
+}> => {
+  await wait(3000);
+  return new Promise((resolve) => resolve({ invoices: dummyInvoices }));
+};
+
 export const getCategories = (): Promise<{
   categories: ReadonlyArray<CategoryProps>;
 }> => new Promise((resolve) => resolve({ categories: dummyCategories }));
@@ -82,6 +146,7 @@ export function getPaths(category: ReadonlyArray<string>) {
   return category.map((path) => ({ title: path, link: path }));
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function getBooks(category: string): Promise<{
   books: {
     link: string;
@@ -91,7 +156,6 @@ export function getBooks(category: string): Promise<{
     pages: number;
   }[];
 }> {
-  console.log(category);
   return new Promise((resolve) =>
     resolve({
       books: [

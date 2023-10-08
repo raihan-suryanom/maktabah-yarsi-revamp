@@ -1,16 +1,14 @@
-const contents = `<h2>A. Penyucian Hati Dari Sifat Tercela</h2><h3>1. Bersihkan Hati</h3><blockquote>Pertama, hendaknya membersihkan hati dari segala perbuatan curang, kotor, benci, dengki, akidah yang buruk dan perangai (budi pekerti) yang tidak baik; hal itu dilakukan untuk memperbaiki dalam menerima ilmu, menjaganya serta mengulas makna-maknanya secara detail dan hakikat-hakikatnya yang samar.</blockquote><h3>2. Kedudukan Ilmu</h3><q>Karena sebagaimana yang disampaikan oleh sebagian ulama bahwa ilmu itu adalah shalat yang tersembunyi, ibadah hati dan kedekatan batin</q><h3>3. Syarat Menimba Ilmu</h3><blockquote dir="ltr" lang="en" cite="Romeo and Juliet (II, ii, 1-2)">But, soft! What light through yonder window breaks? It is the east, and Juliet is the sun.</blockquote>`;
+import { Skeleton } from '~/components/atoms';
 
-// export const getRegex = (caseSensitiveParams, exactMatchParams, query) => {
-//   const flags = caseSensitiveParams === 'true' ? 'gum' : 'gium';
-//   const pattern = exactMatchParams === 'true' ? `\\b${query}\\b` : query;
-//   const regex = new RegExp(pattern, flags);
-
-//   return regex;
-// };
-
-const MainContent = ({ query }: { query: string }) => {
+const MainContent = ({
+  content,
+  query,
+}: {
+  content: string;
+  query?: string;
+}) => {
   const highlightedWords = (text: string) => {
-    return contents
+    return content
       .replace(
         new RegExp(text, 'gium'),
         (highlight) => `<mark>${highlight}</mark>`
@@ -22,10 +20,39 @@ const MainContent = ({ query }: { query: string }) => {
     <article
       className="prose min-h-screen max-w-none"
       dangerouslySetInnerHTML={{
-        __html: query ? highlightedWords(query) : contents,
+        __html: query ? highlightedWords(query) : content,
       }}
     />
   );
 };
+
+export const MainContentSkeleton = () => (
+  <div className="flex flex-col gap-5">
+    <Skeleton className="w-72" />
+    <div className="flex flex-col gap-2">
+      <Skeleton className="h-3.5" />
+      <Skeleton className="h-3.5" />
+      <Skeleton className="h-3.5" />
+    </div>
+    <Skeleton className="w-56" />
+    <div className="flex flex-col gap-2">
+      <Skeleton className="h-3.5" />
+      <Skeleton className="h-3.5" />
+      <Skeleton className="h-3.5" />
+    </div>
+    <Skeleton className="w-56" />
+    <div className="flex flex-col gap-2">
+      <Skeleton className="h-3.5" />
+      <Skeleton className="h-3.5" />
+      <Skeleton className="h-3.5" />
+    </div>
+    <Skeleton className="w-56" />
+    <div className="flex flex-col gap-2">
+      <Skeleton className="h-3.5" />
+      <Skeleton className="h-3.5" />
+      <Skeleton className="h-3.5" />
+    </div>
+  </div>
+);
 
 export default MainContent;
