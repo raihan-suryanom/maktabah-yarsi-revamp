@@ -1,4 +1,6 @@
 import { Card, PageWrapper, Skeleton } from '~/components/atoms';
+import { BreadcrumbSkeleton } from '~/components/molecules/breadcrumb';
+import { MainContentSkeleton } from '~/components/organisms/main-content';
 
 export default function Loading() {
   return (
@@ -27,10 +29,10 @@ export default function Loading() {
       </aside>
       <div className="ml-auto flex w-9/12 flex-col gap-5 pl-5 pr-8 pt-5">
         <div className="flex justify-between">
-          <Skeleton className="w-72" />
-          <Skeleton className="h-11 w-60 py-2" />
+          <BreadcrumbSkeleton />
+          <Skeleton className="h-11 w-44 rounded-md py-2" />
         </div>
-        <Card.Root className="flex w-full flex-col gap-4 bg-primary-light p-5 text-light-100">
+        <Card.Root className="flex w-full flex-col gap-3 bg-primary-light p-5 text-light-100">
           <Card.Header className="p-0">
             <Card.Title className="text-4xl">
               <Skeleton className="h-[34px] w-2/3" />
@@ -43,7 +45,8 @@ export default function Loading() {
             </div>
             <div className="flex items-center gap-1">
               <Skeleton className="w-5 rounded-full" />
-              <Skeleton className="w-32" />
+              <Skeleton className="w-6" />
+              <span>halaman</span>
             </div>
             <div className="flex items-center gap-1">
               <Skeleton className="w-5 rounded-full" />
@@ -51,32 +54,7 @@ export default function Loading() {
             </div>
           </Card.Footer>
         </Card.Root>
-        <div className="flex flex-col gap-5">
-          <Skeleton className="w-72" />
-          <div className="flex flex-col gap-2">
-            <Skeleton className="h-3.5" />
-            <Skeleton className="h-3.5" />
-            <Skeleton className="h-3.5" />
-          </div>
-          <Skeleton className="w-56" />
-          <div className="flex flex-col gap-2">
-            <Skeleton className="h-3.5" />
-            <Skeleton className="h-3.5" />
-            <Skeleton className="h-3.5" />
-          </div>
-          <Skeleton className="w-56" />
-          <div className="flex flex-col gap-2">
-            <Skeleton className="h-3.5" />
-            <Skeleton className="h-3.5" />
-            <Skeleton className="h-3.5" />
-          </div>
-          <Skeleton className="w-56" />
-          <div className="flex flex-col gap-2">
-            <Skeleton className="h-3.5" />
-            <Skeleton className="h-3.5" />
-            <Skeleton className="h-3.5" />
-          </div>
-        </div>
+        <MainContentSkeleton />
       </div>
     </PageWrapper>
   );

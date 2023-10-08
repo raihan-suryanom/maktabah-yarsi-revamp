@@ -1,8 +1,12 @@
 import { Suspense } from 'react';
+import { BookMarked } from 'lucide-react';
 
 import { PageWrapper } from '~/components/atoms';
-import { BookList, CategoriesOutline } from '~/components/organisms';
-import { CategoriesOutlineSkeleton } from '~/components/organisms/categories-outline';
+import { BookList } from '~/components/organisms';
+import {
+  MenuOutline,
+  CategoryOutlineSkeleton,
+} from '~/components/organisms/menu-outline';
 import { Breadcrumb, Pagination } from '~/components/molecules';
 import { BookListSkeleton } from '~/components/organisms/book-list';
 import { Await, getBooks, getCategories, getPaths } from '~/lib/utils';
@@ -26,9 +30,9 @@ export async function generateStaticParams() {
 export default function ListOfBookPage({
   params,
 }: {
-  params: { category: string[] };
+  params: { category: ReadonlyArray<string> };
 }) {
-  const visitedCategory = params.category.pop()!;
+  const visitedCategory = params.category.at(-1)!;
   const paths = getPaths(params.category);
   const booksPromise = getBooks(visitedCategory);
   const categoriesPromise = getCategories();
@@ -37,9 +41,17 @@ export default function ListOfBookPage({
     <PageWrapper className="flex">
       <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5 [&>div[aria-label=skeleton]]:ml-auto">
         <h2 className="text-2xl font-bold">Kategori Buku</h2>
-        <Suspense fallback={<CategoriesOutlineSkeleton />}>
+        <Suspense fallback={<CategoryOutlineSkeleton />}>
           <Await promise={categoriesPromise}>
-            {({ categories }) => <CategoriesOutline categories={categories} />}
+            {({ categories }) => (
+              <MenuOutline
+                variant="categories"
+                outlines={categories}
+                Icon={<BookMarked id="book-marked" size={24} strokeWidth={3} />}
+                controlled
+                isRootCategory
+              />
+            )}
           </Await>
         </Suspense>
       </aside>

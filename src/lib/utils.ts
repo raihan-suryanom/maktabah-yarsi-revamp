@@ -133,10 +133,7 @@ export const getInvoices = async (): Promise<{
     relevantQuery: string;
     title: string;
   }[];
-}> => {
-  await wait(3000);
-  return new Promise((resolve) => resolve({ invoices: dummyInvoices }));
-};
+}> => new Promise((resolve) => resolve({ invoices: dummyInvoices }));
 
 export const getCategories = (): Promise<{
   categories: ReadonlyArray<CategoryProps>;
