@@ -7,10 +7,12 @@ import type { LucideProps } from 'lucide-react';
 
 export type Iconprops = LucideProps & {
   name: keyof typeof dynamicIconImports;
+  ssr?: boolean;
 };
 
-const Icon = ({ name, size = 24, ...props }: Iconprops) => {
+const Icon = ({ name, size = 24, ssr = false, ...props }: Iconprops) => {
   const LucideIcon = dynamic(dynamicIconImports[name], {
+    ssr,
     loading: () => (
       <Skeleton
         className="inline-block rounded-full"
