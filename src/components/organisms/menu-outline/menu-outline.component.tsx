@@ -1,8 +1,7 @@
-import { FC } from 'react';
-
 import { Skeleton } from '~/components/atoms';
 import { CollapsibleMenu } from '~/components/molecules';
 
+import type { FC } from 'react';
 import type {
   CategoryProps,
   CollapsibleMenuProps,

@@ -1,3 +1,3 @@
-import { Separator } from '@radix-ui/react-separator';
+import { Separator } from './separator.component';
 
 export { Separator };
