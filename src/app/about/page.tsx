@@ -1,7 +1,13 @@
-import { PageWrapper } from '~/components/atoms';
-import { Breadcrumb } from '~/components/molecules';
+import dynamic from 'next/dynamic';
+
+import { BreadcrumbSkeleton } from '~/components/molecules/breadcrumb';
 
 import type { Metadata } from 'next';
+
+const Breadcrumb = dynamic(
+  () => import('~/components/molecules/breadcrumb/breadcrumb.component'),
+  { ssr: false, loading: () => <BreadcrumbSkeleton /> }
+);
 
 export const metadata: Metadata = {
   title: 'Tentang - Maktaba YARSI',
@@ -11,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <PageWrapper className="px-8 py-5">
+    <>
       <Breadcrumb paths={[{ title: 'about' }]} />
       <h1
         id="main_content"
@@ -105,6 +111,6 @@ export default function AboutPage() {
           </a>
         </li>
       </ul>
-    </PageWrapper>
+    </>
   );
 }

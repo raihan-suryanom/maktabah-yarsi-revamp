@@ -1,13 +1,36 @@
-import { Calendar, ChevronRight, Layers, Pencil } from 'lucide-react';
 import { Suspense } from 'react';
-import { Card, PageWrapper } from '~/components/atoms';
-import { Breadcrumb, SearchButton } from '~/components/molecules';
+import dynamic from 'next/dynamic';
+import { Calendar, ChevronRight, Layers, Pencil } from 'lucide-react';
+
+import { Card } from '~/components/atoms';
 import { TableOfContentSkeleton } from '~/components/organisms/menu-outline';
-import { SearchForm } from '~/components/molecules/search-form';
-import { MainContent, MenuOutline, SearchTable } from '~/components/organisms';
+import { MainContent, MenuOutline } from '~/components/organisms';
 import { MainContentSkeleton } from '~/components/organisms/main-content';
-import { SearchTableSkeleton } from '~/components/organisms/search-table';
+import { SearchTable, SearchTableSkeleton } from '~/components/organisms/search-table';
 import { Await, getCategories, getContents } from '~/lib/utils';
+import { Breadcrumb, SearchButton } from '~/components/molecules';
+// import { BreadcrumbSkeleton } from '~/components/molecules/breadcrumb';
+
+const SearchForm = dynamic(
+  () => import('~/components/molecules/search-form/search-form.component'),
+  { ssr: false }
+);
+
+// const SearchButton = dynamic(
+//   () => import('~/components/molecules/search-button/search-button.component'),
+//   { ssr: false }
+// );
+
+// const SearchTable = dynamic(
+//   () => import('~/components/organisms/search-table/search-table.component'),
+//   { ssr: false }
+// );
+
+// const Breadcrumb = dynamic(
+//   () => import('~/components/molecules/breadcrumb/breadcrumb.component'),
+//   // { ssr: false, loading: () => <BreadcrumbSkeleton /> }
+//   { ssr: false }
+// );
 
 export type DetailBookPageProps = {
   params: {
@@ -21,25 +44,30 @@ export type DetailBookPageProps = {
 
 export async function generateStaticParams() {
   return [
-    { id: 'dummy-template', page: '1' },
-    { id: 'dummy-template', page: '2' },
-    { id: 'dummy-template', page: '3' },
-    { id: 'dummy-template', page: '4' },
-    { id: 'dummy-template', page: '5' },
-    { id: 'dummy-template', page: '6' },
-    { id: 'dummy-template', page: '7' },
-    { id: 'dummy-template', page: '8' },
-    { id: 'dummy-template', page: '9' },
-    { id: 'dummy-template', page: '10' },
+    { id: 'dummy-template-1', page: '1' },
+    { id: 'dummy-template-2', page: '2' },
+    { id: 'dummy-template-3', page: '3' },
+    { id: 'dummy-template-4', page: '4' },
+    { id: 'dummy-template-5', page: '5' },
+    { id: 'dummy-template-6', page: '6' },
+    { id: 'dummy-template-7', page: '7' },
+    { id: 'dummy-template-8', page: '8' },
+    { id: 'dummy-template-9', page: '9' },
+    { id: 'dummy-template-10', page: '10' },
   ];
 }
 
-const DetailBookPage = async ({ searchParams }: DetailBookPageProps) => {
+const DetailBookPage = async ({
+  searchParams,
+  params,
+}: DetailBookPageProps) => {
+  const { page } = params;
+  const { query } = searchParams!;
   const contentPromise = getContents();
   const categoriesPromise = getCategories();
 
   return (
-    <PageWrapper className="flex">
+    <>
       <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5">
         <h2 className="text-2xl font-bold">Daftar Isi</h2>
         <Suspense fallback={<TableOfContentSkeleton />}>
@@ -92,7 +120,7 @@ const DetailBookPage = async ({ searchParams }: DetailBookPageProps) => {
             </div>
           </Card.Footer>
         </Card.Root>
-        <Suspense fallback={<MainContentSkeleton />}>
+        <Suspense key={page} fallback={<MainContentSkeleton />}>
           <Await promise={contentPromise}>
             {(content) => (
               <MainContent query={searchParams?.query} content={content} />
@@ -100,10 +128,10 @@ const DetailBookPage = async ({ searchParams }: DetailBookPageProps) => {
           </Await>
         </Suspense>
       </div>
-      <Suspense fallback={<SearchTableSkeleton />}>
+      <Suspense key={query} fallback={<SearchTableSkeleton />}>
         {searchParams?.query ? <SearchTable /> : null}
       </Suspense>
-    </PageWrapper>
+    </>
   );
 };
 

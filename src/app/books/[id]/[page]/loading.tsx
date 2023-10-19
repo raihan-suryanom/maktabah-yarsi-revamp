@@ -1,10 +1,10 @@
-import { Card, PageWrapper, Skeleton } from '~/components/atoms';
+import { Card, Skeleton } from '~/components/atoms';
 import { BreadcrumbSkeleton } from '~/components/molecules/breadcrumb';
 import { MainContentSkeleton } from '~/components/organisms/main-content';
 
 export default function Loading() {
   return (
-    <PageWrapper className="flex">
+    <div className="flex">
       <aside className="fixed flex h-screen w-3/12 flex-col gap-3.5 overflow-y-scroll border-r border-black/10 pl-8 pr-5 pt-5 [&>div]:ml-auto">
         <h2 className="text-2xl font-bold">Daftar Isi</h2>
         <Skeleton className="mt-1" />
@@ -56,6 +56,6 @@ export default function Loading() {
         </Card.Root>
         <MainContentSkeleton />
       </div>
-    </PageWrapper>
+    </div>
   );
 }

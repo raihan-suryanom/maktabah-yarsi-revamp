@@ -7,7 +7,7 @@ import { CategoryOutlineSkeleton } from '~/components/organisms/menu-outline';
 export default function Loading() {
   return (
     <div className="mx-auto mt-[65px] w-full">
-      <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5 [&>div[aria-label=skeleton]]:ml-auto">
+      <aside className="sticky flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5 [&>div[aria-label=skeleton]]:ml-auto">
         <h2 className="text-2xl font-bold">Kategori Buku</h2>
         <CategoryOutlineSkeleton />
       </aside>
