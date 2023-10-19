@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "rm -rf .next && next build",
+    "build:report": "OPEN_ANALYZER=true DEBUG=true ANALYZE=true yarn build",
+    "build:debug": "OPEN_ANALYZER=false yarn build:report",
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
@@ -31,6 +33,7 @@
     "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^13.5.4",
     "@storybook/addon-essentials": "^7.4.1",
     "@storybook/addon-interactions": "^7.4.1",
     "@storybook/addon-links": "^7.4.1",
