@@ -1,6 +1,7 @@
 import Image from 'next/image';
+import { BookOpen, Calendar, Layers, Pencil } from 'lucide-react';
 
-import { Icon, Card } from '~/components/atoms';
+import { Card } from '~/components/atoms';
 import image from '../../../../public/book_cover_not_available.png';
 
 import type { Meta } from '@storybook/react';
@@ -39,11 +40,11 @@ export const WithoutHeader = () => (
         Dalal al-Khairat
       </Card.Title>
       <span className="flex items-center gap-1.5">
-        <Icon size={12} name="pencil" />
+        <Pencil size={12} name="Pencil" />
         <small className="text-xs text-dark-100">Abdul Somad Al Bukhari</small>
       </span>
       <div className="flex items-center gap-1.5">
-        <Icon size={12} name="layers" />
+        <Layers size={12} name="Layers" />
         <small className="text-xs text-dark-100">124 halaman</small>
       </div>
     </Card.Footer>
@@ -59,15 +60,15 @@ export const WithoutContent = () => (
     </Card.Header>
     <Card.Footer className="flex gap-10 p-0">
       <div className="flex items-center gap-1.5">
-        <Icon size={24} name="pencil" />
+        <Pencil size={24} />
         <small className="text-xl">Abdul Somad Al Bukhari</small>
       </div>
       <div className="flex items-center gap-1.5">
-        <Icon size={24} name="layers" />
+        <Layers size={24} />
         <small className="text-xl">124 halaman</small>
       </div>
       <div className="flex items-center gap-1.5">
-        <Icon size={24} name="calendar" />
+        <Calendar size={24} />
         <small className="text-xl">2020</small>
       </div>
     </Card.Footer>
@@ -78,7 +79,7 @@ export const WithoutFooter = () => (
   <Card.Root className="w-[150px] rounded-[20px] bg-light-100 p-7">
     <Card.Header className="mb-2.5 items-center p-0">
       <span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary-light text-white">
-        <Icon name="book-open" size={28} strokeWidth={3} />
+        <BookOpen size={28} strokeWidth={3} />
       </span>
     </Card.Header>
     <Card.Content className="p-0">

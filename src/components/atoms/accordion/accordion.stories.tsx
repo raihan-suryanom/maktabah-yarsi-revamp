@@ -2,7 +2,8 @@ import Link from 'next/link';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Accordion, Badge, Button, Icon } from '~/components/atoms';
+import { Accordion, Badge, Button } from '~/components/atoms';
+import { BookMarked, ChevronDown, ChevronRight } from 'lucide-react';
 
 const meta = {
   title: 'Atoms/Accordion',
@@ -32,11 +33,11 @@ export const DefaultAccordion: Story = {
           variant="categories"
           className="[&[data-state=open]>svg[id=book-marked]]:rotate-0"
         >
-          <Icon id="book-marked" name="book-marked" size={24} strokeWidth={3} />
+          <BookMarked id="book-marked" size={24} strokeWidth={3} />
           <span className="text-lg">Akhlakul Karimah</span>
           <Badge className="font-bold">34</Badge>
-          <Icon
-            name="chevron-down"
+          <ChevronDown
+            name="ChevronDown"
             className="ml-auto shrink-0 text-primary-light transition-transform duration-200 dark:text-primary-dark"
             size={24}
             strokeWidth={3}
@@ -72,17 +73,17 @@ export const DefaultAccordion: Story = {
           variant="categories"
           className="[&[data-state=open]>svg[id=book-marked]]:rotate-0"
         >
-          <Icon
+          <BookMarked
             id="book-marked"
-            name="book-marked"
+            name="BookMarked"
             className="mr-2.5"
             size={24}
             strokeWidth={3}
           />
           <span className="mr-2.5 text-lg">Akhlakul Karimah</span>
           <Badge>34</Badge>
-          <Icon
-            name="chevron-down"
+          <ChevronDown
+            name="ChevronDown"
             className="ml-auto shrink-0 text-primary-light transition-transform duration-200 dark:text-primary-dark"
             size={24}
             strokeWidth={3}
@@ -122,8 +123,8 @@ export const SimpleAccordion: Story = {
     <Accordion.Root type="multiple">
       <Accordion.Item value="item-1">
         <Accordion.Trigger variant="tableOfContent">
-          <Icon
-            name="chevron-right"
+          <ChevronRight
+            name="ChevronRight"
             className="mr-2.5"
             size={24}
             strokeWidth={3}
@@ -148,8 +149,8 @@ export const SimpleAccordion: Story = {
           >
             <Accordion.Item value="item-1">
               <Accordion.Trigger variant="tableOfContent">
-                <Icon
-                  name="chevron-right"
+                <ChevronRight
+                  name="ChevronRight"
                   className="mr-2.5"
                   size={24}
                   strokeWidth={3}
