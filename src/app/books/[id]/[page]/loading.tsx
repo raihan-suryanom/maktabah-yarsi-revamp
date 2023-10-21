@@ -1,5 +1,5 @@
 import { Card, Skeleton } from '~/components/atoms';
-import { BreadcrumbSkeleton } from '~/components/molecules/breadcrumb';
+import BreadcrumbSkeleton from '~/components/atoms/skeleton/breadcrumb-skeleton.component';
 import { MainContentSkeleton } from '~/components/organisms/main-content';
 
 export default function Loading() {

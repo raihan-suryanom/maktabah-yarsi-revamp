@@ -15,13 +15,6 @@ const BreadcrumbSkeleton = () => (
       </li>
       <li className="flex h-6 items-center gap-2.5">
         <Skeleton className="h-6 w-20" />
-        <Separator
-          orientation="vertical"
-          className="w-0.5 rotate-12 opacity-70"
-        />
-      </li>
-      <li className="flex h-6 items-center gap-2.5">
-        <Skeleton className="h-6 w-20" />
       </li>
     </ul>
   </nav>

@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-import { BreadcrumbSkeleton } from '~/components/molecules/breadcrumb';
+import BreadcrumbSkeleton from '~/components/atoms/skeleton/breadcrumb-skeleton.component';
 
 import type { Metadata } from 'next';
 
@@ -17,100 +17,77 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="flex flex-col gap-8 px-8 py-5">
       <Breadcrumb paths={[{ title: 'about' }]} />
-      <h1
-        id="main_content"
-        className="mb-10 mt-5 text-center text-3xl font-bold text-dark-200 dark:text-light-200 md:text-4xl lg:text-5xl"
-      >
-        Tentang Maktabah YARSI
-      </h1>
-      <p className="mx-auto mt-3 text-center text-sm text-dark-100 dark:text-light-400 md:text-justify md:indent-12 md:text-lg">
-        Maktabah YARSI merupakan perpustakaan Islam digital berbahasa Indonesia
-        pertama yang hadir dengan fitur pencarian topik permasalahan berdasarkan{' '}
-        <span className="highlight">kata kunci</span> dari{' '}
-        <span className="highlight">lintas referensi</span> yang terinspirasi
-        dari <span className="highlight">Maktabah Syamilah</span>. Semua sumber
-        buku dan dokumen yang ditampilkan sudah memiliki{' '}
-        <span className="highlight">wakaf hak cipta</span> sehingga{' '}
-        <span className="highlight">legal</span> untuk dimanfaatkan dan
-        digunakan. Berikut referensi yang digunakan:
-      </p>
-      <ul className="mt-3 space-y-2 text-sm text-dark-100 marker:text-primary-light dark:text-light-400 dark:marker:text-primary-dark md:text-base">
-        <li className="list-inside list-disc">
-          <a
-            className="underline decoration-primary-light underline-offset-2 hover:text-primary-light dark:decoration-primary-dark dark:hover:text-primary-dark"
-            href="https://shamela.ws/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Maktabah Syamilah
-          </a>
-          , sebagai inspirasi utama;
-        </li>
-        <li className="list-inside list-disc">
-          <a
-            className="underline decoration-primary-light underline-offset-2 hover:text-primary-light dark:decoration-primary-dark dark:hover:text-primary-dark"
-            href="https://www.rumahfiqih.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Rumah Fiqih Indonesia
-          </a>
-          , sumber buku digital;
-        </li>
-        <li className="list-inside list-disc">
-          <a
-            className="underline decoration-primary-light underline-offset-2 hover:text-primary-light dark:decoration-primary-dark dark:hover:text-primary-dark"
-            href="https://mui.or.id/fatwa/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Fatwa MUI
-          </a>
-          , sumber dokumen Fatwa; dan
-        </li>
-        <li className="list-inside list-disc">
-          <a
-            className="underline decoration-primary-light underline-offset-2 hover:text-primary-light dark:decoration-primary-dark dark:hover:text-primary-dark"
-            href="https://buku-islam-api.vercel.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Buku literatur Keislaman API
-          </a>
-          , sumber repositori buku literatur Keislaman.
-        </li>
-      </ul>
-      <p className="mx-auto mt-12 text-center text-sm text-dark-100 dark:text-light-400 md:text-justify md:indent-12 md:text-lg">
-        Maktabah YARSI dikembangkan dan dipelihara oleh:
-      </p>
-      <ul className="mt-3 space-y-2 text-sm text-dark-100 marker:text-primary-light dark:text-light-400 dark:marker:text-primary-dark md:text-base">
-        <li className="list-inside list-disc">
-          <a
-            className="underline decoration-primary-light underline-offset-2 hover:text-primary-light dark:decoration-primary-dark dark:hover:text-primary-dark"
-            href="mailto:herika.hayurani@yarsi.ac.id"
-          >
-            Herika Hayurani
-          </a>
-        </li>
-        <li className="list-inside list-disc">
-          <a
-            className="underline decoration-primary-light underline-offset-2 hover:text-primary-light dark:decoration-primary-dark dark:hover:text-primary-dark"
-            href="mailto:aya.yahya@yarsi.ac.id"
-          >
-            Aya Yahya Maulana
-          </a>
-        </li>
-        <li className="list-inside list-disc">
-          <a
-            className="underline decoration-primary-light underline-offset-2 hover:text-primary-light dark:decoration-primary-dark dark:hover:text-primary-dark"
-            href="mailto:raihansuryanom@gmail.com"
-          >
-            Muhammad Raihan Suryanom
-          </a>
-        </li>
-      </ul>
-    </>
+      <article className="prose max-w-none prose-h1:text-center prose-a:underline prose-a:decoration-primary-light prose-a:underline-offset-2 prose-strong:text-primary-light">
+        <h1>Tentang Kami</h1>
+        <section>
+          <p>
+            Maktabah YARSI merupakan perpustakaan Islam digital berbahasa
+            Indonesia pertama yang hadir dengan fitur pencarian topik
+            permasalahan berdasarkan <strong>kata kunci</strong> dari{' '}
+            <strong>lintas referensi</strong> yang terinspirasi dari{' '}
+            <strong>Maktabah Syamilah</strong>. Semua sumber buku dan dokumen
+            yang yang ditampilkan sudah memiliki{' '}
+            <strong>wakaf hak cipta</strong> sehingga sehingga sehingga{' '}
+            <strong>legal</strong> untuk dimanfaatkan referensi yang digunakan:
+          </p>
+          <ul>
+            <li>
+              <a href="https://shamela.ws/" target="_blank" rel="noreferrer">
+                Maktabah Syamilah
+              </a>
+              , sebagai inspirasi utama;
+            </li>
+            <li>
+              <a
+                href="https://www.rumahfiqih.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Rumah Fiqih Indonesia
+              </a>
+              , sumber buku digital;
+            </li>
+            <li>
+              <a
+                href="https://mui.or.id/fatwa/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Fatwa MUI
+              </a>
+              , sumber dokumen Fatwa; dan
+            </li>
+            <li>
+              <a
+                href="https://buku-islam-api.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Buku literatur Keislaman API
+              </a>
+              , sumber repositori buku literatur Keislaman.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <p>Maktabah YARSI dikembangkan dan dipelihara oleh:</p>
+          <ul>
+            <li>
+              <a href="mailto:herika.hayurani@yarsi.ac.id">Herika Hayurani</a>
+            </li>
+            <li>
+              <a href="mailto:aya.yahya@yarsi.ac.id">Aya Yahya Maulana</a>
+            </li>
+            <li>
+              <a href="mailto:raihansuryanom@gmail.com">
+                Muhammad Raihan Suryanom
+              </a>
+            </li>
+          </ul>
+        </section>
+      </article>
+    </div>
   );
 }

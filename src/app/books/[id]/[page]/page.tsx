@@ -1,36 +1,22 @@
-import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import { Calendar, ChevronRight, Layers, Pencil } from 'lucide-react';
 
 import { Card } from '~/components/atoms';
 import { TableOfContentSkeleton } from '~/components/organisms/menu-outline';
 import { MainContent, MenuOutline } from '~/components/organisms';
 import { MainContentSkeleton } from '~/components/organisms/main-content';
-import { SearchTable, SearchTableSkeleton } from '~/components/organisms/search-table';
+import {
+  SearchTable,
+  SearchTableSkeleton,
+} from '~/components/organisms/search-table';
 import { Await, getCategories, getContents } from '~/lib/utils';
 import { Breadcrumb, SearchButton } from '~/components/molecules';
-// import { BreadcrumbSkeleton } from '~/components/molecules/breadcrumb';
 
 const SearchForm = dynamic(
   () => import('~/components/molecules/search-form/search-form.component'),
   { ssr: false }
 );
-
-// const SearchButton = dynamic(
-//   () => import('~/components/molecules/search-button/search-button.component'),
-//   { ssr: false }
-// );
-
-// const SearchTable = dynamic(
-//   () => import('~/components/organisms/search-table/search-table.component'),
-//   { ssr: false }
-// );
-
-// const Breadcrumb = dynamic(
-//   () => import('~/components/molecules/breadcrumb/breadcrumb.component'),
-//   // { ssr: false, loading: () => <BreadcrumbSkeleton /> }
-//   { ssr: false }
-// );
 
 export type DetailBookPageProps = {
   params: {
