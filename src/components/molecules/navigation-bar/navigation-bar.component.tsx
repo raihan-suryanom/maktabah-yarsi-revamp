@@ -17,13 +17,17 @@ const NavigationBar = ({ className, ...props }: NavigationBarProps) => {
         className
       )}
     >
-      <nav className="flex items-center justify-between gap-5 " {...props}>
-        <Link href="/" className="flex cursor-pointer items-center" passHref>
+      <nav className="flex items-center gap-5 " {...props}>
+        <Link
+          href="/"
+          className="mr-auto flex cursor-pointer items-center"
+          passHref
+        >
           <MaktabahIcon />
           <span className="ml-2.5 font-semibold">Maktabah YARSI</span>
         </Link>
-        <ul className="ml-auto flex items-center gap-10 font-bold">
-          <li>
+        <ul className="flex items-center gap-10 font-bold">
+          <li role="navigation">
             <Link
               className="hover:text-primary-light dark:hover:text-primary-dark"
               href="/"
@@ -31,7 +35,7 @@ const NavigationBar = ({ className, ...props }: NavigationBarProps) => {
               Halaman Utama
             </Link>
           </li>
-          <li>
+          <li role="navigation">
             <Link
               className="hover:text-primary-light dark:hover:text-primary-dark"
               href="/categories"
@@ -39,12 +43,12 @@ const NavigationBar = ({ className, ...props }: NavigationBarProps) => {
               Daftar Buku
             </Link>
           </li>
-          <li>
+          <li role="navigation">
             <Link
               className="hover:text-primary-light dark:hover:text-primary-dark"
               href="/about"
             >
-              Tentang
+              Tentang Kami
             </Link>
           </li>
         </ul>
