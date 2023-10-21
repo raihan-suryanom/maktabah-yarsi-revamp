@@ -1,28 +1,43 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Monitor, MoonStar, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
-import { Button, DropdownMenu, Icon } from '~/components/atoms';
+import { Button, DropdownMenu, Skeleton } from '~/components/atoms';
 import { cn } from '~/lib/utils';
+
+const themes: {
+  light: JSX.Element;
+  dark: JSX.Element;
+  system: JSX.Element;
+} = {
+  light: <Sun />,
+  dark: <MoonStar />,
+  system: <Monitor />,
+};
+
+const ThemeIcons = ({ icon }: { icon: string }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <Skeleton className="inline-block h-6 w-6 rounded-full" />;
+  }
+
+  return themes[icon as keyof typeof themes];
+};
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
-  const themes: {
-    light: 'sun';
-    dark: 'moon-star';
-    system: 'monitor';
-  } = {
-    light: 'sun',
-    dark: 'moon-star',
-    system: 'monitor',
-  };
-
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <Icon name={themes[theme as keyof typeof themes]} />
+        <ThemeIcons icon={theme as string} />
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="lg:w-40 [&_svg]:rounded-sm">
         <DropdownMenu.Label>Warna Tema</DropdownMenu.Label>

@@ -2,15 +2,7 @@ import './globals.css';
 import { lpmq, poppins } from '~/lib/fonts';
 import { NavigationBar } from '~/components/molecules';
 import { ThemeProvider } from '~/components/organisms';
-
-import type { Metadata } from 'next';
 import { cn } from '~/lib/utils';
-
-export const metadata: Metadata = {
-  title: 'Maktabah YARSI | Perpustakaan Islam Digital Berbahasa Indonesia',
-  description:
-    'Maktabah YARSI مكتبة يرسي merupakan aplikasi perpustakaan islam digital berbahasa Indonesia yang memungkinkan pengguna untuk mencari topik atau permasalah berdasarkan kata kunci seperti iman, sabar, shalat dan riba.',
-};
 
 export default function RootLayout({
   children,
@@ -28,7 +20,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class">
           <NavigationBar />
-          {children}
+          <main className="relative">{children}</main>
         </ThemeProvider>
       </body>
     </html>

@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { Search } from 'lucide-react';
 
 import { Button, Dialog, Separator } from '~/components/atoms';
 import { cn } from '~/lib/utils';
 
+import type { FC } from 'react';
 import type { DialogProps, DialogTriggerProps } from '@radix-ui/react-dialog';
 import type { ButtonProps } from '~/components/atoms/button';
-import { Search } from 'lucide-react';
 
 type SearchButtonProps = DialogProps &
   DialogTriggerProps &

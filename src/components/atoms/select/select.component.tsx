@@ -1,15 +1,21 @@
 'use client';
 
 import { useId } from 'react';
-import SelectComponent, { type GroupBase, Props } from 'react-select';
+import dynamic from 'next/dynamic';
 
 import { inputVariants } from '../input';
 import { selectBaseStyles } from './select.styles';
 
+import type { GroupBase, Props } from 'react-select';
+import type SelectType from 'react-select';
 import type { VariantProps } from 'class-variance-authority';
 
+const SelectComponent = dynamic(() => import('react-select'), {
+  ssr: false,
+}) as SelectType;
+
 const Select = <
-  Option,
+  Option = unknown,
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({

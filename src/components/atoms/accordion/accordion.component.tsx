@@ -2,7 +2,13 @@
 
 import { forwardRef } from 'react';
 import { usePathname } from 'next/navigation';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import {
+  Item,
+  Root,
+  Trigger,
+  Header,
+  Content,
+} from '@radix-ui/react-accordion';
 
 import { cn } from '~/lib/utils';
 import { accordionTriggerVariants } from './accordion.style';
@@ -10,8 +16,8 @@ import { accordionTriggerVariants } from './accordion.style';
 import type { VariantProps } from 'class-variance-authority';
 
 const Accordion = forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root> & {
+  React.ElementRef<typeof Root>,
+  React.ComponentPropsWithoutRef<typeof Root> & {
     controlled?: boolean;
   }
 >(({ className, controlled, ...props }, ref) => {
@@ -19,7 +25,7 @@ const Accordion = forwardRef<
   const categories = controlled ? pathname.split('/').slice(2) : [props.itemID];
 
   return (
-    <AccordionPrimitive.Root
+    <Root
       className={cn('capitalize', className)}
       ref={ref}
       defaultValue={categories as unknown as undefined}
@@ -28,40 +34,38 @@ const Accordion = forwardRef<
   );
 });
 
-Accordion.displayName = AccordionPrimitive.Root.displayName;
+Accordion.displayName = Root.displayName;
 
 const AccordionItem = forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
->(({ className, ...props }, ref) => (
-  <AccordionPrimitive.Item ref={ref} {...props} />
-));
+  React.ElementRef<typeof Item>,
+  React.ComponentPropsWithoutRef<typeof Item>
+>(({ className, ...props }, ref) => <Item ref={ref} {...props} />);
 
 AccordionItem.displayName = 'AccordionItem';
 
 const AccordionTrigger = forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> &
+  React.ElementRef<typeof Trigger>,
+  React.ComponentPropsWithoutRef<typeof Trigger> &
     VariantProps<typeof accordionTriggerVariants>
 >(({ variant, className, children, ...props }, ref) => (
-  <AccordionPrimitive.Header className="flex">
-    <AccordionPrimitive.Trigger
+  <Header className="flex">
+    <Trigger
       ref={ref}
       className={cn(accordionTriggerVariants({ variant, className }))}
       {...props}
     >
       {children}
-    </AccordionPrimitive.Trigger>
-  </AccordionPrimitive.Header>
+    </Trigger>
+  </Header>
 ));
 
-AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
+AccordionTrigger.displayName = Trigger.displayName;
 
 const AccordionContent = forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
+  React.ElementRef<typeof Content>,
+  React.ComponentPropsWithoutRef<typeof Content>
 >(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Content
+  <Content
     ref={ref}
     className={cn(
       'ml-3 overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
@@ -70,10 +74,10 @@ const AccordionContent = forwardRef<
     {...props}
   >
     <div>{children}</div>
-  </AccordionPrimitive.Content>
+  </Content>
 ));
 
-AccordionContent.displayName = AccordionPrimitive.Content.displayName;
+AccordionContent.displayName = Content.displayName;
 
 export {
   Accordion as Root,

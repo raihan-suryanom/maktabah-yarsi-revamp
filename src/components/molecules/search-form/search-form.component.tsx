@@ -1,41 +1,10 @@
 import { BookOpen, LayoutGrid, Search } from 'lucide-react';
+
 import { Button, Checkbox, Form, Input, Select } from '~/components/atoms';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
   { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' },
   { value: 'vanilla', label: 'Vanilla' },
 ];
 
