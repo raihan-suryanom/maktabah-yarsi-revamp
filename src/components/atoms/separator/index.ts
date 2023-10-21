@@ -1,3 +1,3 @@
-import { Separator } from './separator.component';
+import Separator from './separator.component';
 
 export { Separator };
