@@ -1,12 +1,12 @@
 import { Skeleton } from '~/components/atoms';
-import { BreadcrumbSkeleton } from '~/components/molecules/breadcrumb';
+import BreadcrumbSkeleton from '~/components/atoms/skeleton/breadcrumb-skeleton.component';
 import { PaginationSkeleton } from '~/components/molecules/pagination';
 import { BookListSkeleton } from '~/components/organisms/book-list';
 import { CategoryOutlineSkeleton } from '~/components/organisms/menu-outline';
 
 export default function Loading() {
   return (
-    <div className="mx-auto mt-[65px] w-full">
+    <div className="mx-auto w-full">
       <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5 [&>div[aria-label=skeleton]]:ml-auto">
         <h2 className="text-2xl font-bold">Kategori Buku</h2>
         <CategoryOutlineSkeleton />

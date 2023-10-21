@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import { Download, Lightbulb } from 'lucide-react';
 
-import { Button, Icon } from '~/components/atoms';
+import { Button } from '~/components/atoms';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -68,7 +69,7 @@ export const TextWithIcon: Story = {
     children: (
       <>
         Download
-        <Icon name="download" />
+        <Download />
       </>
     ),
     size: 'small',
@@ -79,7 +80,7 @@ export const TextWithIcon: Story = {
 
 export const OnlyIcon: Story = {
   args: {
-    children: <Icon className="cursor-pointer" name="lightbulb" size={40} />,
+    children: <Lightbulb className="cursor-pointer" size={40} />,
     asChild: true,
     size: 'small',
     variant: 'primary',

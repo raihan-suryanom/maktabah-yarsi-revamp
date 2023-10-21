@@ -1,17 +1,34 @@
-import Image from 'next/image';
-
-import { Card, PageWrapper } from '~/components/atoms';
-import { SearchButton } from '~/components/molecules';
-import image from '../../public/book_cover_not_available.png';
-import { SearchForm } from '~/components/molecules/search-form';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import { BookOpen } from 'lucide-react';
 
-const categories = ['ahklak', 'aqidah', 'fiqih', 'hadits', 'sirah', 'lainnya'];
+import { Card } from '~/components/atoms';
+import { Await, getPopularCategories } from '~/lib/utils';
+
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Maktabah YARSI | Perpustakaan Islam Digital Berbahasa Indonesia',
+  description:
+    'Maktabah YARSI مكتبة يرسي merupakan aplikasi perpustakaan islam digital berbahasa Indonesia yang memungkinkan pengguna untuk mencari topik atau permasalah berdasarkan kata kunci seperti iman, sabar, shalat dan riba.',
+};
+
+const SearchForm = dynamic(
+  () => import('~/components/molecules/search-form/search-form.component'),
+  { ssr: false }
+);
+
+const SearchButton = dynamic(
+  () => import('~/components/molecules/search-button/search-button.component'),
+  { ssr: false }
+);
 
 export default function HomePage() {
+  const popularCategoriesPromise = getPopularCategories();
+
   return (
-    <PageWrapper className="py-16">
-      <header className="mx-auto flex min-h-screen flex-col items-center gap-10 text-center lg:w-9/12">
+    <>
+      <header className="mx-auto flex min-h-screen flex-col items-center justify-center gap-10 text-center lg:w-9/12">
         <h1 className="!font-lpmq text-6xl font-normal text-primary-light dark:text-primary-dark">
           مكتبة يرسي
           <span className="block pt-7 text-7xl font-black text-dark-100 dark:text-light-100">
@@ -47,54 +64,33 @@ export default function HomePage() {
           <SearchForm />
         </SearchButton>
         <section className="flex w-full items-center justify-between">
-          {categories.map((category) => (
-            <Card.Root
-              key={category}
-              className="rounded-[20px] p-7 lg:min-w-[150px]"
-            >
-              <Card.Header className="mb-2.5 items-center p-0">
-                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary-light text-white">
-                  <BookOpen size={28} strokeWidth={3} />
-                </span>
-              </Card.Header>
-              <Card.Content className="p-0">
-                <Card.Title className="text-center font-normal capitalize">
-                  {category}
-                </Card.Title>
-              </Card.Content>
-            </Card.Root>
-          ))}
+          <Suspense fallback={<p>Loading...</p>}>
+            <Await promise={popularCategoriesPromise}>
+              {({ popularCategories }) => (
+                <>
+                  {popularCategories.map((category) => (
+                    <Card.Root
+                      key={category}
+                      className="rounded-[20px] p-7 lg:min-w-[150px]"
+                    >
+                      <Card.Header className="mb-2.5 items-center p-0">
+                        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary-light text-white">
+                          <BookOpen size={28} strokeWidth={3} />
+                        </span>
+                      </Card.Header>
+                      <Card.Content className="p-0">
+                        <Card.Title className="text-center font-normal capitalize">
+                          {category}
+                        </Card.Title>
+                      </Card.Content>
+                    </Card.Root>
+                  ))}
+                </>
+              )}
+            </Await>
+          </Suspense>
         </section>
       </header>
-      <section className="flex flex-col gap-12 px-24 text-center">
-        <h2 className="text-3xl font-bold uppercase">
-          Buku yang sering dibaca
-        </h2>
-        <article className="flex w-full items-center justify-between gap-2">
-          {[...Array(6)].map((_, index) => (
-            <Card.Root key={index} className="w-[180px]">
-              <Card.Content className="p-0">
-                <Image src={image} alt="Image not available" />
-              </Card.Content>
-            </Card.Root>
-          ))}
-        </article>
-        <h2 className="text-3xl font-bold uppercase">Buku aqidah</h2>
-        <article className="grid w-full grid-cols-6 grid-rows-2 items-center justify-between gap-2.5">
-          <Card.Root className="col-span-2 row-span-2 h-full">
-            <Card.Content className="p-0">
-              <Image src={image} alt="Image not available" />
-            </Card.Content>
-          </Card.Root>
-          {[...Array(8)].map((_, index) => (
-            <Card.Root key={index}>
-              <Card.Content className="p-0">
-                <Image src={image} alt="Image not available" />
-              </Card.Content>
-            </Card.Root>
-          ))}
-        </article>
-      </section>
-    </PageWrapper>
+    </>
   );
 }
