@@ -1,21 +1,16 @@
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { Calendar, ChevronRight, Layers, Pencil } from 'lucide-react';
 
 import { Card } from '~/components/atoms';
 import { TableOfContentSkeleton } from '~/components/organisms/menu-outline';
 import { MainContent, MenuOutline } from '~/components/organisms';
 import { MainContentSkeleton } from '~/components/organisms/main-content';
-import {
-  SearchTable,
-  SearchTableSkeleton,
-} from '~/components/organisms/search-table';
+import { SearchTableSkeleton } from '~/components/organisms/search-table';
 import { Await, getCategories, getContents } from '~/lib/utils';
 import { Breadcrumb, SearchButton } from '~/components/molecules';
 
-const SearchForm = dynamic(
-  () => import('~/components/molecules/search-form/search-form.component'),
-  { ssr: false }
+const SearchTable = lazy(
+  () => import('~/components/organisms/search-table/search-table.component')
 );
 
 export type DetailBookPageProps = {
@@ -81,9 +76,7 @@ const DetailBookPage = async ({
             placeholder="Cari topik..."
             size="medium"
             className="gap-7 rounded-md"
-          >
-            <SearchForm />
-          </SearchButton>
+          />
         </div>
         <Card.Root className="flex w-full flex-col gap-1.5 bg-primary-light p-5 text-light-100">
           <Card.Header className="p-0">

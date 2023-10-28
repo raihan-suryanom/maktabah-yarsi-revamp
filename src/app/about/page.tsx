@@ -1,13 +1,6 @@
-import dynamic from 'next/dynamic';
-
-import BreadcrumbSkeleton from '~/components/atoms/skeleton/breadcrumb-skeleton.component';
+import { Breadcrumb } from '~/components/molecules';
 
 import type { Metadata } from 'next';
-
-const Breadcrumb = dynamic(
-  () => import('~/components/molecules/breadcrumb/breadcrumb.component'),
-  { ssr: false, loading: () => <BreadcrumbSkeleton /> }
-);
 
 export const metadata: Metadata = {
   title: 'Tentang - Maktaba YARSI',
