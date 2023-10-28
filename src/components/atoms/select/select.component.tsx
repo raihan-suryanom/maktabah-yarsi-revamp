@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 
 import { inputVariants } from '../input';
 import { selectBaseStyles } from './select.styles';
+import { Skeleton } from '../skeleton';
 
 import type { GroupBase, Props } from 'react-select';
 import type SelectType from 'react-select';
@@ -12,6 +13,7 @@ import type { VariantProps } from 'class-variance-authority';
 
 const SelectComponent = dynamic(() => import('react-select'), {
   ssr: false,
+  loading: () => <Skeleton className="h-11 rounded-lg bg-light-300" />,
 }) as SelectType;
 
 const Select = <

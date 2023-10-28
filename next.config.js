@@ -4,7 +4,7 @@ const nextConfig = {
     domains: ['template.canva.com', 'edit.org'],
   },
   experimental: {
-    webpackBuildWorker: true
+    webpackBuildWorker: true,
   },
   eslint: {
     ignoreDuringBuilds: process.env.DEBUG === 'true',

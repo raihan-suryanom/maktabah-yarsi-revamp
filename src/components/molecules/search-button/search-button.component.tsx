@@ -1,5 +1,6 @@
 import { Search } from 'lucide-react';
 
+import { SearchForm } from '../search-form';
 import { Button, Dialog, Separator } from '~/components/atoms';
 import { cn } from '~/lib/utils';
 
@@ -41,7 +42,7 @@ const SearchButton: FC<SearchButtonProps> = ({
         </Dialog.Title>
       </Dialog.Header>
       <Separator className="m-0 h-0.5 p-0 opacity-5" />
-      {children}
+      <SearchForm />
     </Dialog.Content>
   </Dialog.Root>
 );

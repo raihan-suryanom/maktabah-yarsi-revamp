@@ -15,7 +15,7 @@ const SearchForm = () => {
         <div className="flex items-center justify-between">
           <Form.Message match="valueMissing">Topik wajib diisi</Form.Message>
           <Form.Message match="tooShort">
-            Huruf topik harus dari 2 karakter
+            Pajang topik minimal 3 karakter.
           </Form.Message>
         </div>
         <div className="relative flex items-center">
