@@ -27,6 +27,7 @@ const SearchForm = () => {
               className="w-full pl-11 pr-3"
               placeholder="Masukkan kata kunci topik permasalahan seperti iman, ikhlas, jodoh dan lain-lain."
               minLength={3}
+              autoFocus
               required
             />
           </Form.Control>

@@ -33,19 +33,15 @@ const BookList = async ({
               />
             </Card.Content>
           </Link>
-          <Card.Footer className="mt-1.5 flex-col items-start gap-0.5 p-0">
-            <Card.Title className="text-base text-dark-100">
-              {book.title}
-            </Card.Title>
+          <Card.Footer className="mt-1.5 flex-col items-start gap-0.5 p-0 text-dark-100 dark:text-light-300">
+            <Card.Title className="text-base">{book.title}</Card.Title>
             <span className="flex items-center gap-1.5">
               <Pencil size={12} />
-              <small className="text-xs text-dark-100">{book.author}</small>
+              <small className="text-xs">{book.author}</small>
             </span>
             <div className="flex items-center gap-1.5">
               <Layers size={12} />
-              <small className="text-xs text-dark-100">
-                {book.pages} halaman
-              </small>
+              <small className="text-xs">{book.pages} halaman</small>
             </div>
           </Card.Footer>
         </Card.Root>

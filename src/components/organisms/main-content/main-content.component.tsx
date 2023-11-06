@@ -18,7 +18,7 @@ const MainContent = ({
 
   return (
     <article
-      className="prose min-h-screen max-w-none"
+      className="prose min-h-screen max-w-none dark:prose-invert"
       dangerouslySetInnerHTML={{
         __html: query ? highlightedWords(query) : content,
       }}

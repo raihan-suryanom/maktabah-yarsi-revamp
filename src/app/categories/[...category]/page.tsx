@@ -56,9 +56,9 @@ export default function ListOfBookPage({
           </Await>
         </Suspense>
       </aside>
-      <div className="relative ml-auto flex min-h-screen w-9/12 flex-col gap-7 bg-light-300 px-8 pl-5 pt-5">
+      <div className="relative ml-auto flex min-h-screen w-9/12 flex-col gap-7 bg-light-300 px-8 pl-5 pt-5 dark:bg-dark-200">
         <Breadcrumb paths={paths} />
-        <h1 className="text-center text-4xl font-bold capitalize">
+        <h1 className="text-center text-4xl font-bold capitalize dark:text-light-400">
           Daftar Buku {visitedCategory.replaceAll('-', ' ')}
         </h1>
         <section className="grid grid-rows-none gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 [&>div[aria-label=skeleton]]:rounded-[10px]">

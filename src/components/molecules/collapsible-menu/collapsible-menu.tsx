@@ -69,7 +69,7 @@ const CollapsibleMenu = async ({
                       controlled={controlled}
                       item
                       key={x.category}
-                      className="border-l border-[#e5e5e5] pl-2"
+                      className="border-l border-[#e5e5e5] pl-2 dark:border-dark-300"
                       variant={variant}
                       Icon={Icon}
                       {...x}
@@ -80,7 +80,7 @@ const CollapsibleMenu = async ({
                 return (
                   <Button
                     key={x.category}
-                    className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1.5 text-lg font-normal hover:text-primary-light dark:hover:text-primary-dark"
+                    className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1.5 text-lg font-normal hover:text-primary-light dark:border-dark-300 dark:hover:text-primary-dark"
                     asChild
                   >
                     <Link href={x.path} scroll={false}>
@@ -91,7 +91,7 @@ const CollapsibleMenu = async ({
               })
             : !isRootCategory && (
                 <Button
-                  className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1.5 text-lg font-normal hover:text-primary-light dark:hover:text-primary-dark"
+                  className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1.5 text-lg font-normal hover:text-primary-light dark:border-dark-300 dark:hover:text-primary-dark"
                   asChild
                 >
                   <Link href={path} scroll={false}>

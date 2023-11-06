@@ -11,7 +11,7 @@ export default function Loading() {
         <h2 className="text-2xl font-bold">Kategori Buku</h2>
         <CategoryOutlineSkeleton />
       </aside>
-      <div className="ml-auto flex min-h-screen w-9/12 flex-col gap-7 bg-light-300 px-8 pl-5 pt-5">
+      <div className="ml-auto flex min-h-screen w-9/12 flex-col gap-7 bg-light-300 px-8 pl-5 pt-5 dark:bg-dark-200">
         <BreadcrumbSkeleton />
         <h1 className="flex items-center justify-center gap-2.5 text-center text-4xl font-bold capitalize">
           Daftar Buku <Skeleton className="h-6 w-32" />

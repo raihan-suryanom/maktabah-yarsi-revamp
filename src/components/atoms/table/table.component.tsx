@@ -25,7 +25,7 @@ const TableHeader = forwardRef<
   <thead
     ref={ref}
     className={cn(
-      'bg-primary-light [&_tr]:cursor-default [&_tr]:border-b [&_tr]:hover:bg-inherit',
+      'bg-primary-light [&_tr]:cursor-default [&_tr]:border-b [&_tr]:hover:bg-primary-light',
       className
     )}
     {...props}

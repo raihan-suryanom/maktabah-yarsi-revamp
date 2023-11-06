@@ -49,7 +49,7 @@ const DetailBookPage = async ({
 
   return (
     <>
-      <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5">
+      <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5 dark:border-gray-800">
         <h2 className="text-2xl font-bold">Daftar Isi</h2>
         <Suspense fallback={<TableOfContentSkeleton />}>
           <Await promise={categoriesPromise}>
