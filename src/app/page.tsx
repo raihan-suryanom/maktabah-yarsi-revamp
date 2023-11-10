@@ -33,29 +33,29 @@ export default function HomePage() {
       <header className="mx-auto flex h-[calc(100vh-64px)] flex-col items-center justify-center gap-10 text-center lg:w-9/12">
         <h1 className="!font-lpmq text-6xl font-normal text-primary-light dark:text-primary-dark">
           مكتبة يرسي
-          <span className="block pt-7 text-7xl font-black text-dark-100 dark:text-light-100">
+          <strong className="block pt-7 text-7xl font-black text-dark-100 dark:text-light-100">
             Maktabah YARSI
-          </span>
+          </strong>
         </h1>
         <p className="text-xl">
           Sebuah perpustakaan islam digital berbahasa Indonesia yang
           memungkinkan pengguna untuk mencari topik atau permasalahan
           berdasarkan kata kunci seperti{' '}
-          <span className="font-bold text-primary-light dark:text-primary-dark">
+          <strong className="text-primary-light dark:text-primary-dark">
             iman
-          </span>
+          </strong>
           ,{' '}
-          <span className="font-bold text-primary-light dark:text-primary-dark">
+          <strong className="text-primary-light dark:text-primary-dark">
             sabar
-          </span>
+          </strong>
           ,{' '}
-          <span className="font-bold text-primary-light dark:text-primary-dark">
+          <strong className="text-primary-light dark:text-primary-dark">
             shalat
-          </span>
+          </strong>
           , dan{' '}
-          <span className="font-bold text-primary-light dark:text-primary-dark">
+          <strong className="text-primary-light dark:text-primary-dark">
             riba
-          </span>
+          </strong>
           .
         </p>
         <SearchButton

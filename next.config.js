@@ -1,10 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['template.canva.com', 'edit.org'],
-  },
-  experimental: {
-    webpackBuildWorker: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'template.canva.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'edit.org',
+      },
+    ]
   },
   eslint: {
     ignoreDuringBuilds: process.env.DEBUG === 'true',

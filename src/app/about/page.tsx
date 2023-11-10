@@ -12,7 +12,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col gap-8 px-8 py-5">
       <Breadcrumb paths={[{ title: 'about' }]} />
-      <article className="prose max-w-none prose-h1:text-center prose-a:underline prose-a:decoration-primary-light prose-a:underline-offset-2 prose-strong:text-primary-light">
+      <article className="prose max-w-none dark:prose-invert prose-h1:text-center prose-a:underline prose-a:decoration-primary-light prose-a:underline-offset-2 prose-strong:text-primary-light dark:prose-a:decoration-primary-dark dark:prose-strong:text-primary-dark">
         <h1>Tentang Kami</h1>
         <section>
           <p>

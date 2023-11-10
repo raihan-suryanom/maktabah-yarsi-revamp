@@ -16,12 +16,12 @@ const SearchTable = async () => {
       collapsible
     >
       <Accordion.Item value="search-toggle">
-        <Accordion.Trigger className="bg-red-500 text-white">
+        <Accordion.Trigger className="bg-red-500 text-white hover:bg-red-600">
           <p className="mx-auto py-1 text-center text-xs">
             Tekan untuk menutup/membuka tabel pencarian
           </p>
         </Accordion.Trigger>
-        <Accordion.Content className="m-0 data-[state=open]:pb-3">
+        <Accordion.Content className="m-0 data-[state=open]:pb-3 dark:bg-dark-200">
           <Table.Root className="w-full table-fixed">
             <Table.Caption>
               <Pagination />
@@ -54,7 +54,7 @@ const SearchTable = async () => {
 };
 
 export const SearchTableSkeleton = () => (
-  <div className="fixed bottom-0 right-0 w-9/12 bg-light-100 pb-3">
+  <div className="fixed bottom-0 right-0 w-9/12 bg-light-100 pb-3 dark:bg-dark-200">
     <p className="mx-auto bg-red-500 py-1 text-center text-xs text-white">
       Tekan untuk menutup/membuka tabel pencarian
     </p>
