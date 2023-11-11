@@ -1,5 +1,6 @@
 'use client';
 
+import { useFormStatus } from 'react-dom';
 import {
   Root,
   FormProps,
@@ -41,9 +42,18 @@ const PrimitiveFormMessage: FC<FormMessageProps> = ({
   ...props
 }) => <FormMessage className={cn('text-red-500', className)} {...props} />;
 
-const PrimitiveFormSubmit: FC<FormSubmitProps> = ({ className, ...props }) => (
-  <FormSubmit className={cn(className)} {...props} />
-);
+const PrimitiveFormSubmit: FC<FormSubmitProps> = ({ className, ...props }) => {
+  const { pending } = useFormStatus();
+
+  return (
+    <FormSubmit
+      className={cn('disabled:cursor-not-allowed disabled:opacity-50')}
+      disabled={pending}
+      aria-disabled={pending}
+      {...props}
+    />
+  );
+};
 
 export {
   PrimitiveFormRoot as Root,

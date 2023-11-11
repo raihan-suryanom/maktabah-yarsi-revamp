@@ -12,6 +12,7 @@ type SearchButtonProps = DialogProps &
   DialogTriggerProps &
   ButtonProps & {
     placeholder: string;
+    _key?: string;
   };
 
 const SearchButton: FC<SearchButtonProps> = ({
@@ -21,7 +22,7 @@ const SearchButton: FC<SearchButtonProps> = ({
   children,
   ...props
 }) => (
-  <Dialog.Root {...props}>
+  <Dialog.Root key={props._key} {...props}>
     <Dialog.Trigger className={cn(className)} asChild>
       <Button
         size={size}

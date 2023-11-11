@@ -73,6 +73,7 @@ const DetailBookPage = async ({
             ]}
           />
           <SearchButton
+            _key={query}
             placeholder="Cari topik..."
             size="medium"
             className="gap-7 rounded-md"

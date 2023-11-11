@@ -10,7 +10,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'edit.org',
       },
-    ]
+    ],
   },
   eslint: {
     ignoreDuringBuilds: process.env.DEBUG === 'true',
