@@ -2,28 +2,28 @@ import type { CategoryProps } from '~/components/molecules/collapsible-menu';
 
 const dummyCategories = [
   {
-    category: 'ahklak',
-    path: '/categories/ahklak',
+    category: 'akhlak',
+    path: '/categories/akhlak',
     sub: [
       {
         category: 'akhlakul-karimah',
-        path: '/categories/ahklak/ahklakul-karimah',
+        path: '/categories/akhlak/akhlakul-karimah',
       },
       {
         category: 'tematik',
-        path: '/categories/ahklak/tematik',
+        path: '/categories/akhlak/tematik',
         sub: [
           {
             category: 'test-2',
-            path: '/categories/ahklak/tematik/test-2',
+            path: '/categories/akhlak/tematik/test-2',
           },
           {
             category: 'test-1',
-            path: '/categories/ahklak/tematik/test-1',
+            path: '/categories/akhlak/tematik/test-1',
             sub: [
               {
                 category: 'ayolohh',
-                path: '/categories/ahklak/tematik/test-1/ayolohh',
+                path: '/categories/akhlak/tematik/test-1/ayolohh',
               },
             ],
           },
@@ -31,7 +31,7 @@ const dummyCategories = [
       },
       {
         category: 'akhlak-budaya',
-        path: '/categories/ahklak/ahklak-budaya',
+        path: '/categories/akhlak/akhlak-budaya',
       },
     ],
   },

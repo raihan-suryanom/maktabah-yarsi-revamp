@@ -1,5 +1,5 @@
 const dummyPopularCategories = [
-  'ahklak',
+  'akhlak',
   'aqidah',
   'fiqih',
   'hadits',

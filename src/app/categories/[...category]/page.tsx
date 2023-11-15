@@ -15,13 +15,13 @@ import {
 
 export async function generateStaticParams() {
   return [
-    { category: ['ahklak'] },
-    { category: ['ahklak', 'akhlakul-karimah'] },
-    { category: ['ahklak', 'tematik'] },
-    { category: ['ahklak', 'tematik', 'test-2'] },
-    { category: ['ahklak', 'tematik', 'test-1'] },
-    { category: ['ahklak', 'tematik', 'test-1', 'ayolohh'] },
-    { category: ['ahklak', 'akhlak-budaya'] },
+    { category: ['akhlak'] },
+    { category: ['akhlak', 'akhlakul-karimah'] },
+    { category: ['akhlak', 'tematik'] },
+    { category: ['akhlak', 'tematik', 'test-2'] },
+    { category: ['akhlak', 'tematik', 'test-1'] },
+    { category: ['akhlak', 'tematik', 'test-1', 'ayolohh'] },
+    { category: ['akhlak', 'akhlak-budaya'] },
     { category: ['fiqih'] },
     { category: ['fiqih', 'fiqih-ibadah'] },
     { category: ['al-quran'] },
