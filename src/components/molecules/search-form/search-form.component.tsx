@@ -21,7 +21,6 @@ const SearchForm = () => {
       formData as unknown as string
     ).toString();
 
-    await wait(2000);
     redirect(`/books/dummy-template/4?${queryString}`);
   }
 

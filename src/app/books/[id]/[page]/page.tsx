@@ -53,7 +53,7 @@ const DetailBookPage = async ({
         <h2 className="text-2xl font-bold">Daftar Isi</h2>
         <Suspense fallback={<TableOfContentSkeleton />}>
           <Await promise={categoriesPromise}>
-            {({ categories }) => (
+            {(categories) => (
               <MenuOutline
                 variant="tableOfContent"
                 outlines={categories}
@@ -101,7 +101,7 @@ const DetailBookPage = async ({
           </Card.Footer>
         </Card.Root>
         <Suspense key={page} fallback={<MainContentSkeleton />}>
-          <Await promise={contentPromise}>
+          <Await promise={contentPromise} _DEV>
             {(content) => (
               <MainContent query={searchParams?.query} content={content} />
             )}

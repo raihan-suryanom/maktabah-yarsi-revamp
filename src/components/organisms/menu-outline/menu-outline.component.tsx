@@ -10,13 +10,18 @@ import type {
 const MenuOutline: FC<
   { outlines: ReadonlyArray<CategoryProps> } & Omit<
     CollapsibleMenuProps,
-    'category' | 'path'
+    'category' | 'path' | 'name'
   >
 > = ({ outlines, ...props }) => {
   return (
     <>
       {outlines.map((outline) => (
-        <CollapsibleMenu key={outline.category} {...outline} {...props} />
+        <CollapsibleMenu
+          key={outline._id}
+          {...outline}
+          {...props}
+          path="/categories/fiqih"
+        />
       ))}
     </>
   );

@@ -1,6 +1,6 @@
 import { cn } from './cn';
 import { getBooks } from './getBooks';
-import { getCategories } from './getCategories';
+import { getCategories } from './categories.server';
 import { getContents } from './getContents';
 import { getInvoices } from './getInvoices';
 import { getPaths } from './getPaths';

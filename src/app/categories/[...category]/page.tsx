@@ -44,7 +44,7 @@ export default function ListOfBookPage({
         <h2 className="text-2xl font-bold">Kategori Buku</h2>
         <Suspense fallback={<CategoryOutlineSkeleton />}>
           <Await promise={categoriesPromise}>
-            {({ categories }) => (
+            {(categories) => (
               <MenuOutline
                 variant="categories"
                 outlines={categories}
@@ -63,7 +63,7 @@ export default function ListOfBookPage({
         </h1>
         <section className="grid grid-rows-none gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 [&>div[aria-label=skeleton]]:rounded-[10px]">
           <Suspense key={visitedCategory} fallback={<BookListSkeleton />}>
-            <Await promise={booksPromise}>
+            <Await promise={booksPromise} _DEV>
               {({ books }) => <BookList books={books} />}
             </Await>
           </Suspense>

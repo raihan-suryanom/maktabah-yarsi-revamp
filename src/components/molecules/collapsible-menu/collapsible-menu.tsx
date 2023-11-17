@@ -1,15 +1,16 @@
 import Link from 'next/link';
+import { ChevronDown } from 'lucide-react';
 
 import { Accordion, Badge, Button } from '~/components/atoms';
 import { accordionTriggerVariants } from '~/components/atoms/accordion/accordion.style';
-import { ChevronDown } from 'lucide-react';
 
 import type { VariantProps } from 'class-variance-authority';
 
 export type CategoryProps = {
-  category: string;
+  _id?: string;
+  name: string;
   path: string;
-  sub?: ReadonlyArray<CategoryProps>;
+  subcategories?: ReadonlyArray<CategoryProps> & { category?: string };
 };
 
 export type CollapsibleMenuProps = VariantProps<
@@ -20,34 +21,32 @@ export type CollapsibleMenuProps = VariantProps<
     Icon: JSX.Element;
     isRootCategory?: boolean;
     controlled?: boolean;
-    category: string;
-    path: string;
   };
 
 const CollapsibleMenu = async ({
   className,
-  category,
+  name,
   path,
-  sub,
+  subcategories,
   variant,
   Icon,
   controlled,
   isRootCategory,
 }: CollapsibleMenuProps) => {
-  const hasSubCategory = Array.isArray(sub);
+  const hasSubCategory = subcategories!.length > 0;
 
   return (
     <Accordion.Root
       type="multiple"
-      itemID={category}
+      itemID={name}
       className={className}
       controlled={controlled}
     >
-      <Accordion.Item value={category}>
+      <Accordion.Item value={name}>
         <Accordion.Trigger variant={variant} asChild>
           <Link href={path} scroll={false} passHref>
             {(hasSubCategory || variant === 'categories') && Icon}
-            {category}
+            {name}
             {variant === 'categories' && (
               <Badge className="font-bold">34</Badge>
             )}
@@ -62,29 +61,28 @@ const CollapsibleMenu = async ({
         </Accordion.Trigger>
         <Accordion.Content asChild>
           {hasSubCategory
-            ? sub?.map((x) => {
-                if (Array.isArray(x.sub)) {
+            ? subcategories?.map((sub) => {
+                if (sub.subcategories?.length && sub.subcategories.length > 0) {
                   return (
                     <CollapsibleMenu
                       controlled={controlled}
-                      item
-                      key={x.category}
+                      key={sub._id}
                       className="border-l border-[#e5e5e5] pl-2 dark:border-dark-300"
                       variant={variant}
                       Icon={Icon}
-                      {...x}
+                      {...sub}
                     />
                   );
                 }
 
                 return (
                   <Button
-                    key={x.category}
+                    key={sub._id}
                     className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1.5 text-lg font-normal hover:text-primary-light dark:border-dark-300 dark:hover:text-primary-dark"
                     asChild
                   >
-                    <Link href={x.path} scroll={false}>
-                      {x.category}
+                    <Link href={'/categories/books'} scroll={false}>
+                      {sub.name}
                     </Link>
                   </Button>
                 );
@@ -95,7 +93,7 @@ const CollapsibleMenu = async ({
                   asChild
                 >
                   <Link href={path} scroll={false}>
-                    {category}
+                    {name}
                   </Link>
                 </Button>
               )}

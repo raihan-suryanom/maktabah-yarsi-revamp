@@ -65,7 +65,7 @@ export default function HomePage() {
         />
         <section className="flex w-full items-center justify-between">
           <Suspense fallback={<CardGroupSkeleton />}>
-            <Await promise={popularCategoriesPromise}>
+            <Await promise={popularCategoriesPromise} _DEV>
               {({ popularCategories }) => (
                 <CardGroup data={popularCategories} />
               )}
