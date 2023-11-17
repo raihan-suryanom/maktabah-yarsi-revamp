@@ -1,7 +1,6 @@
 import { BookOpen, LayoutGrid, Search } from 'lucide-react';
 
 import { Button, Checkbox, Form, Input, Select } from '~/components/atoms';
-import { wait } from '~/lib/utils';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
