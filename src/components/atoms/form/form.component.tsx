@@ -16,7 +16,7 @@ import {
   FormSubmit,
 } from '@radix-ui/react-form';
 
-import { cn } from '~/lib/utils';
+import { cn } from '~/lib/utils/cn';
 
 import type { FC } from 'react';
 

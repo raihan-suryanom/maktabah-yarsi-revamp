@@ -7,11 +7,14 @@ import {
 } from '~/components/organisms/menu-outline';
 import { Breadcrumb } from '~/components/molecules';
 import { BookList, BookListSkeleton } from '~/components/organisms/book-list';
-import { Await, getBooks, getCategories, getPaths } from '~/lib/utils';
 import {
   Pagination,
   PaginationSkeleton,
 } from '~/components/molecules/pagination';
+import { getPaths } from '~/lib/utils/getPaths';
+import { getBooks } from '~/lib/utils/getBooks';
+import { getCategories } from '~/lib/utils/categories.server';
+import { Await } from '~/lib/utils/await.component';
 
 export async function generateStaticParams() {
   return [

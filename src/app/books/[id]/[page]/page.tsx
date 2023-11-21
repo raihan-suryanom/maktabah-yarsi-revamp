@@ -6,8 +6,10 @@ import { TableOfContentSkeleton } from '~/components/organisms/menu-outline';
 import { MainContent, MenuOutline } from '~/components/organisms';
 import { MainContentSkeleton } from '~/components/organisms/main-content';
 import { SearchTableSkeleton } from '~/components/organisms/search-table';
-import { Await, getCategories, getContents } from '~/lib/utils';
 import { Breadcrumb, SearchButton } from '~/components/molecules';
+import { getContents } from '~/lib/utils/getContents';
+import { getCategories } from '~/lib/utils/categories.server';
+import { Await } from '~/lib/utils/await.component';
 
 const SearchTable = lazy(
   () => import('~/components/organisms/search-table/search-table.component')

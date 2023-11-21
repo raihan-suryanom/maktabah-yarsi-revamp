@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { cn } from '~/lib/utils';
+import { cn } from '~/lib/utils/cn';
 import { inputVariants } from './input.styles';
 
 import type { VariantProps } from 'class-variance-authority';

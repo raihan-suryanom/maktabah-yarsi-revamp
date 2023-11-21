@@ -1,11 +1,12 @@
 import { Suspense } from 'react';
 
-import { Await, getPopularCategories } from '~/lib/utils';
 import {
   CardGroup,
   CardGroupSkeleton,
 } from '~/components/molecules/card-group';
 import { SearchButton } from '~/components/molecules';
+import { getPopularCategories } from '~/lib/utils/getPopularCategories';
+import { Await } from '~/lib/utils/await.component';
 
 import type { Metadata } from 'next';
 

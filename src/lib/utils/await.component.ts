@@ -1,7 +1,6 @@
-import { FetchResponse } from './index.type';
+import { wait } from './helper';
 
-export const wait = (milliSecond: number) =>
-  new Promise((resolve) => setTimeout(resolve, milliSecond));
+import type { FetchResponse } from './index.type';
 
 export const Await = async <T>({
   promise,
