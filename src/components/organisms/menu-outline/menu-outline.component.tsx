@@ -1,5 +1,6 @@
 import { Skeleton } from '~/components/atoms';
 import { CollapsibleMenu } from '~/components/molecules';
+import { generateCategoryPaths } from '~/lib/utils/generate-category-paths';
 
 import type { FC } from 'react';
 import type {
@@ -13,15 +14,12 @@ const MenuOutline: FC<
     'category' | 'path' | 'name'
   >
 > = ({ outlines, ...props }) => {
+  const data = generateCategoryPaths(outlines);
+
   return (
     <>
-      {outlines.map((outline) => (
-        <CollapsibleMenu
-          key={outline._id}
-          {...outline}
-          {...props}
-          path="/categories/fiqih"
-        />
+      {data.map((outline) => (
+        <CollapsibleMenu key={outline._id} {...outline} {...props} />
       ))}
     </>
   );
