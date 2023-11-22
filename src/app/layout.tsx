@@ -1,8 +1,8 @@
 import './globals.css';
-import { lpmq, poppins } from '~/lib/fonts';
+import { lpmq, poppins } from '~/lib/utils/fonts';
 import { NavigationBar } from '~/components/molecules';
 import { ThemeProvider } from '~/components/organisms';
-import { cn } from '~/lib/utils';
+import { cn } from '~/lib/utils/cn';
 
 export default function RootLayout({
   children,

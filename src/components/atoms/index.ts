@@ -1,6 +1,5 @@
 import { Button } from './button';
 import { Input } from './input';
-import { Badge } from './badge';
 import { Accordion } from './accordion';
 import { Checkbox } from './checkbox';
 import { Card } from './card';
@@ -16,7 +15,6 @@ import { Separator } from './separator';
 export {
   Button,
   Input,
-  Badge,
   Accordion,
   Checkbox,
   Card,

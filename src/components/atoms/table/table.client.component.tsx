@@ -2,7 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { forwardRef } from 'react';
-import { cn } from '~/lib/utils';
+
+import { cn } from '~/lib/utils/cn';
 
 const TableRow = forwardRef<
   HTMLTableRowElement,

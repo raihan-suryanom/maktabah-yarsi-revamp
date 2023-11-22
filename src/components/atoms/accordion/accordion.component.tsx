@@ -10,7 +10,7 @@ import {
   Content,
 } from '@radix-ui/react-accordion';
 
-import { cn } from '~/lib/utils';
+import { cn } from '~/lib/utils/cn';
 import { accordionTriggerVariants } from './accordion.style';
 
 import type { VariantProps } from 'class-variance-authority';

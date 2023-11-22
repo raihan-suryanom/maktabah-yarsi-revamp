@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 import { Button, Input, Skeleton } from '~/components/atoms';
-import { cn } from '~/lib/utils';
+import { cn } from '~/lib/utils/cn';
 
 type PaginationProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLElement>,

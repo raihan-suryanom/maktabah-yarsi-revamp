@@ -1,7 +1,6 @@
 import { BookOpen, LayoutGrid, Search } from 'lucide-react';
 
 import { Button, Checkbox, Form, Input, Select } from '~/components/atoms';
-import { wait } from '~/lib/utils';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -21,7 +20,6 @@ const SearchForm = () => {
       formData as unknown as string
     ).toString();
 
-    await wait(2000);
     redirect(`/books/dummy-template/4?${queryString}`);
   }
 

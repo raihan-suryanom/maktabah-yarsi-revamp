@@ -9,7 +9,7 @@ export const poppins = Poppins({
 });
 
 export const lpmq = localFont({
-  src: '../../public/lpmq.woff2',
+  src: '../../../public/lpmq.woff2',
   style: 'normal',
   weight: '400',
   variable: '--font-lpmq',
