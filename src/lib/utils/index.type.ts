@@ -1,7 +1,7 @@
 const errorCodes = [400, 401, 403, 404, 500, 501, 502, 503] as const;
 const successCodes = [200, 201, 204] as const;
 
-type SuccessResponse<T> = {
+export type SuccessResponse<T> = {
   message: string;
   data: T;
   status: 'success';

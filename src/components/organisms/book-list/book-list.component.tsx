@@ -3,26 +3,36 @@ import Link from 'next/link';
 import { Layers, Pencil } from 'lucide-react';
 
 import { Card, Skeleton } from '~/components/atoms';
+import { generateBookPaths } from '~/lib/utils/generate-paths';
 
-const BookList = async ({
-  books,
-}: {
-  books: {
-    link: string;
-    title: string;
-    image: string;
-    author: string;
-    pages: number;
-  }[];
-}) => {
+export type BookProps = {
+  _id: string;
+  path: string;
+  title: string;
+  image_url: string;
+  description: string;
+  contributor: string;
+  date_created: string;
+  source: string;
+  creator: string;
+  page: number;
+  total: number;
+  createdAt: string;
+  category: string[];
+  sub_category: string[];
+};
+
+const BookList = async ({ books }: { books: ReadonlyArray<BookProps> }) => {
+  const x = generateBookPaths(books);
+
   return (
     <>
-      {books.map((book) => (
-        <Card.Root key={book.link}>
-          <Link href={book.link} passHref>
+      {x.map((book) => (
+        <Card.Root key={book._id}>
+          <Link href={book.path} passHref>
             <Card.Content className="relative aspect-[1/1.5] w-full bg-gray-100 md:rounded-[10px]">
               <Image
-                src={book.image}
+                src={book.image_url}
                 alt={`${book.title}'s cover book`}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="rounded-[inherit] object-cover object-center"
@@ -37,11 +47,11 @@ const BookList = async ({
             <Card.Title className="text-base">{book.title}</Card.Title>
             <span className="flex items-center gap-1.5">
               <Pencil size={12} />
-              <small className="text-xs">{book.author}</small>
+              <small className="text-xs">{book.creator}</small>
             </span>
             <div className="flex items-center gap-1.5">
               <Layers size={12} />
-              <small className="text-xs">{book.pages} halaman</small>
+              <small className="text-xs">{book.page} halaman</small>
             </div>
           </Card.Footer>
         </Card.Root>
