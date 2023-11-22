@@ -13,16 +13,20 @@ export const Await = async <T>({
   delay?: number;
   _DEV?: boolean;
 }) => {
-  await wait(delay); // WARNING: DON'T USE THIS, ONLY FOR DEBUGGING PURPOSE!
-  const response = (await promise) as FetchResponse<T>;
+  try {
+    await wait(delay); // WARNING: DON'T USE THIS, ONLY FOR DEBUGGING PURPOSE!
+    const response = (await promise) as FetchResponse<T>;
 
-  if (_DEV) {
-    return children(response as T);
+    if (_DEV) {
+      return children(response as T);
+    }
+
+    if (response.statusCode === 200) {
+      return children(response.data);
+    }
+
+    throw new Error(response.message);
+  } catch (error) {
+    throw new Error(error as string);
   }
-
-  if (response.statusCode === 200) {
-    return children(response.data);
-  }
-
-  throw new Error(response.message);
 };

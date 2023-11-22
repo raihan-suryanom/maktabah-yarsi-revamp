@@ -1,6 +1,6 @@
 import { Skeleton } from '~/components/atoms';
 import { CollapsibleMenu } from '~/components/molecules';
-import { generateCategoryPaths } from '~/lib/utils/generate-category-paths';
+import { generateCategoryPaths } from '~/lib/utils/generate-paths';
 
 import type { FC } from 'react';
 import type {

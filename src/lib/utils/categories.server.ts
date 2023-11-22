@@ -1,5 +1,6 @@
-import { CategoryProps } from '~/components/molecules/collapsible-menu';
 import dummyCategories from '../fixtures/categories';
+
+import type { CategoryProps } from '~/components/molecules/collapsible-menu';
 
 export const getCategories = async (): Promise<
   ReadonlyArray<CategoryProps>

@@ -1,5 +1,6 @@
 import { formatToSlugCase } from './helper';
 
+import type { BookProps } from '~/components/organisms/book-list/book-list.component';
 import type { CategoryProps } from '~/components/molecules/collapsible-menu';
 
 export const generateCategoryPaths = (
@@ -25,3 +26,6 @@ export const generateCategoryPaths = (
     };
   });
 };
+
+export const generateBookPaths = (books: ReadonlyArray<BookProps>) =>
+  books.map((book) => ({ ...book, path: `/books/${book._id}/${book.page}` }));
