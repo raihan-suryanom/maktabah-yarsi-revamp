@@ -23,11 +23,11 @@ export type BookProps = {
 };
 
 const BookList = async ({ books }: { books: ReadonlyArray<BookProps> }) => {
-  const x = generateBookPaths(books);
+  const formattedBooks = generateBookPaths(books);
 
   return (
     <>
-      {x.map((book) => (
+      {formattedBooks.map((book, order) => (
         <Card.Root key={book._id}>
           <Link href={book.path} passHref>
             <Card.Content className="relative aspect-[1/1.5] w-full bg-gray-100 md:rounded-[10px]">
@@ -38,7 +38,7 @@ const BookList = async ({ books }: { books: ReadonlyArray<BookProps> }) => {
                 className="rounded-[inherit] object-cover object-center"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMU2Nn4HwAEdgJL7ELe/AAAAABJRU5ErkJggg=="
                 placeholder="blur"
-                priority
+                priority={order < 10}
                 fill
               />
             </Card.Content>
