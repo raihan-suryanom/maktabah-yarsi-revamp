@@ -23,7 +23,7 @@ export default function HomePage() {
     <>
       <header className="mx-auto flex h-[calc(100vh-64px)] flex-col items-center justify-center gap-10 text-center lg:w-9/12">
         <h1 className="!font-lpmq text-6xl font-normal text-primary-light dark:text-primary-dark">
-          مكتبة يرسي
+          مَكتَبَةُ يَرسِي
           <strong className="block pt-7 text-7xl font-black text-dark-100 dark:text-light-100">
             Maktabah YARSI
           </strong>
@@ -56,7 +56,7 @@ export default function HomePage() {
         />
         <section className="flex w-full items-center justify-between">
           <Suspense fallback={<CardGroupSkeleton />}>
-            <Await promise={popularCategoriesPromise} _DEV>
+            <Await promise={popularCategoriesPromise}>
               {({ popularCategories }) => (
                 <CardGroup data={popularCategories} />
               )}

@@ -43,6 +43,7 @@ const Select = <
       inputVariants({ dimension, className })
     )}
     onBlur={onBlurWorkaround}
+    closeMenuOnSelect={false}
     unstyled
     {...props}
   />

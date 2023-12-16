@@ -15,11 +15,13 @@ export type BookProps = {
   date_created: string;
   source: string;
   creator: string;
-  page: number;
   total: number;
-  createdAt: string;
-  category: string[];
-  sub_category: string[];
+  category: string;
+} & BookPages;
+
+export type BookPages = {
+  firstPage: number;
+  lastPage: number;
 };
 
 const BookList = async ({ books }: { books: ReadonlyArray<BookProps> }) => {
@@ -32,7 +34,7 @@ const BookList = async ({ books }: { books: ReadonlyArray<BookProps> }) => {
           <Link href={book.path} passHref>
             <Card.Content className="relative aspect-[1/1.5] w-full bg-gray-100 md:rounded-[10px]">
               <Image
-                src={book.image_url}
+                src="/book_cover_not_available.png"
                 alt={`${book.title}'s cover book`}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="rounded-[inherit] object-cover object-center"
@@ -51,7 +53,7 @@ const BookList = async ({ books }: { books: ReadonlyArray<BookProps> }) => {
             </span>
             <div className="flex items-center gap-1.5">
               <Layers size={12} />
-              <small className="text-xs">{book.page} halaman</small>
+              <small className="text-xs">{book.lastPage} halaman</small>
             </div>
           </Card.Footer>
         </Card.Root>

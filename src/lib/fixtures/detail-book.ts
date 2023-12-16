@@ -1,25 +1,20 @@
 const dummyDetailBook = new Promise((resolve) =>
   resolve({
-    statusCode: 200,
-    status: 'success',
-    data: {
-      page: 0,
-      path: '/books/dummy-template/2',
-      _id: '654d1451c098f76ab43e9705',
-      title: 'hadist dua',
-      description: 'buku ini berisikan tentang hadist al bukhari',
-      contributor: 'MUI',
-      creator: 'ridho',
-      date_created: '2023-11-09T16:42:12.705Z',
-      source: 'https://google.com',
-      image_url:
-        'https://toko-bukumuslim.com/288-4256-thickbox/buku-shahih-al-bukhari-lengkap-1-set-jilid-1-5.jpg',
-      createdAt: '2023-11-09T16:42:12.705Z',
-      total: 0,
-      category: [],
-      sub_category: [],
-    },
-    message: 'Data has been successfully retrieved',
+    _id: '5NW2',
+    category: '6573307da027a2e4a3a2828b',
+    title: 'Adab Murid Terhadap Diri Sendiri',
+    description:
+      'Pertama, hendaknya membersihkan hati dari segala perbuatan curang, kotor, benci, dengki, akidah yang buruk dan perangai (budi pekerti) yang tidak baik; hal itu dilakukan untuk memperbaiki dalam menerima ilmu, menjaganya serta mengulas makna-maknanya secara detail dan hakikat-hakikatnya yang samar.',
+    contributor: '-',
+    creator: 'Syafri M. Noor, Lc',
+    publisher: '-',
+    resource_identifier: 'ISBN',
+    rights: 'wakaf',
+    source: 'https://www.rumahfiqih.com/pdf/z.php?id=305',
+    subject: 'akhlak',
+    date_created: 'Thu, 23 April 2020',
+    image: '/public/images/default.png',
+    __v: 0,
   })
 );
 

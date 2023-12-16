@@ -7,14 +7,38 @@ import type {
   CategoryProps,
   CollapsibleMenuProps,
 } from '~/components/molecules/collapsible-menu/collapsible-menu';
+import { TOCProps } from '~/lib/utils/books.server';
+
+const renameAttributes = (
+  item: CategoryProps & { page: number; text?: string }
+) => {
+  const newItem: CategoryProps & { page: number; text?: string } = {
+    page: item.page,
+    title: item.title || item.text!,
+    path: '/books/5NW2/' + item.page,
+    _id: 'tester' + item.title,
+  };
+
+  if (item.children && item.children.length > 0) {
+    newItem.children = item.children.map((child) =>
+      renameAttributes(child as CategoryProps & { page: number; text?: string })
+    );
+  }
+
+  return newItem;
+};
 
 const MenuOutline: FC<
-  { outlines: ReadonlyArray<CategoryProps> } & Omit<
-    CollapsibleMenuProps,
-    'category' | 'path' | 'name'
-  >
-> = ({ outlines, ...props }) => {
-  const data = generateCategoryPaths(outlines);
+  {
+    TOC?: boolean;
+    outlines: ReadonlyArray<CategoryProps> | TOCProps;
+  } & Omit<CollapsibleMenuProps, 'id' | 'path' | 'title'>
+> = ({ TOC, outlines, ...props }) => {
+  const data = TOC
+    ? outlines.map((item) =>
+        renameAttributes(item as CategoryProps & { page: number })
+      )
+    : generateCategoryPaths(outlines as ReadonlyArray<CategoryProps>);
 
   return (
     <>

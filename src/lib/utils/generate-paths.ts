@@ -8,24 +8,24 @@ export const generateCategoryPaths = (
   parentPath = ''
 ) => {
   return categories.map((category) => {
-    const fullPath = `${parentPath}/${formatToSlugCase(category.name)}`;
+    const fullPath = `${parentPath}/${formatToSlugCase(category.title)}`;
 
-    if (category.subcategories && category.subcategories.length > 0) {
-      category.subcategories = generateCategoryPaths(
-        category.subcategories,
-        fullPath
-      );
+    if (category.children && category.children.length > 0) {
+      category.children = generateCategoryPaths(category.children, fullPath);
     } else {
-      delete category.subcategories;
+      delete category.children;
     }
 
     return {
       ...category,
-      name: formatToSlugCase(category.name),
+      title: formatToSlugCase(category.title),
       path: `/categories${fullPath}`,
     };
   });
 };
 
 export const generateBookPaths = (books: ReadonlyArray<BookProps>) =>
-  books.map((book) => ({ ...book, path: `/books/${book._id}/${book.page}` }));
+  books.map((book) => ({
+    ...book,
+    path: `/books/${book._id}/${book.firstPage}`,
+  }));

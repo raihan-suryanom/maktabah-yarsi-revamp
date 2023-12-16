@@ -9,9 +9,9 @@ import type { VariantProps } from 'class-variance-authority';
 
 export type CategoryProps = {
   _id?: string;
-  name: string;
+  title: string;
   path: string;
-  subcategories?: ReadonlyArray<CategoryProps> & { category?: string };
+  children?: ReadonlyArray<CategoryProps>;
 };
 
 export type CollapsibleMenuProps = VariantProps<
@@ -26,28 +26,28 @@ export type CollapsibleMenuProps = VariantProps<
 
 const CollapsibleMenu = async ({
   className,
-  name,
+  title,
   path,
-  subcategories,
+  children,
   variant,
   Icon,
   controlled,
   isRootCategory,
 }: CollapsibleMenuProps) => {
-  const hasSubCategory = Array.isArray(subcategories);
+  const hasSubCategory = Array.isArray(children);
 
   return (
     <Accordion.Root
       type="multiple"
-      itemID={name}
+      itemID={title}
       className={className}
       controlled={controlled}
     >
-      <Accordion.Item value={name}>
+      <Accordion.Item value={title}>
         <Accordion.Trigger variant={variant} asChild>
-          <Link href={path} scroll={false} passHref>
+          <Link className="py-1.5" href={path} scroll={false} passHref>
             {(hasSubCategory || variant === 'categories') && Icon}
-            {reverseSlugCaseToOriginal(name)}
+            {reverseSlugCaseToOriginal(title)}
             {hasSubCategory && variant === 'categories' && (
               <ChevronDown
                 className="ml-auto shrink-0 text-primary-light transition-transform duration-200 dark:text-primary-dark"
@@ -59,12 +59,12 @@ const CollapsibleMenu = async ({
         </Accordion.Trigger>
         <Accordion.Content asChild>
           {hasSubCategory
-            ? subcategories.map((sub) => {
-                if (Array.isArray(sub.subcategories)) {
+            ? children.map((sub) => {
+                if (Array.isArray(sub.children)) {
                   return (
                     <CollapsibleMenu
                       controlled={controlled}
-                      key={sub._id}
+                      key={sub._id || sub.name}
                       className="border-l border-[#e5e5e5] pl-2 dark:border-dark-300"
                       variant={variant}
                       Icon={Icon}
@@ -80,7 +80,7 @@ const CollapsibleMenu = async ({
                     asChild
                   >
                     <Link href={sub.path} scroll={false}>
-                      {reverseSlugCaseToOriginal(sub.name)}
+                      {reverseSlugCaseToOriginal(sub.title || sub.text)}
                     </Link>
                   </Button>
                 );
@@ -91,7 +91,7 @@ const CollapsibleMenu = async ({
                   asChild
                 >
                   <Link href={path} scroll={false}>
-                    {reverseSlugCaseToOriginal(name)}
+                    {reverseSlugCaseToOriginal(title)}
                   </Link>
                 </Button>
               )}
