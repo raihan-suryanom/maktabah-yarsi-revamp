@@ -1,6 +1,7 @@
 import dummyAllBibliographies from '../fixtures/all-books';
 import dummyBooks from '../fixtures/books';
 import dummyDetailBook from '../fixtures/detail-book';
+import dummyTableOfContents from '../fixtures/toc';
 
 import type { BookProps } from '~/components/organisms/book-list/book-list.component';
 
@@ -38,6 +39,10 @@ export const getAllBibliographies = async (): Promise<
 };
 
 export const getTableOfContents = async (bookId: string): Promise<TOCProps> => {
+  if (process.env.NODE_ENV === 'production') {
+    return dummyTableOfContents as Promise<TOCProps>;
+  }
+
   return fetch(
     `${process.env.BASE_API_URL}${process.env.BIBLIOGRAPHIES_API}/${bookId}${process.env.TOC_API}`
   ).then((response) => response.json());
