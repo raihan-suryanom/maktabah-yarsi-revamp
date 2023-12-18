@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const accordionTriggerVariants = cva(
-  'flex flex-1 items-center text-lg font-medium transition-all [&[data-state=open]>svg]:rotate-180',
+  'flex flex-1 items-center font-medium transition-all [&[data-state=open]>svg]:rotate-180',
   {
     variants: {
       variant: {

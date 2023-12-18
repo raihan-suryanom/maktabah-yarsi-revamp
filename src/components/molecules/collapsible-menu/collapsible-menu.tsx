@@ -45,7 +45,12 @@ const CollapsibleMenu = async ({
     >
       <Accordion.Item value={title}>
         <Accordion.Trigger variant={variant} asChild>
-          <Link className="py-1.5" href={path} scroll={false} passHref>
+          <Link
+            className="py-1 font-semibold dark:text-light-400"
+            href={path}
+            scroll={false}
+            passHref
+          >
             {(hasSubCategory || variant === 'categories') && Icon}
             {reverseSlugCaseToOriginal(title)}
             {hasSubCategory && variant === 'categories' && (
@@ -59,15 +64,12 @@ const CollapsibleMenu = async ({
         </Accordion.Trigger>
         <Accordion.Content asChild>
           {hasSubCategory
-            ? children.map((sub) => {
+            ? children.map((sub: CollapsibleMenuProps) => {
                 if (Array.isArray(sub.children)) {
                   return (
                     <CollapsibleMenu
-                      controlled={controlled}
-                      key={sub._id || sub.name}
+                      key={sub._id}
                       className="border-l border-[#e5e5e5] pl-2 dark:border-dark-300"
-                      variant={variant}
-                      Icon={Icon}
                       {...sub}
                     />
                   );
@@ -76,18 +78,18 @@ const CollapsibleMenu = async ({
                 return (
                   <Button
                     key={sub._id}
-                    className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1.5 text-lg font-normal hover:text-primary-light dark:border-dark-300 dark:hover:text-primary-dark"
+                    className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1 text-sm font-normal hover:text-primary-light dark:border-dark-300 dark:hover:text-primary-dark"
                     asChild
                   >
                     <Link href={sub.path} scroll={false}>
-                      {reverseSlugCaseToOriginal(sub.title || sub.text)}
+                      {reverseSlugCaseToOriginal(sub.title)}
                     </Link>
                   </Button>
                 );
               })
             : !isRootCategory && (
                 <Button
-                  className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1.5 text-lg font-normal hover:text-primary-light dark:border-dark-300 dark:hover:text-primary-dark"
+                  className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1 text-sm font-normal hover:text-primary-light dark:border-dark-300 dark:hover:text-primary-dark"
                   asChild
                 >
                   <Link href={path} scroll={false}>

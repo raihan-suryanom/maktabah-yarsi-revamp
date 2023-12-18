@@ -9,19 +9,17 @@ import type {
 } from '~/components/molecules/collapsible-menu/collapsible-menu';
 import { TOCProps } from '~/lib/utils/books.server';
 
-const renameAttributes = (
-  item: CategoryProps & { page: number; text?: string }
-) => {
-  const newItem: CategoryProps & { page: number; text?: string } = {
+const renameAttributes = (item: CategoryProps & { page: number }) => {
+  const newItem: CategoryProps & { page: number } = {
     page: item.page,
-    title: item.title || item.text!,
+    title: item.title,
     path: '/books/5NW2/' + item.page,
     _id: 'tester' + item.title,
   };
 
   if (item.children && item.children.length > 0) {
     newItem.children = item.children.map((child) =>
-      renameAttributes(child as CategoryProps & { page: number; text?: string })
+      renameAttributes(child as CategoryProps & { page: number })
     );
   }
 
