@@ -19,7 +19,7 @@ import {
 } from '~/lib/utils/books.server';
 import { extractContentBookPaths } from '~/lib/utils/extract-category-paths';
 import { getContents } from '~/lib/utils/content.server';
-import { formateDate } from '~/lib/utils/helper';
+import { formateDate, reverseSlugCaseToOriginal } from '~/lib/utils/helper';
 
 import type { BookProps } from '~/components/organisms/book-list/book-list.component';
 
@@ -73,12 +73,23 @@ const DetailBookPage = async ({
       <div className="ml-auto flex w-9/12 flex-col gap-5 px-8 pb-20 pt-5">
         <Suspense fallback={<MainContentSkeleton />}>
           <Await promise={detailBookPromise}>
-            {({ _id, title, creator, firstPage, lastPage, date_created }) => (
+            {({
+              _id,
+              title,
+              creator,
+              firstPage,
+              subject,
+              lastPage,
+              date_created,
+            }) => (
               <>
                 <div className="flex justify-between">
                   <Breadcrumb
                     paths={[
-                      { title: 'Categories', link: 'categories' },
+                      {
+                        title: reverseSlugCaseToOriginal(subject),
+                        link: subject,
+                      },
                       { title },
                     ]}
                   />

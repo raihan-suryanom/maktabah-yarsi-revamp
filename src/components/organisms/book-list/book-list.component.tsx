@@ -14,6 +14,7 @@ export type BookProps = {
   contributor: string;
   date_created: string;
   source: string;
+  subject: string;
   creator: string;
   total: number;
   category: string;
