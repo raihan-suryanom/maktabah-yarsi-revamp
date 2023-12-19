@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronDown } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 import { Accordion, Button } from '~/components/atoms';
 import { accordionTriggerVariants } from '~/components/atoms/accordion/accordion.style';
@@ -45,19 +45,14 @@ const CollapsibleMenu = async ({
     >
       <Accordion.Item value={title}>
         <Accordion.Trigger variant={variant} asChild>
-          <Link
-            className="py-1 font-semibold dark:text-light-400"
-            href={path}
-            scroll={false}
-            passHref
-          >
-            {(hasSubCategory || variant === 'categories') && Icon}
+          <Link href={path} scroll={false} passHref>
+            {!hasSubCategory && variant === 'categories' && Icon}
             {reverseSlugCaseToOriginal(title)}
-            {hasSubCategory && variant === 'categories' && (
-              <ChevronDown
+            {hasSubCategory && (
+              <ChevronRight
                 className="ml-auto shrink-0 text-primary-light transition-transform duration-200 dark:text-primary-dark"
-                size={24}
-                strokeWidth={3}
+                size={20}
+                strokeWidth={2}
               />
             )}
           </Link>
@@ -69,8 +64,10 @@ const CollapsibleMenu = async ({
                   return (
                     <CollapsibleMenu
                       key={sub._id}
-                      className="border-l border-[#e5e5e5] pl-2 dark:border-dark-300"
+                      className="border-l border-[#e5e5e5] pl-4 dark:border-dark-300"
                       {...sub}
+                      variant={variant}
+                      Icon={Icon}
                     />
                   );
                 }
@@ -78,10 +75,12 @@ const CollapsibleMenu = async ({
                 return (
                   <Button
                     key={sub._id}
-                    className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1 text-sm font-normal hover:text-primary-light dark:border-dark-300 dark:hover:text-primary-dark"
+                    className="inline-flex w-full cursor-pointer items-center justify-start rounded-l-none border-l border-[#e5e5e5] py-1 font-normal hover:text-primary-light dark:border-dark-300 dark:hover:text-primary-dark"
+                    variant={variant}
                     asChild
                   >
                     <Link href={sub.path} scroll={false}>
+                      {variant === 'categories' && Icon}
                       {reverseSlugCaseToOriginal(sub.title)}
                     </Link>
                   </Button>
@@ -89,7 +88,8 @@ const CollapsibleMenu = async ({
               })
             : !isRootCategory && (
                 <Button
-                  className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] px-[19px] py-1 text-sm font-normal hover:text-primary-light dark:border-dark-300 dark:hover:text-primary-dark"
+                  className="block w-full cursor-pointer rounded-l-none border-l border-[#e5e5e5] py-1 font-normal hover:text-primary-light dark:border-dark-300 dark:hover:text-primary-dark"
+                  variant={variant}
                   asChild
                 >
                   <Link href={path} scroll={false}>

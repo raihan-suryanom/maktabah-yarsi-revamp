@@ -16,6 +16,7 @@ const Separator = forwardRef<
     <Root
       ref={ref}
       decorative={decorative}
+      role="separator"
       orientation={orientation}
       className={cn(
         'shrink-0 rounded-md bg-black/10 dark:bg-gray-800',

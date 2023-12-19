@@ -6,31 +6,48 @@ const dummyTableOfContents = new Promise((resolve) =>
       children: [
         {
           page: 7,
-          text: 'Bersihkan Hati',
+          title: 'Bersihkan Hati',
           children: [],
         },
         {
           page: 7,
-          text: 'Kedudukan Ilmu',
+          title: 'Kedudukan Ilmu',
           children: [],
         },
         {
           page: 7,
-          text: 'Syarat Menimba Ilmu',
+          title: 'Syarat Menimba Ilmu',
           children: [],
         },
         {
           page: 8,
-          text: 'Keberkahan Ilmu Karena Hati Yang Baik',
-          children: [],
+          title: 'Keberkahan Ilmu Karena Hati Yang Baik',
+          children: [
+            {
+              page: 7,
+              title: 'Syarat Menimba Ilmu',
+              children: [
+                {
+                  page: 10,
+                  title: 'Berniat Baik Dalam Menimba Ilmu',
+                  children: [],
+                },
+              ],
+            },
+            {
+              page: 11,
+              title: 'Pernyataan Abu Yusuf',
+              children: [],
+            },
+          ],
         },
         {
           page: 9,
-          text: 'Terhalangnya Cahaya Memasuki Hati',
+          title: 'Terhalangnya Cahaya Memasuki Hati',
           children: [],
         },
       ],
-      text: 'BAB 1. Penyucian Hati Dari Sifat Tercela',
+      title: 'BAB 1. Penyucian Hati Dari Sifat Tercela',
     },
     {
       _id: '65733c0ad9cff297686752ab',
@@ -38,31 +55,31 @@ const dummyTableOfContents = new Promise((resolve) =>
       children: [
         {
           page: 10,
-          text: 'Berniat Baik Dalam Menimba Ilmu',
+          title: 'Berniat Baik Dalam Menimba Ilmu',
           children: [],
         },
         {
           page: 10,
-          text: 'Pernyataan Imam Ats-Tsauri',
+          title: 'Pernyataan Imam Ats-Tsauri',
           children: [],
         },
         {
           page: 11,
-          text: 'Larangan Berniat Untuk Tujuan Duniawi',
+          title: 'Larangan Berniat Untuk Tujuan Duniawi',
           children: [],
         },
         {
           page: 11,
-          text: 'Pernyataan Abu Yusuf',
+          title: 'Pernyataan Abu Yusuf',
           children: [],
         },
         {
           page: 12,
-          text: 'Ikhlas Dalam Menimba Ilmu',
+          title: 'Ikhlas Dalam Menimba Ilmu',
           children: [],
         },
       ],
-      text: 'BAB 2. Memperbaiki Niat',
+      title: 'BAB 2. Memperbaiki Niat',
     },
     {
       _id: '65733c8ed9cff297686752ad',
@@ -70,36 +87,36 @@ const dummyTableOfContents = new Promise((resolve) =>
       children: [
         {
           page: 13,
-          text: 'Memaksimalkan Usia Muda',
+          title: 'Memaksimalkan Usia Muda',
           children: [],
         },
         {
           page: 13,
-          text: 'Mencegah Penghalang Untuk Menimba Ilmu',
+          title: 'Mencegah Penghalang Untuk Menimba Ilmu',
           children: [],
         },
         {
           page: 14,
-          text: 'Anjuran Meninggalkan Keluarga & Merantau',
+          title: 'Anjuran Meninggalkan Keluarga & Merantau',
           children: [],
         },
         {
           page: 14,
-          text: 'Firman Allah QS. Al-Ahzab: 4',
+          title: 'Firman Allah QS. Al-Ahzab: 4',
           children: [],
         },
         {
           page: 14,
-          text: 'Totalitas Terhadap Ilmu',
+          title: 'Totalitas Terhadap Ilmu',
           children: [],
         },
         {
           page: 15,
-          text: 'Perjuangan Meraih Ilmu',
+          title: 'Perjuangan Meraih Ilmu',
           children: [],
         },
       ],
-      text: 'BAB 3. Memanfaatkan Waktu Sebaik-Baiknya',
+      title: 'BAB 3. Memanfaatkan Waktu Sebaik-Baiknya',
     },
   ])
 );

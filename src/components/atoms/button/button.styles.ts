@@ -12,6 +12,8 @@ export const buttonVariants = cva(
         outline:
           'border-2 border-primary-light bg-light-200 text-primary-light hover:bg-primary-light hover:text-light-200 dark:border-primary-dark dark:bg-dark-200 dark:text-primary-dark dark:hover:bg-primary-dark dark:hover:text-light-200',
         link: 'text-slate-900 underline-offset-4 hover:underline dark:text-slate-50',
+        categories: 'gap-x-1.5 px-[19px] text-xl dark:text-light-400',
+        tableOfContent: 'pl-4 text-sm',
       },
       size: {
         large: 'rounded-lg px-7 py-5 text-2xl',

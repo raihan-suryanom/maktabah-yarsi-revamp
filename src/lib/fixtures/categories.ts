@@ -20,6 +20,42 @@ const dummyCategories = new Promise((resolve) =>
             _id: '657331462431a417cc6aa362',
             parent: '6573310e2431a417cc6aa35b',
             title: 'Fiqih Jinayat',
+            children: [
+              {
+                _id: '60s331362431a417cc62835a',
+                parent: '657331462431a417cc6aa362',
+                title: 'Fiqih Ibadah 1',
+                children: [
+                  {
+                    _id: '60s331362431a417cc822835a',
+                    parent: '60s331362431a417cc62835a',
+                    title: 'Fiqih Ibadah 3',
+                  },
+                  {
+                    _id: '60s3313624319917cc62835a',
+                    parent: '60s331362431a417cc62835a',
+                    title: 'Fiqih Ibadah 4',
+                  },
+                ],
+              },
+              {
+                _id: '6013313k2431a417cc62835a',
+                parent: '657331462431a417cc6aa362',
+                title: 'Fiqih Ibadah 2',
+                children: [
+                  {
+                    _id: '60s331362431a417cc822835a',
+                    parent: '60s331362431a417cc62835a',
+                    title: 'Fiqih Ibadah 3',
+                  },
+                  {
+                    _id: '60s3313624319917cc62835a',
+                    parent: '60s331362431a417cc62835a',
+                    title: 'Fiqih Ibadah 4',
+                  },
+                ],
+              },
+            ],
           },
           {
             _id: '6573314e2431a417cc6aa365',
@@ -30,6 +66,18 @@ const dummyCategories = new Promise((resolve) =>
             _id: '657331542431a417cc6aa368',
             parent: '6573310e2431a417cc6aa35b',
             title: 'Fiqih Wanita',
+            children: [
+              {
+                _id: '60s331362431a417cc822835a',
+                parent: '60s331362431a417cc62835a',
+                title: 'Fiqih Ibadah 3',
+              },
+              {
+                _id: '60s3313624319917cc62835a',
+                parent: '60s331362431a417cc62835a',
+                title: 'Fiqih Ibadah 4',
+              },
+            ],
           },
         ],
       },

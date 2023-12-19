@@ -5,7 +5,7 @@ import {
   MenuOutline,
   CategoryOutlineSkeleton,
 } from '~/components/organisms/menu-outline';
-import { Breadcrumb } from '~/components/molecules';
+import { Breadcrumb, SearchButton } from '~/components/molecules';
 import { BookList, BookListSkeleton } from '~/components/organisms/book-list';
 import {
   Pagination,
@@ -86,8 +86,15 @@ export default function ListOfBookPage({
           </Await>
         </Suspense>
       </aside>
-      <div className="relative ml-auto flex min-h-screen w-9/12 flex-col gap-7 bg-light-300 px-8 pl-5 pt-5 dark:bg-dark-200">
-        <Breadcrumb paths={paths} />
+      <div className="relative ml-auto flex min-h-screen w-9/12 flex-col gap-7 bg-light-300 px-8 pt-5 dark:bg-dark-200">
+        <div className="flex justify-between">
+          <Breadcrumb paths={paths} />
+          <SearchButton
+            placeholder="Cari topik..."
+            size="medium"
+            className="gap-7 rounded-md dark:bg-dark-400 dark:hover:bg-dark-400/80"
+          />
+        </div>
         <h1 className="text-center text-4xl font-bold capitalize dark:text-light-400">
           Daftar Buku {reverseSlugCaseToOriginal(visitedCategory)}
         </h1>
