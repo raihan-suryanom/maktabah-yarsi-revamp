@@ -8,7 +8,7 @@ export type BreadcrumbProps = React.HTMLAttributes<HTMLElement> & {
 };
 
 const Breadcrumb = ({ paths, className, ...props }: BreadcrumbProps) => {
-  const rootPath = { title: 'Home', link: '/' };
+  const rootPath = { title: 'Halaman Utama', link: '/' };
   const links: Array<string> = [];
 
   const previousPaths = [rootPath, ...paths].map((path, level) => {
@@ -34,7 +34,7 @@ const Breadcrumb = ({ paths, className, ...props }: BreadcrumbProps) => {
         </Link>
         <Separator
           orientation="vertical"
-          className="w-0.5 rotate-12 opacity-70"
+          className="w-0.5 rotate-12 dark:bg-slate-500"
         />
       </li>
     );

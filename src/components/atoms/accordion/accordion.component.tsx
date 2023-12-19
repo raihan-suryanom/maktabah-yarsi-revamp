@@ -68,7 +68,7 @@ const AccordionContent = forwardRef<
   <Content
     ref={ref}
     className={cn(
-      'ml-3 overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
+      'overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
       className
     )}
     {...props}

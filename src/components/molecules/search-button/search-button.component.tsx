@@ -1,7 +1,7 @@
 import { Search } from 'lucide-react';
 
 import { SearchForm } from '../search-form';
-import { Button, Dialog, Separator } from '~/components/atoms';
+import { Button, Dialog } from '~/components/atoms';
 import { cn } from '~/lib/utils/cn';
 
 import type { FC } from 'react';
@@ -42,7 +42,6 @@ const SearchButton: FC<SearchButtonProps> = ({
           Fitur Pencarian Topik
         </Dialog.Title>
       </Dialog.Header>
-      <Separator className="m-0 h-0.5 p-0 opacity-5" />
       <SearchForm />
     </Dialog.Content>
   </Dialog.Root>

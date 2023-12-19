@@ -2,14 +2,16 @@ import dummyCategories from '../fixtures/categories';
 
 import type { CategoryProps } from '~/components/molecules/collapsible-menu';
 
-export const getCategories = async (): Promise<
-  ReadonlyArray<CategoryProps>
-> => {
+export const getCategories = async (): Promise<{
+  categories: ReadonlyArray<CategoryProps>;
+}> => {
   if (process.env.NODE_ENV === 'production') {
-    return dummyCategories as Promise<ReadonlyArray<CategoryProps>>;
+    return dummyCategories as Promise<{
+      categories: ReadonlyArray<CategoryProps>;
+    }>;
   }
 
-  return fetch('http://localhost:5555/api/v1/category').then((response) =>
-    response.json()
+  return fetch(`${process.env.BASE_API_URL}${process.env.CATEGORIES_API}`).then(
+    (response) => response.json()
   );
 };
