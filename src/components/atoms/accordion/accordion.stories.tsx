@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Accordion, Badge, Button } from '~/components/atoms';
+import { Accordion, Button } from '~/components/atoms';
 import { BookMarked, ChevronDown, ChevronRight } from 'lucide-react';
 
 const meta = {
@@ -35,7 +35,6 @@ export const DefaultAccordion: Story = {
         >
           <BookMarked id="book-marked" size={24} strokeWidth={3} />
           <span className="text-lg">Akhlakul Karimah</span>
-          <Badge className="font-bold">34</Badge>
           <ChevronDown
             name="ChevronDown"
             className="ml-auto shrink-0 text-primary-light transition-transform duration-200 dark:text-primary-dark"
@@ -81,7 +80,6 @@ export const DefaultAccordion: Story = {
             strokeWidth={3}
           />
           <span className="mr-2.5 text-lg">Akhlakul Karimah</span>
-          <Badge>34</Badge>
           <ChevronDown
             name="ChevronDown"
             className="ml-auto shrink-0 text-primary-light transition-transform duration-200 dark:text-primary-dark"

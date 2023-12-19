@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { MaktabahIcon, Separator } from '~/components/atoms';
 import { ThemeToggle } from '~/components/organisms';
-import { cn } from '~/lib/utils';
+import { cn } from '~/lib/utils/cn';
 
 type NavigationBarProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLElement>,

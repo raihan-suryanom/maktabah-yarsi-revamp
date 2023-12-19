@@ -9,8 +9,25 @@ const options = [
 ];
 
 const SearchForm = () => {
+  async function create(formData: FormData) {
+    'use server';
+    const { redirect } = await import('next/navigation');
+
+    if (formData.get('book') === '') formData.delete('book');
+    if (formData.get('category') === '') formData.delete('category');
+
+    const queryString = new URLSearchParams(
+      formData as unknown as string
+    ).toString();
+
+    redirect(`/books/dummy-template/4?${queryString}`);
+  }
+
   return (
-    <Form.Root className='min-h-[30rem] [&_small]:before:text-primary-light [&_small]:before:content-["*"]'>
+    <Form.Root
+      className='min-h-[30rem] [&_small]:before:text-primary-light [&_small]:before:content-["*"]'
+      action={create}
+    >
       <Form.Field name="query">
         <div className="flex items-center justify-between">
           <Form.Message match="valueMissing">Topik wajib diisi</Form.Message>

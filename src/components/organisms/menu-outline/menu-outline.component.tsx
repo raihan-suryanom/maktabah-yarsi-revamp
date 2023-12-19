@@ -1,22 +1,47 @@
 import { Skeleton } from '~/components/atoms';
 import { CollapsibleMenu } from '~/components/molecules';
+import { generateCategoryPaths } from '~/lib/utils/generate-paths';
 
 import type { FC } from 'react';
 import type {
   CategoryProps,
   CollapsibleMenuProps,
 } from '~/components/molecules/collapsible-menu/collapsible-menu';
+import { TOCProps } from '~/lib/utils/books.server';
+
+const renameAttributes = (item: CategoryProps & { page: number }) => {
+  const newItem: CategoryProps & { page: number } = {
+    page: item.page,
+    title: item.title,
+    path: '/books/5NW2/' + item.page,
+    _id: 'tester' + item.title,
+  };
+
+  if (item.children && item.children.length > 0) {
+    newItem.children = item.children.map((child) =>
+      renameAttributes(child as CategoryProps & { page: number })
+    );
+  }
+
+  return newItem;
+};
 
 const MenuOutline: FC<
-  { outlines: ReadonlyArray<CategoryProps> } & Omit<
-    CollapsibleMenuProps,
-    'category' | 'path'
-  >
-> = ({ outlines, ...props }) => {
+  {
+    TOC?: boolean;
+    outlines: ReadonlyArray<CategoryProps> | TOCProps;
+  } & Omit<CollapsibleMenuProps, 'id' | 'path' | 'title'>
+> = ({ TOC, outlines, ...props }) => {
+  const data = TOC
+    ? outlines.map((item) =>
+        renameAttributes(item as CategoryProps & { page: number })
+      )
+    : generateCategoryPaths(outlines as ReadonlyArray<CategoryProps>);
+
   return (
     <>
-      {outlines.map((outline) => (
-        <CollapsibleMenu key={outline.category} {...outline} {...props} />
+      {data.map((outline) => (
+        <CollapsibleMenu key={outline._id} {...outline} {...props} />
       ))}
     </>
   );

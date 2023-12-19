@@ -5,7 +5,7 @@ import { Monitor, MoonStar, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import { Button, DropdownMenu, Skeleton } from '~/components/atoms';
-import { cn } from '~/lib/utils';
+import { cn } from '~/lib/utils/cn';
 
 const themes: {
   light: JSX.Element;

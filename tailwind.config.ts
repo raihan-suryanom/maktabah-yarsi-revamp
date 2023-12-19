@@ -37,6 +37,18 @@ const config: Config = {
           400: '#475569',
         },
       },
+      typography: ({ theme }: { theme: (color: string) => string }) => ({
+        base: {
+          css: {
+            '--tw-prose-body': '#334155',
+            '--tw-prose-headings': theme('colors.dark[200]'),
+            '--tw-prose-bold': theme('colors.dark[400]'),
+            '--tw-prose-invert-body': '#94A3B8',
+            '--tw-prose-invert-headings': theme('colors.light[400]'),
+            '--tw-prose-invert-bold': theme('colors.light[400]'),
+          },
+        },
+      }),
       fontFamily: {
         lpmq: ['var(--font-lpmq)'],
         poppins: ['var(--font-poppins)'],

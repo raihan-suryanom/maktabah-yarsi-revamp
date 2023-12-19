@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import { Root, Indicator } from '@radix-ui/react-checkbox';
 import { Check } from 'lucide-react';
 
-import { cn } from '~/lib/utils';
+import { cn } from '~/lib/utils/cn';
 
 const Checkbox = forwardRef<
   React.ElementRef<typeof Root>,

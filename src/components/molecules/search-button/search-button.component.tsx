@@ -1,8 +1,8 @@
 import { Search } from 'lucide-react';
 
 import { SearchForm } from '../search-form';
-import { Button, Dialog, Separator } from '~/components/atoms';
-import { cn } from '~/lib/utils';
+import { Button, Dialog } from '~/components/atoms';
+import { cn } from '~/lib/utils/cn';
 
 import type { FC } from 'react';
 import type { DialogProps, DialogTriggerProps } from '@radix-ui/react-dialog';
@@ -12,6 +12,7 @@ type SearchButtonProps = DialogProps &
   DialogTriggerProps &
   ButtonProps & {
     placeholder: string;
+    _key?: string;
   };
 
 const SearchButton: FC<SearchButtonProps> = ({
@@ -21,7 +22,7 @@ const SearchButton: FC<SearchButtonProps> = ({
   children,
   ...props
 }) => (
-  <Dialog.Root {...props}>
+  <Dialog.Root key={props._key} {...props}>
     <Dialog.Trigger className={cn(className)} asChild>
       <Button
         size={size}
@@ -41,7 +42,6 @@ const SearchButton: FC<SearchButtonProps> = ({
           Fitur Pencarian Topik
         </Dialog.Title>
       </Dialog.Header>
-      <Separator className="m-0 h-0.5 p-0 opacity-5" />
       <SearchForm />
     </Dialog.Content>
   </Dialog.Root>

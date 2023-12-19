@@ -1,6 +1,6 @@
 import { Accordion, Skeleton, Table } from '~/components/atoms';
 import { Pagination } from '~/components/molecules';
-import { getInvoices } from '~/lib/utils';
+import { getInvoices } from '~/lib/utils/getInvoices';
 
 const SearchTable = async () => {
   const { invoices } = await getInvoices();
