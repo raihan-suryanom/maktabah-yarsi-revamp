@@ -20,7 +20,7 @@ const SearchForm = () => {
       formData as unknown as string
     ).toString();
 
-    redirect(`/books/dummy-template/4?${queryString}`);
+    redirect(`/books/5NW2/7?${queryString}`);
   }
 
   return (

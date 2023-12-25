@@ -1,3 +1,1 @@
-import * as Accordion from './accordion.component';
-
-export { Accordion };
+export { default } from './accordion.component';

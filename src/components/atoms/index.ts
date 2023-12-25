@@ -1,6 +1,6 @@
 import { Button } from './button';
 import { Input } from './input';
-import { Accordion } from './accordion';
+import Accordion from './accordion';
 import { Checkbox } from './checkbox';
 import { Card } from './card';
 import { Table } from './table';

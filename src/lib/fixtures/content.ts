@@ -1,4 +1,4 @@
-import type { ContentProps } from '../utils/content.server';
+import type { ContentProps } from '../utils/index.type';
 
 const bookContent = new Promise<ContentProps>((resolve) =>
   resolve({

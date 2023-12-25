@@ -118,6 +118,12 @@ const dummyTableOfContents = new Promise((resolve) =>
       ],
       title: 'BAB 3. Memanfaatkan Waktu Sebaik-Baiknya',
     },
+    {
+      _id: '65733c8ed9cff2976867592h',
+      page: 14,
+      children: [],
+      title: 'BAB 4. Penyucian Sifat Tercela',
+    },
   ])
 );
 
