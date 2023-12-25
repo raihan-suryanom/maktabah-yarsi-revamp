@@ -1,6 +1,6 @@
 import { BookOpen } from 'lucide-react';
 
-import { Card } from '~/components/atoms';
+import { Card } from '~/components/atoms/card';
 
 type CardGroupProps = {
   data: ReadonlyArray<string>;

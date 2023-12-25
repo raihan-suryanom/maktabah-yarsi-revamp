@@ -2,8 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Layers, Pencil } from 'lucide-react';
 
-import { Card, Skeleton } from '~/components/atoms';
 import { generateBookPaths } from '~/lib/utils/generate-paths';
+import { Card } from '~/components/atoms/card';
+import Skeleton from '~/components/atoms/skeleton';
 
 import type { BookProps } from '~/lib/utils/index.type';
 

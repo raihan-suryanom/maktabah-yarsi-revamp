@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { BookOpen, Calendar, Layers, Pencil } from 'lucide-react';
 
-import { Card } from '~/components/atoms';
+import { Card } from '~/components/atoms/card';
 import image from '../../../../public/book_cover_not_available.png';
 
 import type { Meta } from '@storybook/react';

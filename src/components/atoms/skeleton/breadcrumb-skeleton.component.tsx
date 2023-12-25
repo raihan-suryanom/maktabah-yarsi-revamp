@@ -1,4 +1,4 @@
-import { Separator } from '../separator';
+import Separator from '../separator';
 import Skeleton from './skeleton.component';
 
 const BreadcrumbSkeleton = () => (

@@ -1,4 +1,4 @@
-import { Breadcrumb } from '~/components/molecules';
+import Breadcrumb from '~/components/molecules/breadcrumb';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

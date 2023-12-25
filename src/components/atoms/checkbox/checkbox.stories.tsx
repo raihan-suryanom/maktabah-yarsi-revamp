@@ -1,4 +1,4 @@
-import { Checkbox } from '~/components/atoms';
+import Checkbox from '~/components/atoms/checkbox';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

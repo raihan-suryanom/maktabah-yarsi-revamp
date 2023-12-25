@@ -1,7 +1,8 @@
-import { Skeleton, Table } from '~/components/atoms';
-import { Pagination } from '~/components/molecules';
 import { getInvoices } from '~/lib/utils/getInvoices';
 import DetailsComponent from './_details.component';
+import { Table } from '~/components/atoms/table';
+import Pagination from '~/components/molecules/pagination';
+import Skeleton from '~/components/atoms/skeleton';
 
 const SearchTable = async ({ open }: { open: boolean }) => {
   const { invoices } = await getInvoices();

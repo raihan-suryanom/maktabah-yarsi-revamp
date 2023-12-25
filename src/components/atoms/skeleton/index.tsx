@@ -1,3 +1,1 @@
-import Skeleton from './skeleton.component';
-
-export { Skeleton };
+export { default } from './skeleton.component';

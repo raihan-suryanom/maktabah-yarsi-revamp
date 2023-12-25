@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Separator } from '~/components/atoms';
+import Separator from '~/components/atoms/separator';
 import { cn } from '~/lib/utils/cn';
 
 export type BreadcrumbProps = React.HTMLAttributes<HTMLElement> & {

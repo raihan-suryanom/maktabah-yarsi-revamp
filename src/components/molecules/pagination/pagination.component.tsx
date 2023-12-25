@@ -6,8 +6,10 @@ import {
   ChevronsRight,
 } from 'lucide-react';
 
-import { Button, Input, Skeleton } from '~/components/atoms';
 import { cn } from '~/lib/utils/cn';
+import Button from '~/components/atoms/button';
+import Input from '~/components/atoms/input';
+import Skeleton from '~/components/atoms/skeleton';
 
 type PaginationProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLElement>,

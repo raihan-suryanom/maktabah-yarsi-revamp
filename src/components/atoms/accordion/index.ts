@@ -1,1 +1,5 @@
-export { default } from './accordion.component';
+export {
+  default,
+  CategoryOutlineSkeleton,
+  TableOfContentSkeleton,
+} from './accordion.component';

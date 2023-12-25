@@ -1,23 +1,23 @@
 import { Suspense } from 'react';
 
-import { Breadcrumb, SearchButton } from '~/components/molecules';
-import { BookList, BookListSkeleton } from '~/components/organisms/book-list';
-import {
-  Pagination,
-  PaginationSkeleton,
-} from '~/components/molecules/pagination';
 import { getBooks } from '~/lib/utils/books.server';
 import { getCategories, getCategoryTitle } from '~/lib/utils/categories.server';
 import { Await } from '~/lib/utils/await.component';
 import { reverseSlugCaseToOriginal } from '~/lib/utils/helper';
 import { extractCategoryPaths } from '~/lib/utils/extract-category-paths';
-
-import type { Metadata } from 'next';
 import BreadcrumbSkeleton from '~/components/atoms/skeleton/breadcrumb-skeleton.component';
-import { Skeleton } from '~/components/atoms';
 import AccordionList, {
   CategoryOutlineSkeleton,
 } from '~/components/atoms/accordion/accordion.component';
+import Breadcrumb from '~/components/molecules/breadcrumb';
+import SearchButton from '~/components/molecules/search-button';
+import Skeleton from '~/components/atoms/skeleton';
+import BookList, { BookListSkeleton } from '~/components/organisms/book-list';
+import Pagination, {
+  PaginationSkeleton,
+} from '~/components/molecules/pagination';
+
+import type { Metadata } from 'next';
 
 export function generateMetadata({
   params,

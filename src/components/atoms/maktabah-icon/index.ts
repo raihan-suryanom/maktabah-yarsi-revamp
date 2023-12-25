@@ -1,3 +1,1 @@
-import MaktabahIcon from './maktabah-icon.component';
-
-export { MaktabahIcon };
+export { default } from './maktabah-icon.component';

@@ -1,5 +1,5 @@
-import { Skeleton } from '~/components/atoms';
 import { CategoryOutlineSkeleton } from '~/components/atoms/accordion/accordion.component';
+import Skeleton from '~/components/atoms/skeleton';
 import BreadcrumbSkeleton from '~/components/atoms/skeleton/breadcrumb-skeleton.component';
 import { PaginationSkeleton } from '~/components/molecules/pagination';
 import { BookListSkeleton } from '~/components/organisms/book-list';

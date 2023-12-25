@@ -1,4 +1,4 @@
-import { Input } from '~/components/atoms';
+import Input from '~/components/atoms/input';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

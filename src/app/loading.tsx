@@ -1,4 +1,4 @@
-import { MaktabahIcon } from '~/components/atoms';
+import MaktabahIcon from '~/components/atoms/maktabah-icon';
 
 export default function Loading() {
   return (

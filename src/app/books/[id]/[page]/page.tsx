@@ -1,15 +1,10 @@
 import { Suspense, lazy } from 'react';
 import { Calendar, Layers, Pencil } from 'lucide-react';
 
-import { Card, Separator } from '~/components/atoms';
-import { MainContent } from '~/components/organisms';
-import { MainContentSkeleton } from '~/components/organisms/main-content';
+import MainContent, {
+  MainContentSkeleton,
+} from '~/components/organisms/main-content';
 import { SearchTableSkeleton } from '~/components/organisms/search-table';
-import {
-  Breadcrumb,
-  PageControlComponent,
-  SearchButton,
-} from '~/components/molecules';
 import { Await } from '~/lib/utils/await.component';
 import {
   getAllBibliographies,
@@ -22,6 +17,11 @@ import { formateDate, reverseSlugCaseToOriginal } from '~/lib/utils/helper';
 import AccordionList, {
   TableOfContentSkeleton,
 } from '~/components/atoms/accordion/accordion.component';
+import Breadcrumb from '~/components/molecules/breadcrumb';
+import SearchButton from '~/components/molecules/search-button';
+import { Card } from '~/components/atoms/card';
+import PageControlComponent from '~/components/molecules/page-control/page-control.component';
+import Separator from '~/components/atoms/separator';
 
 import type { BookProps } from '~/lib/utils/index.type';
 

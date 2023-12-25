@@ -1,7 +1,8 @@
 import Link from 'next/link';
 
-import { MaktabahIcon, Separator } from '~/components/atoms';
-import { ThemeToggle } from '~/components/organisms';
+import MaktabahIcon from '~/components/atoms/maktabah-icon';
+import Separator from '~/components/atoms/separator';
+import ThemeToggle from '~/components/organisms/theme/theme-toggle.component';
 import { cn } from '~/lib/utils/cn';
 
 type NavigationBarProps = React.DetailedHTMLProps<

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Download, Lightbulb } from 'lucide-react';
 
-import { Button } from '~/components/atoms';
+import Button from '~/components/atoms/button';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
