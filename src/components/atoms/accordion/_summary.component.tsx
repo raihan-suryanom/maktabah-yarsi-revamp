@@ -5,7 +5,6 @@ import { ChevronRight } from 'lucide-react';
 
 import { reverseSlugCaseToOriginal } from '~/lib/utils/helper';
 import type { CategoryProps, TOCProps } from '~/lib/utils/index.type';
-import { useSearchParams } from 'next/navigation';
 
 const SummaryComponent = ({
   variant,
