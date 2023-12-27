@@ -1,15 +1,13 @@
-'use client';
-
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
 
 import {
   renameAttributes,
   reverseSlugCaseToOriginal,
 } from '~/lib/utils/helper';
-import Skeleton from '../skeleton/skeleton.component';
 import { generateCategoryPaths } from '~/lib/utils/generate-paths';
 import { cn } from '~/lib/utils/cn';
+import Skeleton from '../skeleton/skeleton.component';
+import SummaryComponent from './_summary.component';
 
 import type { FC } from 'react';
 import type { CategoryProps, TOCProps } from '~/lib/utils/index.type';
@@ -49,30 +47,7 @@ const AccordionItem = ({
       className={cn('[&[open]>summary>svg]:rotate-90', className)}
       open={open}
     >
-      <summary className="flex justify-between py-1 font-semibold capitalize leading-snug text-dark-100 dark:text-light-400">
-        {variant === 'tableOfContents' ? (
-          <Link
-            href={item.path}
-            className="inline w-auto leading-snug hover:text-dark-100 dark:hover:text-light-400"
-            onClick={(e) => {
-              const details = (e.target as HTMLElement).closest('details');
-              if (details) {
-                details.open = !details.open;
-              }
-            }}
-          >
-            {item.title}
-          </Link>
-        ) : (
-          reverseSlugCaseToOriginal(item.title)
-        )}
-
-        <ChevronRight
-          className="ml-auto shrink-0 text-primary-light transition-transform duration-200 dark:text-primary-dark"
-          size={20}
-          strokeWidth={2}
-        />
-      </summary>
+      <SummaryComponent item={item} variant={variant} />
       {hasChildren && (
         <ul className="border-l border-dotted border-[#e5e5e5] pl-4 dark:border-dark-300">
           {item.children.map((child) => (

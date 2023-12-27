@@ -24,7 +24,7 @@ export const renameAttributes = (item: TOCProps): TOCProps => {
     ...item,
     page: item.page,
     title: item.title,
-    path: '/books/5NW2/' + item.page,
+    path: `/books/5NW2/${item.page}`,
     _id: 'tester' + item.title,
   };
 
