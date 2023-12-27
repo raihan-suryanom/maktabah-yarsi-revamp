@@ -26,4 +26,4 @@ const Checkbox = forwardRef<
 
 Checkbox.displayName = Root.displayName;
 
-export { Checkbox };
+export default Checkbox;

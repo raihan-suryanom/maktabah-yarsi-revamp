@@ -3,13 +3,7 @@ import dummyBooks from '../fixtures/books';
 import dummyDetailBook from '../fixtures/detail-book';
 import dummyTableOfContents from '../fixtures/toc';
 
-import type { BookProps } from '~/components/organisms/book-list/book-list.component';
-
-export type TOCProps = {
-  page: number;
-  text: string;
-  children: TOCProps;
-}[];
+import type { BookProps, TOCProps } from './index.type';
 
 export const getBooks = async (
   uniqueIdentifier: string
@@ -21,7 +15,6 @@ export const getBooks = async (
   }
 
   return fetch(
-    // `${process.env.BASE_API_URL}${process.env.CATEGORIES_API}/6573307da027a2e4a3a2828b${process.env.BIBLIOGRAPHIES_API}`
     `${process.env.BASE_API_URL}${process.env.CATEGORIES_API}/${uniqueIdentifier}${process.env.BIBLIOGRAPHIES_API}`
   ).then((response) => response.json());
 };
@@ -38,9 +31,11 @@ export const getAllBibliographies = async (): Promise<
   ).then((response) => response.json());
 };
 
-export const getTableOfContents = async (bookId: string): Promise<TOCProps> => {
+export const getTableOfContents = async (
+  bookId: string
+): Promise<ReadonlyArray<TOCProps>> => {
   if (process.env.NODE_ENV === 'production') {
-    return dummyTableOfContents as Promise<TOCProps>;
+    return dummyTableOfContents as Promise<ReadonlyArray<TOCProps>>;
   }
 
   return fetch(

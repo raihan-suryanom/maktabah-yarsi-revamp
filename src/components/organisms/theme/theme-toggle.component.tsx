@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import { Monitor, MoonStar, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
-import { Button, DropdownMenu, Skeleton } from '~/components/atoms';
 import { cn } from '~/lib/utils/cn';
+import Button from '~/components/atoms/button';
+import { DropdownMenu } from '~/components/atoms/dropdown-menu';
+import Skeleton from '~/components/atoms/skeleton';
 
 const themes: {
   light: JSX.Element;

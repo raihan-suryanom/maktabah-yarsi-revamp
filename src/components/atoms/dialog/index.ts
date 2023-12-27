@@ -1,3 +1,1 @@
-import * as Dialog from './dialog.component';
-
-export { Dialog };
+export * as Dialog from './dialog.component';

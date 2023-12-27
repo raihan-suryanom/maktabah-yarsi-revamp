@@ -1,4 +1,6 @@
-const dummyDetailBook = new Promise((resolve) =>
+import type { BookProps } from '../utils/index.type';
+
+const dummyDetailBook = new Promise<BookProps>((resolve) =>
   resolve({
     _id: '5NW2',
     category: '6573307da027a2e4a3a2828b',
@@ -13,8 +15,10 @@ const dummyDetailBook = new Promise((resolve) =>
     source: 'https://www.rumahfiqih.com/pdf/z.php?id=305',
     subject: 'akhlak',
     date_created: 'Thu, 23 April 2020',
+    firstPage: 5,
+    lastPage: 9,
+    path: '',
     image: '/public/images/default.png',
-    __v: 0,
   })
 );
 

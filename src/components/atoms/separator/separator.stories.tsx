@@ -1,4 +1,4 @@
-import { Separator } from '~/components/atoms';
+import Separator from '~/components/atoms/separator';
 
 import type { Meta } from '@storybook/react';
 

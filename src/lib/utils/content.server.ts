@@ -1,11 +1,6 @@
 import dummyContent from '../fixtures/content';
 
-export type ContentProps = {
-  _id: string;
-  text: string;
-  page: number;
-  bibliography: string;
-};
+import type { ContentProps } from './index.type';
 
 export const getContents = async (
   bookId: string,

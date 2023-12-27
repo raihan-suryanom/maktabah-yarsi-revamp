@@ -1,6 +1,10 @@
 import { BookOpen, LayoutGrid, Search } from 'lucide-react';
 
-import { Button, Checkbox, Form, Input, Select } from '~/components/atoms';
+import Button from '~/components/atoms/button';
+import Checkbox from '~/components/atoms/checkbox';
+import { Form } from '~/components/atoms/form';
+import Input from '~/components/atoms/input';
+import Select from '~/components/atoms/select';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -20,7 +24,7 @@ const SearchForm = () => {
       formData as unknown as string
     ).toString();
 
-    redirect(`/books/dummy-template/4?${queryString}`);
+    redirect(`/books/5NW2/7?${queryString}`);
   }
 
   return (

@@ -1,3 +1,1 @@
-import NavigationBar from './navigation-bar.component';
-
-export { NavigationBar };
+export { default } from './navigation-bar.component';

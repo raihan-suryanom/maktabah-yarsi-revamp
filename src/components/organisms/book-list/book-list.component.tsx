@@ -2,28 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Layers, Pencil } from 'lucide-react';
 
-import { Card, Skeleton } from '~/components/atoms';
 import { generateBookPaths } from '~/lib/utils/generate-paths';
+import { Card } from '~/components/atoms/card';
+import Skeleton from '~/components/atoms/skeleton';
 
-export type BookProps = {
-  _id: string;
-  path: string;
-  title: string;
-  image_url: string;
-  description: string;
-  contributor: string;
-  date_created: string;
-  source: string;
-  subject: string;
-  creator: string;
-  total: number;
-  category: string;
-} & BookPages;
-
-export type BookPages = {
-  firstPage: number;
-  lastPage: number;
-};
+import type { BookProps } from '~/lib/utils/index.type';
 
 const BookList = async ({ books }: { books: ReadonlyArray<BookProps> }) => {
   const formattedBooks = generateBookPaths(books);

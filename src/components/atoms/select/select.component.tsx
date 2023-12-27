@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 
 import { inputVariants } from '../input';
 import { selectBaseStyles } from './select.styles';
-import { Skeleton } from '../skeleton';
+import Skeleton from '../skeleton';
 
 import type { GroupBase, Props } from 'react-select';
 import type SelectType from 'react-select';

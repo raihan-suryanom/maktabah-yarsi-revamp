@@ -1,10 +1,9 @@
 import { Suspense } from 'react';
 
-import {
-  CardGroup,
+import CardGroup, {
   CardGroupSkeleton,
-} from '~/components/molecules/card-group';
-import { SearchButton } from '~/components/molecules';
+} from '~/components/molecules/card-group/card-group.component';
+import SearchButton from '~/components/molecules/search-button';
 import { getPopularCategories } from '~/lib/utils/getPopularCategories';
 import { Await } from '~/lib/utils/await.component';
 

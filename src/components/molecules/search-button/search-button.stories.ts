@@ -1,4 +1,4 @@
-import { SearchButton } from '~/components/molecules';
+import SearchButton from './search-button.component';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

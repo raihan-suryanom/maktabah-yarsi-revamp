@@ -6,7 +6,8 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
-import { Button, Input } from '~/components/atoms';
+import Button from '~/components/atoms/button';
+import Input from '~/components/atoms/input';
 
 const PageControlComponent = ({
   bibliographyId,

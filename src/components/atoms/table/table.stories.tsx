@@ -1,4 +1,4 @@
-import { Table } from '~/components/atoms';
+import { Table } from '~/components/atoms/table';
 
 import type { Meta } from '@storybook/react';
 

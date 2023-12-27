@@ -1,4 +1,4 @@
-import { Skeleton } from '~/components/atoms';
+import Skeleton from '~/components/atoms/skeleton';
 
 const MainContent = ({
   content,
