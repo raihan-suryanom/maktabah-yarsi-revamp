@@ -27,7 +27,7 @@ const PageControlComponent = ({
         disabled={+currentPage === firstPage}
       >
         <Link
-          href={`/books/${bibliographyId}/${firstPage}`}
+          href={`${process.env.BIBLIOGRAPHIES_API}/${bibliographyId}/${firstPage}`}
           aria-disabled={+currentPage === firstPage}
         >
           <ChevronsLeft size={32} />
@@ -38,7 +38,9 @@ const PageControlComponent = ({
         disabled={+currentPage === firstPage}
       >
         <Link
-          href={`/books/${bibliographyId}/${+currentPage - 1}`}
+          href={`${process.env.BIBLIOGRAPHIES_API}/${bibliographyId}/${
+            +currentPage - 1
+          }`}
           aria-disabled={+currentPage === firstPage}
         >
           <ChevronLeft size={32} />
@@ -55,7 +57,9 @@ const PageControlComponent = ({
         disabled={+currentPage === lastPage}
       >
         <Link
-          href={`/books/${bibliographyId}/${+currentPage + 1}`}
+          href={`${process.env.BIBLIOGRAPHIES_API}/${bibliographyId}/${
+            +currentPage + 1
+          }`}
           aria-disabled={+currentPage === lastPage}
         >
           <ChevronRight size={32} />
@@ -66,7 +70,7 @@ const PageControlComponent = ({
         disabled={+currentPage === lastPage}
       >
         <Link
-          href={`/books/${bibliographyId}/${lastPage}`}
+          href={`${process.env.BIBLIOGRAPHIES_API}/${bibliographyId}/${lastPage}`}
           aria-disabled={+currentPage === lastPage}
         >
           <ChevronsRight size={32} />

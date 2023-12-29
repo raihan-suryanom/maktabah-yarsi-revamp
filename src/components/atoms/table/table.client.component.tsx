@@ -11,7 +11,7 @@ const TableRow = forwardRef<
 >(({ className, test, ...props }, ref) => {
   const router = useRouter();
   const handleNavigation = () => {
-    router.push('/books/dummy-template/4?query=ti');
+    router.push('/bibliographies/dummy-template/4?query=ti');
   };
 
   return (

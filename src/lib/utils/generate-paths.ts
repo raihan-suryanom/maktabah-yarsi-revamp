@@ -1,4 +1,4 @@
-import type { BookProps, CategoryProps } from './index.type';
+import type { BibliographyProps, CategoryProps } from './index.type';
 
 export const generateCategoryPaths = (
   categories: ReadonlyArray<CategoryProps>
@@ -17,8 +17,10 @@ export const generateCategoryPaths = (
   });
 };
 
-export const generateBookPaths = (books: ReadonlyArray<BookProps>) =>
-  books.map((book) => ({
-    ...book,
-    path: `/books/${book._id}/${book.firstPage}`,
+export const generateBibliographyPaths = (
+  bibliographies: ReadonlyArray<BibliographyProps>
+) =>
+  bibliographies.map((bibliography) => ({
+    ...bibliography,
+    path: `/bibliographies/${bibliography._id}/${bibliography.firstPage}`,
   }));

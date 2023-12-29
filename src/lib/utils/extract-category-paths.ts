@@ -1,4 +1,4 @@
-import type { BookProps, CategoryProps } from './index.type';
+import type { BibliographyProps, CategoryProps } from './index.type';
 
 export const extractCategoryPaths = (
   categories: ReadonlyArray<CategoryProps>
@@ -18,13 +18,17 @@ export const extractCategoryPaths = (
   return result;
 };
 
-export const extractContentBookPaths = (
-  allBibliographies: ReadonlyArray<BookProps>
+export const extractContentBibliographyPaths = (
+  allBibliographies: ReadonlyArray<BibliographyProps>
 ) => {
   const extractedData: { id: string; page: string }[] = [];
 
   allBibliographies.forEach((bib) => {
     const { _id: id, firstPage, lastPage } = bib;
+
+    if (!firstPage || !lastPage) {
+      return;
+    }
 
     for (let i = firstPage; i <= lastPage; i++) {
       extractedData.push({ id, page: i.toString() });

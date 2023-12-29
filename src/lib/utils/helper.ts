@@ -10,6 +10,18 @@ export const reverseSlugCaseToOriginal = (inputString: string) =>
       .replace(/-/g, ' ')
   );
 
+export const getRegex = (
+  caseSensitiveParams: string,
+  exactMatchParams: string,
+  query: string
+) => {
+  const flags = caseSensitiveParams === 'true' ? 'gum' : 'gium';
+  const pattern = exactMatchParams === 'true' ? `\\b${query}\\b` : query;
+  const regex = new RegExp(pattern, flags);
+
+  return regex;
+};
+
 export const wait = (milliSecond: number) =>
   new Promise((resolve) => setTimeout(resolve, milliSecond));
 
@@ -24,7 +36,7 @@ export const renameAttributes = (item: TOCProps): TOCProps => {
     ...item,
     page: item.page,
     title: item.title,
-    path: `/books/5NW2/${item.page}`,
+    path: `/bibliographies/5NW2/${item.page}`,
     _id: 'tester' + item.title,
   };
 

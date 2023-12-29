@@ -13,7 +13,7 @@ export type TOCProps = {
   children: ReadonlyArray<TOCProps>;
 };
 
-export type BookProps = BookPages & {
+export type BibliographyProps = BibliographyPages & {
   _id: string;
   path: string;
   title: string;
@@ -30,7 +30,7 @@ export type BookProps = BookPages & {
   category: string;
 };
 
-export type BookPages = {
+export type BibliographyPages = {
   firstPage: number;
   lastPage: number;
 };

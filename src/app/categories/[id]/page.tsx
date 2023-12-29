@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { getBooks } from '~/lib/utils/books.server';
+import { getBibliographies } from '~/lib/utils/bibliographies.server';
 import { getCategories, getCategoryTitle } from '~/lib/utils/categories.server';
 import { Await } from '~/lib/utils/await.component';
 import { reverseSlugCaseToOriginal } from '~/lib/utils/helper';
@@ -10,9 +10,9 @@ import AccordionList, {
   CategoryOutlineSkeleton,
 } from '~/components/atoms/accordion/accordion.component';
 import Breadcrumb from '~/components/molecules/breadcrumb';
-import SearchButton from '~/components/molecules/search-button';
-import Skeleton from '~/components/atoms/skeleton';
-import BookList, { BookListSkeleton } from '~/components/organisms/book-list';
+import BibliographyLists, {
+  BibliographyListsSkeleton,
+} from '~/components/organisms/bibliography-lists';
 import Pagination, {
   PaginationSkeleton,
 } from '~/components/molecules/pagination';
@@ -57,8 +57,12 @@ export async function generateStaticParams() {
   return extractCategoryPaths(categories);
 }
 
-export default function ListOfBookPage({ params }: { params: { id: string } }) {
-  const booksPromise = getBooks(params.id);
+export default function BibliographyListsPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const bibliographiesPromise = getBibliographies(params.id);
   const categoryPromise = getCategoryTitle(params.id);
   const categoriesPromise = getCategories();
 
@@ -82,37 +86,24 @@ export default function ListOfBookPage({ params }: { params: { id: string } }) {
         </Suspense>
       </aside>
       <div className="relative ml-auto flex min-h-screen w-9/12 flex-col gap-7 bg-light-300 px-8 pt-5 dark:bg-dark-200">
-        <div className="flex justify-between">
-          <Suspense fallback={<BreadcrumbSkeleton />}>
-            <Await promise={categoryPromise}>
-              {({ title }) => <Breadcrumb paths={[{ title }]} />}
-            </Await>
-          </Suspense>
-          <SearchButton
-            placeholder="Cari topik..."
-            size="medium"
-            className="gap-7 rounded-md dark:bg-dark-400 dark:hover:bg-dark-400/80"
-          />
-        </div>
-        <Suspense
-          fallback={
-            <h1 className="flex items-center justify-center gap-2.5 text-center text-4xl font-bold capitalize">
-              Daftar Buku <Skeleton className="h-6 w-32" />
-            </h1>
-          }
-        >
+        <Suspense fallback={<BreadcrumbSkeleton />}>
           <Await promise={categoryPromise}>
             {({ title }) => (
-              <h1 className="text-center text-4xl font-bold capitalize dark:text-light-400">
-                Daftar Buku {reverseSlugCaseToOriginal(title)}
-              </h1>
+              <>
+                <Breadcrumb paths={[{ title }]} />
+                <h1 className="text-center text-4xl font-bold capitalize dark:text-light-400">
+                  Daftar Buku {reverseSlugCaseToOriginal(title)}
+                </h1>
+              </>
             )}
           </Await>
         </Suspense>
         <section className="grid grid-rows-none gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 [&>div[aria-label=skeleton]]:rounded-[10px]">
-          <Suspense key={params.id} fallback={<BookListSkeleton />}>
-            <Await promise={booksPromise}>
-              {({ bibliographies }) => <BookList books={bibliographies} />}
+          <Suspense key={params.id} fallback={<BibliographyListsSkeleton />}>
+            <Await promise={bibliographiesPromise}>
+              {({ bibliographies }) => (
+                <BibliographyLists bibliographies={bibliographies} />
+              )}
             </Await>
           </Suspense>
         </section>

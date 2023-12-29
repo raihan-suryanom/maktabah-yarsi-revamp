@@ -17,14 +17,14 @@ const SearchForm = () => {
     'use server';
     const { redirect } = await import('next/navigation');
 
-    if (formData.get('book') === '') formData.delete('book');
+    if (formData.get('bibliography') === '') formData.delete('bibliography');
     if (formData.get('category') === '') formData.delete('category');
 
     const queryString = new URLSearchParams(
       formData as unknown as string
     ).toString();
 
-    redirect(`/books/5NW2/7?${queryString}`);
+    redirect(`/bibliographies/5NW2/7?${queryString}&open=true`);
   }
 
   return (
@@ -92,7 +92,7 @@ const SearchForm = () => {
           kategori.
         </small>
       </Form.Field>
-      <Form.Field name="book">
+      <Form.Field name="bibliography">
         <div className="relative flex items-center">
           <BookOpen
             className="absolute left-3 z-10"
