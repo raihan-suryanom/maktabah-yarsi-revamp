@@ -9,9 +9,9 @@ import {
   getAllBibliographies,
   getDetailBibliography,
   getTableOfContents,
-} from '~/lib/utils/bibliographies.server';
+} from '~/lib/bibliographies.server';
 import { extractContentBibliographyPaths } from '~/lib/utils/extract-category-paths';
-import { getContents } from '~/lib/utils/content.server';
+import { getContents } from '~/lib/content.server';
 import { formateDate, reverseSlugCaseToOriginal } from '~/lib/utils/helper';
 import AccordionList, {
   TableOfContentSkeleton,

@@ -1,12 +1,16 @@
+import configServer from '../config.server';
+
 import type { BibliographyProps, CategoryProps } from './index.type';
 
 export const generateCategoryPaths = (
   categories: ReadonlyArray<CategoryProps>
 ) => {
+  const { path } = configServer;
+
   return categories.map((item) => {
     const newItem = {
       ...item,
-      path: `${process.env.CATEGORIES_API}/${item._id}`,
+      path: `${path.categories}/${item._id}`,
     };
 
     if (item.children) {

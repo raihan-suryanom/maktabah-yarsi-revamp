@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
-import { getBibliographies } from '~/lib/utils/bibliographies.server';
-import { getCategories, getCategoryTitle } from '~/lib/utils/categories.server';
+import { getBibliographies } from '~/lib/bibliographies.server';
+import { getCategories, getCategoryTitle } from '~/lib/categories.server';
 import { Await } from '~/lib/utils/await.component';
 import { reverseSlugCaseToOriginal } from '~/lib/utils/helper';
 import { extractCategoryPaths } from '~/lib/utils/extract-category-paths';

@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
+import configServer from '~/lib/config.server';
 import Button from '~/components/atoms/button';
 import Input from '~/components/atoms/input';
 
@@ -20,6 +21,8 @@ const PageControlComponent = ({
   firstPage: number;
   lastPage: number;
 }) => {
+  const { path } = configServer;
+
   return (
     <div className="mx-auto flex items-center gap-x-3">
       <Button
@@ -27,7 +30,7 @@ const PageControlComponent = ({
         disabled={+currentPage === firstPage}
       >
         <Link
-          href={`${process.env.BIBLIOGRAPHIES_API}/${bibliographyId}/${firstPage}`}
+          href={`${path.bibliographies}/${bibliographyId}/${firstPage}`}
           aria-disabled={+currentPage === firstPage}
         >
           <ChevronsLeft size={32} />
@@ -38,9 +41,7 @@ const PageControlComponent = ({
         disabled={+currentPage === firstPage}
       >
         <Link
-          href={`${process.env.BIBLIOGRAPHIES_API}/${bibliographyId}/${
-            +currentPage - 1
-          }`}
+          href={`${path.bibliographies}/${bibliographyId}/${+currentPage - 1}`}
           aria-disabled={+currentPage === firstPage}
         >
           <ChevronLeft size={32} />
@@ -57,9 +58,7 @@ const PageControlComponent = ({
         disabled={+currentPage === lastPage}
       >
         <Link
-          href={`${process.env.BIBLIOGRAPHIES_API}/${bibliographyId}/${
-            +currentPage + 1
-          }`}
+          href={`${path.bibliographies}/${bibliographyId}/${+currentPage + 1}`}
           aria-disabled={+currentPage === lastPage}
         >
           <ChevronRight size={32} />
@@ -70,7 +69,7 @@ const PageControlComponent = ({
         disabled={+currentPage === lastPage}
       >
         <Link
-          href={`${process.env.BIBLIOGRAPHIES_API}/${bibliographyId}/${lastPage}`}
+          href={`${path.bibliographies}/${bibliographyId}/${lastPage}`}
           aria-disabled={+currentPage === lastPage}
         >
           <ChevronsRight size={32} />
