@@ -31,13 +31,26 @@ export const formateDate = (date: string) =>
     month: 'long',
   }).format(new Date(date));
 
+export const strategy = (caseSensitive: boolean, exactMatch: boolean) => {
+  if (exactMatch && caseSensitive) {
+    return 'STANDARD_SENSITIVE';
+  }
+
+  if (!exactMatch && !caseSensitive) {
+    return 'NGRAM';
+  }
+
+  if (!exactMatch && caseSensitive) {
+    return 'NGRAM_SENSITIVE';
+  }
+
+  return 'CUSTOM';
+};
+
 export const renameAttributes = (item: TOCProps): TOCProps => {
   const newItem: TOCProps = {
     ...item,
-    page: item.page,
-    title: item.title,
-    path: `/bibliographies/5NW2/${item.page}`,
-    _id: 'tester' + item.title,
+    path: `/bibliographies/${item.bibliography}/${item.page}`,
   };
 
   if (item.children && item.children.length > 0) {

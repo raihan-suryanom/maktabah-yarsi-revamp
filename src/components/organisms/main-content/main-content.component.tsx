@@ -7,12 +7,17 @@ const MainContent = ({
   content: string;
   query?: string;
 }) => {
+  function escapeRegExp(text: string) {
+    return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
   const highlightedWords = (text: string) => {
+    const escapedText = escapeRegExp(text);
+
+    const regex = new RegExp(escapedText, 'gium');
+
     return content
-      .replace(
-        new RegExp(text, 'gium'),
-        (highlight) => `<mark>${highlight}</mark>`
-      )
+      .replace(regex, (highlight) => `<mark>${highlight}</mark>`)
       .replace(/  +/g, ' ');
   };
 

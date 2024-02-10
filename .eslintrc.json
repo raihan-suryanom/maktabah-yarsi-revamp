@@ -30,6 +30,7 @@
   },
   "ignorePatterns": ["next.config.js"],
   "rules": {
+    "@typescript-eslint/ban-ts-comment": "off",
     "react/prop-types": [2, { "ignore": ["className"] }],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
   }

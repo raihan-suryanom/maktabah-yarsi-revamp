@@ -1,6 +1,6 @@
 'use client';
 
-import { useId } from 'react';
+import { ForwardedRef, forwardRef, useId } from 'react';
 import dynamic from 'next/dynamic';
 
 import { inputVariants } from '../input';
@@ -28,25 +28,33 @@ const onBlurWorkaround = (event: React.FocusEvent<HTMLInputElement>) => {
   }
 };
 
-const Select = <
-  Option = unknown,
-  IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>,
->({
-  className,
-  dimension,
-  ...props
-}: Props<Option, IsMulti, Group> & VariantProps<typeof inputVariants>) => (
-  <SelectComponent
-    instanceId={useId()}
-    classNames={selectBaseStyles<Option, IsMulti, Group>(
-      inputVariants({ dimension, className })
-    )}
-    onBlur={onBlurWorkaround}
-    closeMenuOnSelect={false}
-    unstyled
-    {...props}
-  />
+const Select = forwardRef(
+  <
+    Option = unknown,
+    IsMulti extends boolean = false,
+    Group extends GroupBase<Option> = GroupBase<Option>,
+  >(
+    props: Props<Option, IsMulti, Group> & VariantProps<typeof inputVariants>,
+    // @ts-expect-error
+    ref: ForwardedRef<Select<Option, IsMulti, Group>>
+  ) => {
+    const { className, dimension, ...restProps } = props;
+
+    return (
+      <SelectComponent
+        ref={ref}
+        instanceId={useId()}
+        classNames={selectBaseStyles<Option, IsMulti, Group>(
+          inputVariants({ dimension, className })
+        )}
+        onBlur={onBlurWorkaround}
+        unstyled
+        {...restProps}
+      />
+    );
+  }
 );
+
+Select.displayName = 'React Select';
 
 export default Select;

@@ -10,7 +10,18 @@ export type TOCProps = {
   page: number;
   title: string;
   path: string;
+  bibliography: string;
   children: ReadonlyArray<TOCProps>;
+};
+
+export type SearchParamsProps = {
+  query: string;
+  page: string;
+  exact_match: string;
+  case_sensitive: string;
+  category: string;
+  bibliography: string;
+  open: string;
 };
 
 export type BibliographyProps = BibliographyPages & {
@@ -40,4 +51,12 @@ export type ContentProps = {
   text: string;
   page: number;
   bibliography: string;
+};
+
+export type SearchResultProps = {
+  content: string;
+  page: number;
+  bibliography: string;
+  title: string;
+  highlight: string;
 };

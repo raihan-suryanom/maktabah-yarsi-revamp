@@ -22,21 +22,21 @@ import { Card } from '~/components/atoms/card';
 import PageControlComponent from '~/components/molecules/page-control/page-control.component';
 import Separator from '~/components/atoms/separator';
 
-import type { BibliographyProps } from '~/lib/utils/index.type';
+import type {
+  BibliographyProps,
+  SearchParamsProps,
+} from '~/lib/utils/index.type';
 
 const SearchTable = lazy(
   () => import('~/components/organisms/search-table/search-table.component')
 );
 
-export type DetailBibliographyPageProps = {
+type DetailBibliographyPageProps = {
   params: {
     id: string;
     page: string;
   };
-  searchParams?: {
-    query: string;
-    open: string;
-  };
+  searchParams?: SearchParamsProps;
 };
 
 export async function generateStaticParams() {
@@ -50,7 +50,7 @@ const DetailBibliographyPage = async ({
   params,
 }: DetailBibliographyPageProps & BibliographyProps) => {
   const { id, page } = params;
-  const { query, open } = searchParams!;
+  const { query } = searchParams!;
   const contentPromise = getContents(id, page);
   const tocPromise = getTableOfContents(id);
   const detailBibliographyPromise = getDetailBibliography(id);
@@ -76,7 +76,7 @@ const DetailBibliographyPage = async ({
           <Await promise={detailBibliographyPromise}>
             {({
               _id,
-              category,
+              category: visitedCategory,
               title,
               creator,
               firstPage,
@@ -90,7 +90,7 @@ const DetailBibliographyPage = async ({
                     paths={[
                       {
                         title: reverseSlugCaseToOriginal(subject),
-                        link: category,
+                        link: visitedCategory,
                       },
                       { title },
                     ]}
@@ -145,7 +145,7 @@ const DetailBibliographyPage = async ({
           </Await>
         </Suspense>
       </div>
-      {query ? <SearchTable open={!!open} /> : null}
+      {query ? <SearchTable {...searchParams!} /> : null}
     </>
   );
 };

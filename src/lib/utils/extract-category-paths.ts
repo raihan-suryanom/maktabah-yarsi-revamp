@@ -18,6 +18,37 @@ export const extractCategoryPaths = (
   return result;
 };
 
+export const extractCategoryValueAndLabel = (
+  categories: ReadonlyArray<CategoryProps>
+) => {
+  const result = [];
+  const stack = [...categories.map((category) => ({ node: category }))];
+
+  while (stack.length > 0) {
+    const { node } = stack.pop()!;
+    result.push({ value: node._id, label: node.title });
+
+    if (node.children && node.children.length > 0) {
+      stack.push(...node.children.map((child) => ({ node: child })));
+    }
+  }
+
+  return result;
+};
+
+export const filterLeafCategories = (
+  categories: ReadonlyArray<CategoryProps>
+) => {
+  return categories.reduce<CategoryProps[]>((result, category) => {
+    if (!category.children) {
+      result.push(category);
+    } else {
+      result = result.concat(filterLeafCategories(category.children));
+    }
+    return result;
+  }, []);
+};
+
 export const extractContentBibliographyPaths = (
   allBibliographies: ReadonlyArray<BibliographyProps>
 ) => {
