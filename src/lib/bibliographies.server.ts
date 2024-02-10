@@ -9,24 +9,27 @@ const {
 export const getBibliographies = (
   uniqueIdentifier: string
 ): Promise<{ bibliographies: ReadonlyArray<BibliographyProps> }> =>
-  fetch(`${baseUrl}${categories}/${uniqueIdentifier}${bibliographies}`).then(
-    (response) => response.json()
-  );
+  fetch(`${baseUrl}${categories}/${uniqueIdentifier}${bibliographies}`, {
+    next: { revalidate: 300 },
+  }).then((response) => response.json());
 
 export const getAllBibliographies = (): Promise<
   ReadonlyArray<BibliographyProps>
-> => fetch(`${baseUrl}${bibliographies}`).then((response) => response.json());
+> =>
+  fetch(`${baseUrl}${bibliographies}`, { next: { revalidate: 300 } }).then(
+    (response) => response.json()
+  );
 
 export const getTableOfContents = (
   bibliographyId: string
 ): Promise<ReadonlyArray<TOCProps>> =>
-  fetch(`${baseUrl}${bibliographies}/${bibliographyId}${toc}`).then(
-    (response) => response.json()
-  );
+  fetch(`${baseUrl}${bibliographies}/${bibliographyId}${toc}`, {
+    next: { revalidate: 300 },
+  }).then((response) => response.json());
 
 export const getDetailBibliography = (
   bibliographyId: string
 ): Promise<BibliographyProps> =>
-  fetch(`${baseUrl}${bibliographies}/${bibliographyId}`).then((response) =>
-    response.json()
-  );
+  fetch(`${baseUrl}${bibliographies}/${bibliographyId}`, {
+    next: { revalidate: 300 },
+  }).then((response) => response.json());
