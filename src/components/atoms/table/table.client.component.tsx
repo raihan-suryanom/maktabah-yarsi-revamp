@@ -7,11 +7,16 @@ import { cn } from '~/lib/utils/cn';
 
 const TableRow = forwardRef<
   HTMLTableRowElement,
-  React.HTMLAttributes<HTMLTableRowElement> & { test?: string }
->(({ className, test, ...props }, ref) => {
+  React.HTMLAttributes<HTMLTableRowElement> & {
+    page?: number;
+    bibliography?: string;
+  }
+>(({ className, page, bibliography, ...props }, ref) => {
   const router = useRouter();
+
   const handleNavigation = () => {
-    router.push('/books/dummy-template/4?query=ti');
+    const { search } = new URL(window.location.href);
+    router.push(`/bibliographies/${bibliography}/${page}${search}`);
   };
 
   return (

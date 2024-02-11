@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import {
   renameAttributes,
   reverseSlugCaseToOriginal,
@@ -8,6 +6,7 @@ import { generateCategoryPaths } from '~/lib/utils/generate-paths';
 import { cn } from '~/lib/utils/cn';
 import Skeleton from '../skeleton/skeleton.component';
 import SummaryComponent from './_summary.component';
+import ButtonClient from '../button/button.client.component';
 
 import type { FC } from 'react';
 import type { CategoryProps, TOCProps } from '~/lib/utils/index.type';
@@ -29,17 +28,18 @@ const AccordionItem = ({
 
   if (!hasChildren) {
     return (
-      <Link
+      <ButtonClient
         className={cn(
-          'inline-block w-full rounded-md p-[0.3em_0.5em] text-sm capitalize hover:text-dark-100 dark:hover:text-light-400',
+          'inline-block w-full rounded-md p-[0.3em_0.5em] text-left text-sm capitalize hover:text-dark-100 dark:hover:text-light-400',
           ((item as TOCProps).page === +activeItem ||
             (item as CategoryProps)._id === activeItem) &&
             'text-primary-light hover:text-primary-light dark:text-primary-dark dark:hover:text-primary-dark'
         )}
-        href={item.path}
+        location={item.path}
+        unstyled
       >
         <span>{item.title}</span>
-      </Link>
+      </ButtonClient>
     );
   }
   return (
@@ -51,7 +51,9 @@ const AccordionItem = ({
       {hasChildren && (
         <ul className="border-l border-dotted border-[#e5e5e5] pl-4 dark:border-dark-300">
           {item.children.map((child) => (
-            <li key={child._id}>
+            <li
+              key={child._id || child.title + (child as TOCProps).bibliography}
+            >
               <AccordionItem
                 variant={variant}
                 item={child}
@@ -83,15 +85,16 @@ const AccordionList: FC<
     <>
       {data.map((item) =>
         item.children && item.children.length > 0 ? (
-          <AccordionItem key={item.title} item={item} {...props} />
+          <AccordionItem key={item._id} item={item} {...props} />
         ) : (
-          <Link
-            key={item.title}
-            href={item.path}
-            className="py-1 font-semibold leading-snug text-dark-100 dark:text-light-400"
+          <ButtonClient
+            key={item._id}
+            location={item.path}
+            className="py-1 text-left font-semibold leading-snug text-dark-100 dark:text-light-400"
+            unstyled
           >
             <span>{reverseSlugCaseToOriginal(item.title)}</span>
-          </Link>
+          </ButtonClient>
         )
       )}
     </>

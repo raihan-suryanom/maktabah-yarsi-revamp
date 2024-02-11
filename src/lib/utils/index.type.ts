@@ -10,10 +10,21 @@ export type TOCProps = {
   page: number;
   title: string;
   path: string;
+  bibliography: string;
   children: ReadonlyArray<TOCProps>;
 };
 
-export type BookProps = BookPages & {
+export type SearchParamsProps = {
+  query: string;
+  page: string;
+  exact_match: string;
+  case_sensitive: string;
+  category: string;
+  bibliography: string;
+  open: string;
+};
+
+export type BibliographyProps = BibliographyPages & {
   _id: string;
   path: string;
   title: string;
@@ -30,7 +41,7 @@ export type BookProps = BookPages & {
   category: string;
 };
 
-export type BookPages = {
+export type BibliographyPages = {
   firstPage: number;
   lastPage: number;
 };
@@ -40,4 +51,12 @@ export type ContentProps = {
   text: string;
   page: number;
   bibliography: string;
+};
+
+export type SearchResultProps = {
+  content: string;
+  page: number;
+  bibliography: string;
+  title: string;
+  highlight: string;
 };

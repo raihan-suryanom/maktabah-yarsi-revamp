@@ -1,35 +1,64 @@
-import { BookOpen, LayoutGrid, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 import Button from '~/components/atoms/button';
 import Checkbox from '~/components/atoms/checkbox';
 import { Form } from '~/components/atoms/form';
 import Input from '~/components/atoms/input';
-import Select from '~/components/atoms/select';
+import configServer from '~/lib/config.server';
+import { getSearchResults } from '~/lib/search.server';
+import AdvancedSearch from './_advanced-search.component';
+import { filterLeafCategories } from '~/lib/utils/extract-category-paths';
+import { strategy } from '~/lib/utils/helper';
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
-];
+import type { CategoryProps } from '~/lib/utils/index.type';
 
-const SearchForm = () => {
+const { path } = configServer;
+
+const SearchForm = async () => {
   async function create(formData: FormData) {
     'use server';
     const { redirect } = await import('next/navigation');
 
-    if (formData.get('book') === '') formData.delete('book');
-    if (formData.get('category') === '') formData.delete('category');
+    if (!formData.getAll('bibliography').pop()) formData.delete('bibliography');
+    if (!formData.getAll('category').pop()) formData.delete('category');
 
     const queryString = new URLSearchParams(
       formData as unknown as string
     ).toString();
 
-    redirect(`/books/5NW2/7?${queryString}`);
+    const test = await getSearchResults({
+      keyword: formData.get('query')!.toString(),
+      page: '1',
+      bibliographies: formData.getAll('bibliography'),
+      categories: formData.getAll('category'),
+      strategy: strategy(
+        formData.has('case_sensitive'),
+        formData.has('exact_match')
+      ),
+    });
+
+    const { totalResult, data, error } = test;
+
+    if (error) {
+      throw new Error('Terjadi suatu kesalahan.');
+    }
+
+    if (!totalResult) {
+      redirect('/search-not-found');
+    }
+
+    redirect(
+      `${path.bibliographies}/${data[0].bibliography}/${data[0].page}?${queryString}&page=1&open=true`
+    );
   }
+
+  const response = await fetch(`${path.baseUrl}${path.categories}`);
+  const { categories }: { categories: CategoryProps[] } = await response.json();
 
   return (
     <Form.Root
       className='min-h-[30rem] [&_small]:before:text-primary-light [&_small]:before:content-["*"]'
+      method="POST"
       action={create}
     >
       <Form.Field name="query">
@@ -69,51 +98,7 @@ const SearchForm = () => {
           <Form.Label>Sensitif Huruf Besar/Kecil</Form.Label>
         </Form.Field>
       </div>
-      <Form.Field name="category">
-        <div className="relative flex items-center">
-          <LayoutGrid
-            className="absolute left-3 z-10"
-            strokeWidth={3}
-            size={20}
-          />
-          <Form.Control asChild>
-            <Select
-              aria-label="Pilih kategori buku"
-              className="w-full pl-11 pr-3"
-              placeholder="Pilih Kategori"
-              dimension="small"
-              options={options}
-              isMulti
-            />
-          </Form.Control>
-        </div>
-        <small>
-          Jika tidak ada yang dipilih, maka akan otomatis memilih semua
-          kategori.
-        </small>
-      </Form.Field>
-      <Form.Field name="book">
-        <div className="relative flex items-center">
-          <BookOpen
-            className="absolute left-3 z-10"
-            strokeWidth={3}
-            size={20}
-          />
-          <Form.Control asChild>
-            <Select
-              aria-label="Pilih buku"
-              className="w-full pl-11 pr-3"
-              placeholder="Pilih Buku"
-              dimension="small"
-              options={options}
-              isMulti
-            />
-          </Form.Control>
-        </div>
-        <small>
-          Jika tidak ada yang dipilih, maka akan otomatis memilih semua buku.
-        </small>
-      </Form.Field>
+      <AdvancedSearch categories={filterLeafCategories(categories)} />
       <footer className="mt-auto flex w-full gap-5 [&>button]:flex-1">
         <Form.Submit asChild>
           <Button variant="primary" size="medium">

@@ -2,7 +2,7 @@ import { CategoryOutlineSkeleton } from '~/components/atoms/accordion/accordion.
 import Skeleton from '~/components/atoms/skeleton';
 import BreadcrumbSkeleton from '~/components/atoms/skeleton/breadcrumb-skeleton.component';
 import { PaginationSkeleton } from '~/components/molecules/pagination';
-import { BookListSkeleton } from '~/components/organisms/book-list';
+import { BibliographyListsSkeleton } from '~/components/organisms/bibliography-lists';
 
 export default function Loading() {
   return (
@@ -22,7 +22,7 @@ export default function Loading() {
           Daftar Buku <Skeleton className="h-6 w-32" />
         </h1>
         <section className="grid grid-rows-none gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 [&>div[aria-label=skeleton]]:rounded-[10px]">
-          <BookListSkeleton />
+          <BibliographyListsSkeleton />
         </section>
         <PaginationSkeleton />
       </div>
