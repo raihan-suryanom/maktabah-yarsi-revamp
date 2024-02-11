@@ -1,4 +1,4 @@
-import { Pagination } from '~/components/molecules';
+import Pagination from '~/components/molecules/pagination';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

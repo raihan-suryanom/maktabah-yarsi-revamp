@@ -1,3 +1,1 @@
-import * as Table from './table.component';
-
-export { Table };
+export * as Table from './table.component';

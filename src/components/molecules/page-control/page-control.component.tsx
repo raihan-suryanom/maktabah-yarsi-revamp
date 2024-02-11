@@ -4,9 +4,10 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from 'lucide-react';
-import Link from 'next/link';
 
-import { Button, Input } from '~/components/atoms';
+import configServer from '~/lib/config.server';
+import Input from '~/components/atoms/input';
+import ButtonClient from '~/components/atoms/button/button.client.component';
 
 const PageControlComponent = ({
   bibliographyId,
@@ -19,58 +20,53 @@ const PageControlComponent = ({
   firstPage: number;
   lastPage: number;
 }) => {
+  const { path } = configServer;
+
   return (
     <div className="mx-auto flex items-center gap-x-3">
-      <Button
+      <ButtonClient
         className="text-primary-light dark:text-primary-dark/80 dark:hover:text-primary-dark"
         disabled={+currentPage === firstPage}
+        location={`${path.bibliographies}/${bibliographyId}/${firstPage}`}
+        aria-disabled={+currentPage === firstPage}
       >
-        <Link
-          href={`/books/${bibliographyId}/${firstPage}`}
-          aria-disabled={+currentPage === firstPage}
-        >
-          <ChevronsLeft size={32} />
-        </Link>
-      </Button>
-      <Button
+        <ChevronsLeft size={32} />
+      </ButtonClient>
+
+      <ButtonClient
         className="text-primary-light dark:text-primary-dark/80 dark:hover:text-primary-dark"
         disabled={+currentPage === firstPage}
+        location={`${path.bibliographies}/${bibliographyId}/${
+          +currentPage - 1
+        }`}
+        aria-disabled={+currentPage === firstPage}
       >
-        <Link
-          href={`/books/${bibliographyId}/${+currentPage - 1}`}
-          aria-disabled={+currentPage === firstPage}
-        >
-          <ChevronLeft size={32} />
-        </Link>
-      </Button>
+        <ChevronLeft size={32} />
+      </ButtonClient>
       <Input
         type="number"
         dimension="small"
         className="w-8 appearance-none text-center text-sm"
         defaultValue={currentPage}
       />
-      <Button
+      <ButtonClient
         className="text-primary-light dark:text-primary-dark/80 dark:hover:text-primary-dark"
         disabled={+currentPage === lastPage}
+        location={`${path.bibliographies}/${bibliographyId}/${
+          +currentPage + 1
+        }`}
+        aria-disabled={+currentPage === lastPage}
       >
-        <Link
-          href={`/books/${bibliographyId}/${+currentPage + 1}`}
-          aria-disabled={+currentPage === lastPage}
-        >
-          <ChevronRight size={32} />
-        </Link>
-      </Button>
-      <Button
+        <ChevronRight size={32} />
+      </ButtonClient>
+      <ButtonClient
         className="text-primary-light dark:text-primary-dark/80 dark:hover:text-primary-dark"
         disabled={+currentPage === lastPage}
+        location={`${path.bibliographies}/${bibliographyId}/${lastPage}`}
+        aria-disabled={+currentPage === lastPage}
       >
-        <Link
-          href={`/books/${bibliographyId}/${lastPage}`}
-          aria-disabled={+currentPage === lastPage}
-        >
-          <ChevronsRight size={32} />
-        </Link>
-      </Button>
+        <ChevronsRight size={32} />
+      </ButtonClient>
     </div>
   );
 };

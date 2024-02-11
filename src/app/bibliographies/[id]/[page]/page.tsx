@@ -1,57 +1,59 @@
 import { Suspense, lazy } from 'react';
-import { Calendar, ChevronRight, Layers, Pencil } from 'lucide-react';
+import { Calendar, Layers, Pencil } from 'lucide-react';
 
-import { Card, Separator } from '~/components/atoms';
-import { TableOfContentSkeleton } from '~/components/organisms/menu-outline';
-import { MainContent, MenuOutline } from '~/components/organisms';
-import { MainContentSkeleton } from '~/components/organisms/main-content';
-import { SearchTableSkeleton } from '~/components/organisms/search-table';
-import {
-  Breadcrumb,
-  PageControlComponent,
-  SearchButton,
-} from '~/components/molecules';
+import MainContent, {
+  MainContentSkeleton,
+} from '~/components/organisms/main-content';
 import { Await } from '~/lib/utils/await.component';
 import {
   getAllBibliographies,
-  getDetailBook,
+  getDetailBibliography,
   getTableOfContents,
-} from '~/lib/utils/books.server';
-import { extractContentBookPaths } from '~/lib/utils/extract-category-paths';
-import { getContents } from '~/lib/utils/content.server';
+} from '~/lib/bibliographies.server';
+import { extractContentBibliographyPaths } from '~/lib/utils/extract-category-paths';
+import { getContents } from '~/lib/content.server';
 import { formateDate, reverseSlugCaseToOriginal } from '~/lib/utils/helper';
+import AccordionList, {
+  TableOfContentSkeleton,
+} from '~/components/atoms/accordion/accordion.component';
+import Breadcrumb from '~/components/molecules/breadcrumb';
+import SearchButton from '~/components/molecules/search-button';
+import { Card } from '~/components/atoms/card';
+import PageControlComponent from '~/components/molecules/page-control/page-control.component';
+import Separator from '~/components/atoms/separator';
 
-import type { BookProps } from '~/components/organisms/book-list/book-list.component';
+import type {
+  BibliographyProps,
+  SearchParamsProps,
+} from '~/lib/utils/index.type';
 
 const SearchTable = lazy(
   () => import('~/components/organisms/search-table/search-table.component')
 );
 
-export type DetailBookPageProps = {
+type DetailBibliographyPageProps = {
   params: {
     id: string;
     page: string;
   };
-  searchParams?: {
-    query: string;
-  };
+  searchParams?: SearchParamsProps;
 };
 
 export async function generateStaticParams() {
-  const books = await getAllBibliographies();
+  const bibliographies = await getAllBibliographies();
 
-  return extractContentBookPaths(books);
+  return extractContentBibliographyPaths(bibliographies);
 }
 
-const DetailBookPage = async ({
+const DetailBibliographyPage = async ({
   searchParams,
   params,
-}: DetailBookPageProps & BookProps) => {
+}: DetailBibliographyPageProps & BibliographyProps) => {
   const { id, page } = params;
   const { query } = searchParams!;
   const contentPromise = getContents(id, page);
   const tocPromise = getTableOfContents(id);
-  const detailBookPromise = getDetailBook(id);
+  const detailBibliographyPromise = getDetailBibliography(id);
 
   return (
     <>
@@ -59,12 +61,11 @@ const DetailBookPage = async ({
         <Suspense fallback={<TableOfContentSkeleton />}>
           <Await promise={tocPromise}>
             {(tableOfContents) => (
-              <MenuOutline
-                variant="tableOfContent"
+              <AccordionList
                 outlines={tableOfContents}
-                Icon={<ChevronRight size={24} strokeWidth={3} />}
-                isRootCategory
-                TOC
+                variant="tableOfContents"
+                activeItem={page}
+                open
               />
             )}
           </Await>
@@ -72,9 +73,10 @@ const DetailBookPage = async ({
       </aside>
       <div className="ml-auto flex w-9/12 flex-col gap-5 px-8 pb-20 pt-5">
         <Suspense fallback={<MainContentSkeleton />}>
-          <Await promise={detailBookPromise}>
+          <Await promise={detailBibliographyPromise}>
             {({
               _id,
+              category: visitedCategory,
               title,
               creator,
               firstPage,
@@ -88,7 +90,7 @@ const DetailBookPage = async ({
                     paths={[
                       {
                         title: reverseSlugCaseToOriginal(subject),
-                        link: subject,
+                        link: visitedCategory,
                       },
                       { title },
                     ]}
@@ -136,18 +138,16 @@ const DetailBookPage = async ({
             {({ text }) => (
               <>
                 <Separator className="m-0 h-px p-0" />
-                <MainContent query={searchParams?.query} content={text} />
+                <MainContent query={query} content={text} />
                 <Separator className="m-0 h-px p-0" />
               </>
             )}
           </Await>
         </Suspense>
       </div>
-      <Suspense key={query} fallback={<SearchTableSkeleton />}>
-        {searchParams?.query ? <SearchTable /> : null}
-      </Suspense>
+      {query ? <SearchTable {...searchParams!} /> : null}
     </>
   );
 };
 
-export default DetailBookPage;
+export default DetailBibliographyPage;

@@ -1,8 +1,9 @@
 import { Search } from 'lucide-react';
 
 import { SearchForm } from '../search-form';
-import { Button, Dialog } from '~/components/atoms';
 import { cn } from '~/lib/utils/cn';
+import { Dialog } from '~/components/atoms/dialog';
+import Button from '~/components/atoms/button';
 
 import type { FC } from 'react';
 import type { DialogProps, DialogTriggerProps } from '@radix-ui/react-dialog';

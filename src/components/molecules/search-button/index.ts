@@ -1,3 +1,1 @@
-import SearchButton from './search-button.component';
-
-export { SearchButton };
+export { default } from './search-button.component';

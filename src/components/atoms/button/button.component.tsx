@@ -9,15 +9,20 @@ import type { VariantProps } from 'class-variance-authority';
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
+    unstyled?: boolean;
   };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, unstyled, asChild, ...props }, ref) => {
     const Component = asChild ? Slot : 'button';
 
     return (
       <Component
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={
+          unstyled
+            ? className
+            : cn(buttonVariants({ variant, size, className }))
+        }
         ref={ref}
         {...props}
       />

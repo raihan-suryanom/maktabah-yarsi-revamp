@@ -1,3 +1,1 @@
-import Pagination, { PaginationSkeleton } from './pagination.component';
-
-export { Pagination, PaginationSkeleton };
+export { default, PaginationSkeleton } from './pagination.component';

@@ -1,4 +1,5 @@
-import { Card, Skeleton } from '~/components/atoms';
+import { Card } from '~/components/atoms/card';
+import Skeleton from '~/components/atoms/skeleton';
 import BreadcrumbSkeleton from '~/components/atoms/skeleton/breadcrumb-skeleton.component';
 import { MainContentSkeleton } from '~/components/organisms/main-content';
 

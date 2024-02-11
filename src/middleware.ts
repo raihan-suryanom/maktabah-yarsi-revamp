@@ -1,9 +1,12 @@
 import type { NextRequest } from 'next/server';
 
 export const middleware = (request: NextRequest) => {
-  const akhlakBooks = new URL('/categories/akhlak', request.url);
+  const akhlakBibliographies = new URL(
+    '/categories/6573307da027a2e4a3a2828b',
+    request.url
+  );
 
-  return Response.redirect(akhlakBooks);
+  return Response.redirect(akhlakBibliographies);
 };
 
 export const config = {

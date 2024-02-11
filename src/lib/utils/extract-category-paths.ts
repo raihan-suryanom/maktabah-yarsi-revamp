@@ -1,43 +1,65 @@
-import { BookProps } from '~/components/organisms/book-list/book-list.component';
-import { formatToSlugCase } from './helper';
-
-import type { CategoryProps } from '~/components/molecules/collapsible-menu';
+import type { BibliographyProps, CategoryProps } from './index.type';
 
 export const extractCategoryPaths = (
-  categories: ReadonlyArray<CategoryProps>,
-  parentPath = ''
+  categories: ReadonlyArray<CategoryProps>
 ) => {
-  const result: Array<{ category: string[] }> = [];
+  const result = [];
+  const stack = [...categories.map((category) => ({ node: category }))];
 
-  categories.forEach((category) => {
-    const categoryName = formatToSlugCase(category.title);
-    const fullPathParts = parentPath
-      ? [parentPath, categoryName]
-      : [categoryName];
-    const fullPath = fullPathParts.join('/');
+  while (stack.length > 0) {
+    const { node } = stack.pop()!;
+    result.push({ id: node._id });
 
-    const categoryPath = { category: fullPath.split('/').filter(Boolean) };
-    result.push(categoryPath);
-
-    if (category.children && category.children.length > 0) {
-      const subcategoryPaths = extractCategoryPaths(
-        category.children,
-        fullPath
-      );
-      Array.prototype.push.apply(result, subcategoryPaths);
+    if (node.children && node.children.length > 0) {
+      stack.push(...node.children.map((child) => ({ node: child })));
     }
-  });
+  }
 
   return result;
 };
 
-export const extractContentBookPaths = (
-  allBibliographies: ReadonlyArray<BookProps>
+export const extractCategoryValueAndLabel = (
+  categories: ReadonlyArray<CategoryProps>
+) => {
+  const result = [];
+  const stack = [...categories.map((category) => ({ node: category }))];
+
+  while (stack.length > 0) {
+    const { node } = stack.pop()!;
+    result.push({ value: node._id, label: node.title });
+
+    if (node.children && node.children.length > 0) {
+      stack.push(...node.children.map((child) => ({ node: child })));
+    }
+  }
+
+  return result;
+};
+
+export const filterLeafCategories = (
+  categories: ReadonlyArray<CategoryProps>
+) => {
+  return categories.reduce<CategoryProps[]>((result, category) => {
+    if (!category.children) {
+      result.push(category);
+    } else {
+      result = result.concat(filterLeafCategories(category.children));
+    }
+    return result;
+  }, []);
+};
+
+export const extractContentBibliographyPaths = (
+  allBibliographies: ReadonlyArray<BibliographyProps>
 ) => {
   const extractedData: { id: string; page: string }[] = [];
 
   allBibliographies.forEach((bib) => {
     const { _id: id, firstPage, lastPage } = bib;
+
+    if (!firstPage || !lastPage) {
+      return;
+    }
 
     for (let i = firstPage; i <= lastPage; i++) {
       extractedData.push({ id, page: i.toString() });

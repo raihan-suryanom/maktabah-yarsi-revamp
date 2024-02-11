@@ -1,7 +1,7 @@
 import './globals.css';
 import { lpmq, poppins } from '~/lib/utils/fonts';
-import { NavigationBar } from '~/components/molecules';
-import { ThemeProvider } from '~/components/organisms';
+import NavigationBar from '~/components/molecules/navigation-bar';
+import ThemeProvider from '~/components/organisms/theme/theme-provider.component';
 import { cn } from '~/lib/utils/cn';
 
 export default function RootLayout({

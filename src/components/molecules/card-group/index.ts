@@ -1,3 +1,1 @@
-import CardGroup, { CardGroupSkeleton } from './card-group.component';
-
-export { CardGroup, CardGroupSkeleton };
+export { default, CardGroupSkeleton } from './card-group.component';
