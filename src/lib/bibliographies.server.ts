@@ -16,7 +16,7 @@ export const getBibliographies = (
 export const getAllBibliographies = (): Promise<
   ReadonlyArray<BibliographyProps>
 > =>
-  fetch(`${baseUrl}${bibliographies}`, { next: { revalidate: 300 } }).then(
+  fetch(`${baseUrl}${bibliographies}`, { next: { revalidate: 3 } }).then(
     (response) => response.json()
   );
 
