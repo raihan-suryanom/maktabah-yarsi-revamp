@@ -12,5 +12,5 @@ export const getContents = (
 ): Promise<ContentProps> =>
   fetch(
     `${baseUrl}${bibliographies}/${bibliographyId}${contents}?page=${page}`,
-    { next: { revalidate: 300 } }
+    { next: { revalidate: 3 } }
   ).then((response) => response.json());
