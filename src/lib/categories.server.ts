@@ -9,11 +9,11 @@ const {
 export const getCategories = (): Promise<{
   categories: ReadonlyArray<CategoryProps>;
 }> =>
-  fetch(`${baseUrl}${categories}`, { next: { revalidate: 3600 } }).then(
+  fetch(`${baseUrl}${categories}`, { next: { revalidate: 1 } }).then(
     (response) => response.json()
   );
 
 export const getCategoryTitle = (categoryId: string): Promise<CategoryProps> =>
   fetch(`${baseUrl}${categories}/${categoryId}`, {
-    next: { revalidate: 3600 },
+    next: { revalidate: 1 },
   }).then((response) => response.json());
