@@ -34,7 +34,7 @@ const SearchTable = lazy(
 type DetailBibliographyPageProps = {
   params: {
     id: string;
-    page: string;
+    pages: string;
   };
   searchParams?: SearchParamsProps;
 };
@@ -49,9 +49,9 @@ const DetailBibliographyPage = async ({
   searchParams,
   params,
 }: DetailBibliographyPageProps & BibliographyProps) => {
-  const { id, page } = params;
+  const { id, pages } = params;
   const { query } = searchParams!;
-  const contentPromise = getContents(id, page);
+  const contentPromise = getContents(id, pages);
   const tocPromise = getTableOfContents(id);
   const detailBibliographyPromise = getDetailBibliography(id);
   console.log('DetailBibliographyPage', searchParams);
@@ -64,7 +64,7 @@ const DetailBibliographyPage = async ({
               <AccordionList
                 outlines={tableOfContents}
                 variant="tableOfContents"
-                activeItem={page}
+                activeItem={pages}
                 open
               />
             )}
@@ -126,7 +126,7 @@ const DetailBibliographyPage = async ({
                 <PageControlComponent
                   bibliographyId={_id}
                   firstPage={firstPage}
-                  currentPage={page}
+                  currentPage={pages}
                   lastPage={lastPage}
                 />
               </>
@@ -134,7 +134,7 @@ const DetailBibliographyPage = async ({
           </Await>
         </Suspense>
         {/* TODO: Fix Skeleton */}
-        <Suspense key={page} fallback={<MainContentSkeleton />}>
+        <Suspense key={pages} fallback={<MainContentSkeleton />}>
           <Await promise={contentPromise}>
             {({ text }) => (
               <>
