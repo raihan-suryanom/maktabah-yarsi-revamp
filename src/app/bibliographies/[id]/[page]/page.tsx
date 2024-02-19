@@ -54,7 +54,7 @@ const DetailBibliographyPage = async ({
   const contentPromise = getContents(id, page);
   const tocPromise = getTableOfContents(id);
   const detailBibliographyPromise = getDetailBibliography(id);
-
+  console.log('DetailBibliographyPage', searchParams);
   return (
     <>
       <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5 dark:border-gray-800">
