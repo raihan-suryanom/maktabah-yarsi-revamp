@@ -15,5 +15,5 @@ export const getCategories = (): Promise<{
 
 export const getCategoryTitle = (categoryId: string): Promise<CategoryProps> =>
   fetch(`${baseUrl}${categories}/${categoryId}`, {
-    next: { revalidate: 1 },
+    next: { revalidate: 0 },
   }).then((response) => response.json());

@@ -6,11 +6,11 @@ import MainContent, {
 } from '~/components/organisms/main-content';
 import { Await } from '~/lib/utils/await.component';
 import {
-  getAllBibliographies,
+  // getAllBibliographies,
   getDetailBibliography,
   getTableOfContents,
 } from '~/lib/bibliographies.server';
-import { extractContentBibliographyPaths } from '~/lib/utils/extract-category-paths';
+// import { extractContentBibliographyPaths } from '~/lib/utils/extract-category-paths';
 import { getContents } from '~/lib/content.server';
 import { formateDate, reverseSlugCaseToOriginal } from '~/lib/utils/helper';
 import AccordionList, {
@@ -34,24 +34,28 @@ const SearchTable = lazy(
 type DetailBibliographyPageProps = {
   params: {
     id: string;
-    page: string;
+    pages: string;
   };
   searchParams?: SearchParamsProps;
 };
 
-export async function generateStaticParams() {
-  const bibliographies = await getAllBibliographies();
+// TODO: Soon will be back
+// export async function generateStaticParams() {
+//   const bibliographies = await getAllBibliographies();
 
-  return extractContentBibliographyPaths(bibliographies);
-}
+//   return extractContentBibliographyPaths(bibliographies);
+// }
 
+export const dynamic = 'force-dynamic';
+
+// TODO: Split search and static content book
 const DetailBibliographyPage = async ({
   searchParams,
   params,
 }: DetailBibliographyPageProps & BibliographyProps) => {
-  const { id, page } = params;
+  const { id, pages } = params;
   const { query } = searchParams!;
-  const contentPromise = getContents(id, page);
+  const contentPromise = getContents(id, pages);
   const tocPromise = getTableOfContents(id);
   const detailBibliographyPromise = getDetailBibliography(id);
 
@@ -64,7 +68,7 @@ const DetailBibliographyPage = async ({
               <AccordionList
                 outlines={tableOfContents}
                 variant="tableOfContents"
-                activeItem={page}
+                activeItem={pages}
                 open
               />
             )}
@@ -126,7 +130,7 @@ const DetailBibliographyPage = async ({
                 <PageControlComponent
                   bibliographyId={_id}
                   firstPage={firstPage}
-                  currentPage={page}
+                  currentPage={pages}
                   lastPage={lastPage}
                 />
               </>
@@ -134,7 +138,7 @@ const DetailBibliographyPage = async ({
           </Await>
         </Suspense>
         {/* TODO: Fix Skeleton */}
-        <Suspense key={page} fallback={<MainContentSkeleton />}>
+        <Suspense key={pages} fallback={<MainContentSkeleton />}>
           <Await promise={contentPromise}>
             {({ text }) => (
               <>
