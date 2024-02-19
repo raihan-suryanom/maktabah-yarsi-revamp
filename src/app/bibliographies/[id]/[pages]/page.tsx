@@ -6,11 +6,11 @@ import MainContent, {
 } from '~/components/organisms/main-content';
 import { Await } from '~/lib/utils/await.component';
 import {
-  getAllBibliographies,
+  // getAllBibliographies,
   getDetailBibliography,
   getTableOfContents,
 } from '~/lib/bibliographies.server';
-import { extractContentBibliographyPaths } from '~/lib/utils/extract-category-paths';
+// import { extractContentBibliographyPaths } from '~/lib/utils/extract-category-paths';
 import { getContents } from '~/lib/content.server';
 import { formateDate, reverseSlugCaseToOriginal } from '~/lib/utils/helper';
 import AccordionList, {
@@ -39,11 +39,13 @@ type DetailBibliographyPageProps = {
   searchParams?: SearchParamsProps;
 };
 
-export async function generateStaticParams() {
-  const bibliographies = await getAllBibliographies();
+// export async function generateStaticParams() {
+//   const bibliographies = await getAllBibliographies();
 
-  return extractContentBibliographyPaths(bibliographies);
-}
+//   return extractContentBibliographyPaths(bibliographies);
+// }
+
+export const dynamic = 'force-dynamic';
 
 const DetailBibliographyPage = async ({
   searchParams,
