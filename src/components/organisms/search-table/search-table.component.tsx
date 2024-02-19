@@ -1,11 +1,12 @@
 import { Table } from '~/components/atoms/table';
-import Pagination from '~/components/molecules/pagination';
 import Skeleton from '~/components/atoms/skeleton';
 import { SearchParamsProps } from '~/lib/utils/index.type';
 import { getSearchResults } from '~/lib/search.server';
 import { strategy } from '~/lib/utils/helper';
 import { Suspense } from 'react';
 import DetailsComponent from './_details.component';
+import PageControlComponent from '~/components/molecules/page-control/page-control.component';
+import configServer from '~/lib/config.server';
 
 export const SearchTableSkeleton = () => (
   <div className="fixed bottom-0 right-0 w-9/12 bg-light-100 pb-3 dark:bg-dark-200">
@@ -13,9 +14,7 @@ export const SearchTableSkeleton = () => (
       Tekan untuk menutup/membuka tabel pencarian
     </p>
     <Table.Root className="w-full table-fixed">
-      <Table.Caption>
-        <Pagination />
-      </Table.Caption>
+      <Table.Caption>{/* TODO: Pagination */}</Table.Caption>
       <Table.Header className="w-full">
         <Table.Row>
           <Table.Head className="w-14">No.</Table.Head>
@@ -60,44 +59,64 @@ const SearchTable = async (props: SearchParamsProps & { page: string }) => {
     redirect('/search-not-found');
   }
 
+  const totalPagination = Math.ceil(
+    totalResult / +configServer.path.searchLimit!
+  );
+
   return (
-    <Suspense fallback={<SearchTableSkeleton />}>
-      <DetailsComponent open={!!props.open}>
-        <summary className="mx-auto flex items-center justify-center bg-red-500 py-1 text-center text-xs text-white transition-all hover:bg-red-600">
-          Tekan untuk menutup/membuka tabel pencarian
-        </summary>
-        <Table.Root className="m-0 w-full table-fixed data-[state=open]:pb-3 dark:bg-dark-200">
-          <Table.Caption className="py-4 dark:bg-dark-200">
-            <Pagination />
-          </Table.Caption>
-          <Table.Header className="w-full">
-            <Table.Row className="pointer-events-none">
-              <Table.Head className="w-14">No.</Table.Head>
-              <Table.Head className="w-14">Hlm.</Table.Head>
-              <Table.Head className="w-2/3">Kueri Relevan</Table.Head>
-              <Table.Head className="w-1/3">Judul Buku</Table.Head>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {data.map((item, index) => (
-              <Table.Row
-                key={item.bibliography + item.page + index}
-                role="link"
-                bibliography={item.bibliography}
-                page={item.page}
-              >
-                <Table.Cell>{index + 1}</Table.Cell>
-                <Table.Cell>{item.page}</Table.Cell>
-                <Table.Cell
-                  className="text-left"
-                  dangerouslySetInnerHTML={{ __html: item.highlight }}
-                />
-                <Table.Cell className="text-left">{item.title}</Table.Cell>
+    <Suspense key={props.open} fallback={<SearchTableSkeleton />}>
+      <div className="fixed bottom-0 right-0 w-9/12 bg-light-100 [&[open]_summary_~_*]:animate-accordion-down">
+        <p className="bg-dark-100 pl-4 text-left text-dark-100 dark:text-light-100">
+          <strong className="text-lg text-primary-light dark:text-primary-dark">
+            {totalResult}
+          </strong>{' '}
+          hasil ditemukan
+        </p>
+        <details open={!!props.open}>
+          <DetailsComponent>
+            Tekan untuk menutup/membuka tabel pencarian
+          </DetailsComponent>
+          <Table.Root className="relative w-full table-fixed bg-light-200 dark:bg-dark-200">
+            <Table.Caption className="relative border-t bg-light-200 pb-20 dark:bg-dark-200">
+              <p className="bg-light-200 pl-4 pt-3 text-left dark:bg-dark-200 [&>strong]:text-lg [&>strong]:text-primary-light [&>strong]:dark:text-primary-dark">
+                Halaman <strong>{props.page}</strong> dari{' '}
+                <strong>{totalPagination}</strong>
+              </p>
+              <PageControlComponent
+                className="fixed bottom-2.5 left-1/2 translate-x-[20%] rounded-md  bg-light-100 px-3.5 py-1.5 dark:bg-dark-100"
+                currentPage={props.page}
+                lastPage={totalPagination}
+              />
+            </Table.Caption>
+            <Table.Header className="w-full">
+              <Table.Row className="pointer-events-none">
+                <Table.Head className="w-14">No.</Table.Head>
+                <Table.Head className="w-14">Hlm.</Table.Head>
+                <Table.Head className="w-2/3">Kueri Relevan</Table.Head>
+                <Table.Head className="w-1/3">Judul Buku</Table.Head>
               </Table.Row>
-            ))}
-          </Table.Body>
-        </Table.Root>
-      </DetailsComponent>
+            </Table.Header>
+            <Table.Body className="pb-20">
+              {data.map((item, index) => (
+                <Table.Row
+                  key={item.bibliography + item.page + index}
+                  role="link"
+                  bibliography={item.bibliography}
+                  page={item.page}
+                >
+                  <Table.Cell>{index + 1}</Table.Cell>
+                  <Table.Cell>{item.page}</Table.Cell>
+                  <Table.Cell
+                    className="text-left"
+                    dangerouslySetInnerHTML={{ __html: item.highlight }}
+                  />
+                  <Table.Cell className="text-left">{item.title}</Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table.Root>
+        </details>
+      </div>
     </Suspense>
   );
 };

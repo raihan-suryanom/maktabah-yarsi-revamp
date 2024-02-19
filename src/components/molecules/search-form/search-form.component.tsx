@@ -65,7 +65,7 @@ const SearchForm = async () => {
         <div className="flex items-center justify-between">
           <Form.Message match="valueMissing">Topik wajib diisi</Form.Message>
           <Form.Message match="tooShort">
-            Pajang topik minimal 3 karakter.
+            Pajang topik minimal 4 huruf.
           </Form.Message>
         </div>
         <div className="relative flex items-center">
@@ -76,13 +76,13 @@ const SearchForm = async () => {
               dimension="small"
               className="w-full pl-11 pr-3"
               placeholder="Masukkan kata kunci topik permasalahan seperti iman, ikhlas, jodoh dan lain-lain."
-              minLength={3}
+              minLength={4}
               autoFocus
               required
             />
           </Form.Control>
         </div>
-        <small>Wajib diisi dan masukkan mimimal 3 huruf.</small>
+        <small>Wajib diisi dan masukkan mimimal 4 huruf.</small>
       </Form.Field>
       <div className="flex items-center gap-5 [&>div]:gap-2 [&_label]:font-normal">
         <Form.Field name="exact_match" className="flex-row">

@@ -1,15 +1,14 @@
 'use client';
 
-const DetailsComponent = ({
-  children,
-  open,
-}: {
-  children: React.ReactNode;
-  open: boolean;
-}) => {
+import { useRouter } from 'next/navigation';
+
+// TODO: Component naming
+const DetailsComponent = ({ children }: { children: React.ReactNode }) => {
+  const { push } = useRouter();
+
   return (
-    <details
-      className="fixed bottom-0 right-0 w-9/12 bg-light-100 [&[open]_summary_~_*]:animate-accordion-down"
+    <summary
+      className="mx-auto flex items-center justify-center bg-red-500 py-1 text-center text-xs text-white transition-all hover:bg-red-600"
       onClick={() => {
         const url = new URL(window.location.href);
 
@@ -18,13 +17,14 @@ const DetailsComponent = ({
         } else {
           url.searchParams.set('open', 'true');
         }
+        push(url.pathname + url.search);
 
-        window.history.pushState({}, '', url);
+        // TODO: Exploring pushState vs push router
+        // window.history.pushState({}, '', url);
       }}
-      open={!!open}
     >
       {children}
-    </details>
+    </summary>
   );
 };
 

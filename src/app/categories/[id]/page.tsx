@@ -13,18 +13,16 @@ import Breadcrumb from '~/components/molecules/breadcrumb';
 import BibliographyLists, {
   BibliographyListsSkeleton,
 } from '~/components/organisms/bibliography-lists';
-import Pagination, {
-  PaginationSkeleton,
-} from '~/components/molecules/pagination';
 
 import type { Metadata } from 'next';
+import PageControlComponent from '~/components/molecules/page-control/page-control.component';
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { category: string };
-}): Metadata {
-  const visitedCategory = params.category;
+  params: { id: string };
+}): Promise<Metadata> {
+  const { title: visitedCategory } = await getCategoryTitle(params.id);
   const title = `Daftar Buku ${visitedCategory} - Maktaba YARSI`;
 
   return {
@@ -107,8 +105,8 @@ export default function BibliographyListsPage({
             </Await>
           </Suspense>
         </section>
-        <Suspense fallback={<PaginationSkeleton />}>
-          <Pagination />
+        <Suspense fallback={<div />}>
+          <PageControlComponent currentPage="1" lastPage={1} />
         </Suspense>
       </div>
     </>
