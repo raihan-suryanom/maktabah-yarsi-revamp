@@ -1,3 +1,5 @@
+'use client';
+
 import {
   ChevronLeft,
   ChevronRight,
@@ -5,30 +7,50 @@ import {
   ChevronsRight,
 } from 'lucide-react';
 
-import configServer from '~/lib/config.server';
 import Input from '~/components/atoms/input';
 import ButtonClient from '~/components/atoms/button/button.client.component';
+import { useRouter } from 'next/navigation';
+import { cn } from '~/lib/utils/cn';
 
 const PageControlComponent = ({
-  bibliographyId,
   currentPage,
-  firstPage = 7,
-  lastPage = 9,
+  lastPage,
+  className,
+  bibliographyId,
+  firstPage = 1,
 }: {
-  bibliographyId: string;
   currentPage: string;
-  firstPage: number;
   lastPage: number;
+  bibliographyId?: string;
+  firstPage?: number;
+  className?: string;
 }) => {
-  const { path } = configServer;
+  const router = useRouter();
+  const bibliographies = '/bibliographies';
+
+  const searchNavAction = (page: string) => {
+    const { searchParams, pathname } = new URL(window.location.href);
+    searchParams.set('page', page);
+
+    router.push(`${pathname}?${searchParams.toString()}`, { scroll: false });
+  };
+
+  const pageControlProps = (page: number) => ({
+    ...(!bibliographyId && {
+      onClick: () => searchNavAction(page.toString()),
+    }),
+    ...(bibliographyId && {
+      location: `${bibliographies}/${bibliographyId}/${page}`,
+    }),
+  });
 
   return (
-    <div className="mx-auto flex items-center gap-x-3">
+    <div className={cn('mx-auto flex items-center gap-x-3', className)}>
       <ButtonClient
         className="text-primary-light dark:text-primary-dark/80 dark:hover:text-primary-dark"
         disabled={+currentPage === firstPage}
-        location={`${path.bibliographies}/${bibliographyId}/${firstPage}`}
         aria-disabled={+currentPage === firstPage}
+        {...pageControlProps(firstPage)}
       >
         <ChevronsLeft size={32} />
       </ButtonClient>
@@ -36,14 +58,13 @@ const PageControlComponent = ({
       <ButtonClient
         className="text-primary-light dark:text-primary-dark/80 dark:hover:text-primary-dark"
         disabled={+currentPage === firstPage}
-        location={`${path.bibliographies}/${bibliographyId}/${
-          +currentPage - 1
-        }`}
         aria-disabled={+currentPage === firstPage}
+        {...pageControlProps(+currentPage - 1)}
       >
         <ChevronLeft size={32} />
       </ButtonClient>
       <Input
+        key={currentPage}
         type="number"
         dimension="small"
         className="w-8 appearance-none text-center text-sm"
@@ -52,18 +73,16 @@ const PageControlComponent = ({
       <ButtonClient
         className="text-primary-light dark:text-primary-dark/80 dark:hover:text-primary-dark"
         disabled={+currentPage === lastPage}
-        location={`${path.bibliographies}/${bibliographyId}/${
-          +currentPage + 1
-        }`}
         aria-disabled={+currentPage === lastPage}
+        {...pageControlProps(+currentPage + 1)}
       >
         <ChevronRight size={32} />
       </ButtonClient>
       <ButtonClient
         className="text-primary-light dark:text-primary-dark/80 dark:hover:text-primary-dark"
         disabled={+currentPage === lastPage}
-        location={`${path.bibliographies}/${bibliographyId}/${lastPage}`}
         aria-disabled={+currentPage === lastPage}
+        {...pageControlProps(lastPage)}
       >
         <ChevronsRight size={32} />
       </ButtonClient>

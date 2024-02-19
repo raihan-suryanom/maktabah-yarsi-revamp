@@ -1,7 +1,6 @@
 import { CategoryOutlineSkeleton } from '~/components/atoms/accordion/accordion.component';
 import Skeleton from '~/components/atoms/skeleton';
 import BreadcrumbSkeleton from '~/components/atoms/skeleton/breadcrumb-skeleton.component';
-import { PaginationSkeleton } from '~/components/molecules/pagination';
 import { BibliographyListsSkeleton } from '~/components/organisms/bibliography-lists';
 
 export default function Loading() {
@@ -24,7 +23,7 @@ export default function Loading() {
         <section className="grid grid-rows-none gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 [&>div[aria-label=skeleton]]:rounded-[10px]">
           <BibliographyListsSkeleton />
         </section>
-        <PaginationSkeleton />
+        <div />
       </div>
     </div>
   );

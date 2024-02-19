@@ -133,6 +133,7 @@ const DetailBibliographyPage = async ({
             )}
           </Await>
         </Suspense>
+        {/* TODO: Fix Skeleton */}
         <Suspense key={page} fallback={<MainContentSkeleton />}>
           <Await promise={contentPromise}>
             {({ text }) => (
