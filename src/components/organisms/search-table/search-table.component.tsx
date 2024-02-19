@@ -46,7 +46,6 @@ export const SearchTableSkeleton = () => (
 );
 
 const SearchTable = async (props: SearchParamsProps & { page: string }) => {
-  console.log('SearchTable', props);
   const { totalResult, data } = await getSearchResults({
     keyword: props.query,
     page: props.page,

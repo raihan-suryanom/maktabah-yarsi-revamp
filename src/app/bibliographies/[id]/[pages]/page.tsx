@@ -39,6 +39,7 @@ type DetailBibliographyPageProps = {
   searchParams?: SearchParamsProps;
 };
 
+// TODO: Soon will be back
 // export async function generateStaticParams() {
 //   const bibliographies = await getAllBibliographies();
 
@@ -47,6 +48,7 @@ type DetailBibliographyPageProps = {
 
 export const dynamic = 'force-dynamic';
 
+// TODO: Split search and static content book
 const DetailBibliographyPage = async ({
   searchParams,
   params,
@@ -56,7 +58,7 @@ const DetailBibliographyPage = async ({
   const contentPromise = getContents(id, pages);
   const tocPromise = getTableOfContents(id);
   const detailBibliographyPromise = getDetailBibliography(id);
-  console.log('DetailBibliographyPage', searchParams);
+
   return (
     <>
       <aside className="fixed flex h-screen w-3/12 flex-col gap-3 overflow-y-scroll border-r border-black/10 pb-28 pl-8 pr-5 pt-5 dark:border-gray-800">
