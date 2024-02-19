@@ -66,7 +66,7 @@ const SearchTable = async (props: SearchParamsProps & { page: string }) => {
   return (
     <Suspense key={props.open} fallback={<SearchTableSkeleton />}>
       <div className="fixed bottom-0 right-0 w-9/12 bg-light-100 [&[open]_summary_~_*]:animate-accordion-down">
-        <p className="bg-dark-100 pl-4 text-left text-dark-100 dark:text-light-100">
+        <p className="bg-light-100 pl-4 text-left text-dark-100 dark:bg-dark-100 dark:text-light-100">
           <strong className="text-lg text-primary-light dark:text-primary-dark">
             {totalResult}
           </strong>{' '}

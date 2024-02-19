@@ -83,9 +83,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: process.env.DEBUG === 'true',
   },
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
 };
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
