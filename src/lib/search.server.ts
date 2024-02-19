@@ -29,7 +29,7 @@ export const getSearchResults = ({
       'Content-Type': 'application/json',
     },
     mode: 'cors',
-    cache: 'no-cache',
+    cache: 'no-store',
     body: JSON.stringify({
       page,
       limit: searchLimit,
