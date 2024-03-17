@@ -8,7 +8,7 @@ const DetailsComponent = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <summary
-      className="mx-auto flex items-center justify-center bg-red-500 py-1 text-center text-xs text-white transition-all hover:bg-red-600"
+      className="mx-auto flex items-center justify-center bg-red-500 py-1 text-center text-xs text-white transition-all hover:cursor-pointer hover:bg-red-600"
       onClick={() => {
         const url = new URL(window.location.href);
 

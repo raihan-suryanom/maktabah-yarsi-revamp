@@ -97,17 +97,32 @@ export default function BibliographyListsPage({
           </Await>
         </Suspense>
         <section className="grid grid-rows-none gap-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 [&>div[aria-label=skeleton]]:rounded-[10px]">
+          {/* TODO: New Pagination fallback skeleton */}
           <Suspense key={params.id} fallback={<BibliographyListsSkeleton />}>
             <Await promise={bibliographiesPromise}>
               {({ bibliographies }) => (
-                <BibliographyLists bibliographies={bibliographies} />
+                <>
+                  <BibliographyLists bibliographies={bibliographies} />
+                  {bibliographies.length > 0 ? (
+                    <PageControlComponent
+                      className="fixed bottom-2.5 left-1/2 translate-x-[20%] rounded-md bg-light-100 px-3.5 py-1.5 dark:bg-dark-100"
+                      currentPage="1"
+                      lastPage={1}
+                    />
+                  ) : (
+                    <p className="col-span-full mt-20 text-center text-lg [&>span]:font-semibold [&>span]:text-primary-light [&>span]:dark:text-primary-dark">
+                      Maaf, kategori yang dipilih saat ini{' '}
+                      <span>sedang kosong</span>. Tim kami sedang bekerja keras
+                      untuk menambahkan buku ke kategori ini. Silakan{' '}
+                      <span>cek kembali</span> nanti untuk pembaruan. Terima
+                      kasih atas kesabaran dan pengertiannya.
+                    </p>
+                  )}
+                </>
               )}
             </Await>
           </Suspense>
         </section>
-        <Suspense fallback={<div />}>
-          <PageControlComponent currentPage="1" lastPage={1} />
-        </Suspense>
       </div>
     </>
   );

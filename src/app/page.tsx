@@ -4,10 +4,10 @@ import CardGroup, {
   CardGroupSkeleton,
 } from '~/components/molecules/card-group/card-group.component';
 import SearchButton from '~/components/molecules/search-button';
-import { getPopularCategories } from '~/lib/utils/getPopularCategories';
 import { Await } from '~/lib/utils/await.component';
 
 import type { Metadata } from 'next';
+import { getCategories } from '~/lib/categories.server';
 
 export const metadata: Metadata = {
   title: 'Maktabah YARSI | Perpustakaan Islam Digital Berbahasa Indonesia',
@@ -16,7 +16,9 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const popularCategoriesPromise = getPopularCategories();
+  // TODO: Analytics
+  // const popularCategoriesPromise = getPopularCategories();
+  const categoriesPromise = getCategories();
 
   return (
     <>
@@ -53,12 +55,11 @@ export default function HomePage() {
           className="w-full bg-light-300"
           size="large"
         />
-        <section className="flex w-full items-center justify-between">
+        {/* TODO: This is unnecessary, should be refactor to much simpler and to the point without icon */}
+        <section className="m-0 mx-auto grid auto-rows-[1fr] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-6">
           <Suspense fallback={<CardGroupSkeleton />}>
-            <Await promise={popularCategoriesPromise}>
-              {({ popularCategories }) => (
-                <CardGroup data={popularCategories} />
-              )}
+            <Await promise={categoriesPromise}>
+              {({ categories }) => <CardGroup data={categories} />}
             </Await>
           </Suspense>
         </section>
