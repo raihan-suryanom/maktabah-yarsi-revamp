@@ -14,7 +14,7 @@ export const SearchTableSkeleton = () => (
       Tekan untuk menutup/membuka tabel pencarian
     </p>
     <Table.Root className="w-full table-fixed">
-      <Table.Caption>{/* TODO: Pagination */}</Table.Caption>
+      <Table.Caption>{/* TODO: Pagination di sini */}</Table.Caption>
       <Table.Header className="w-full">
         <Table.Row>
           <Table.Head className="w-14">No.</Table.Head>
@@ -44,7 +44,6 @@ export const SearchTableSkeleton = () => (
     </Table.Root>
   </div>
 );
-
 const SearchTable = async (props: SearchParamsProps & { page: string }) => {
   const { totalResult, data } = await getSearchResults({
     keyword: props.query,
@@ -83,7 +82,7 @@ const SearchTable = async (props: SearchParamsProps & { page: string }) => {
                 <strong>{totalPagination}</strong>
               </p>
               <PageControlComponent
-                className="fixed bottom-2.5 left-1/2 translate-x-[20%] rounded-md  bg-light-100 px-3.5 py-1.5 dark:bg-dark-100"
+                className="fixed bottom-2.5 left-1/2 translate-x-[20%] rounded-md bg-light-100 px-3.5 py-1.5 dark:bg-dark-100"
                 currentPage={props.page}
                 lastPage={totalPagination}
               />
@@ -104,7 +103,7 @@ const SearchTable = async (props: SearchParamsProps & { page: string }) => {
                   bibliography={item.bibliography}
                   page={item.page}
                 >
-                  <Table.Cell>{index + 1}</Table.Cell>
+                  <Table.Cell>{++index + (+props.page - 1) * 5}</Table.Cell>
                   <Table.Cell>{item.page}</Table.Cell>
                   <Table.Cell
                     className="text-left"
